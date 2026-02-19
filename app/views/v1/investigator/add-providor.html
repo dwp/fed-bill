@@ -42,71 +42,73 @@
     
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add benefit</h2>
+  <h2 class="govuk-heading-m">Add providor</h2>
 
-   <form action="/v1/investigator/add-providor" method="post">
+   <form action="/v1/investigator/add-category" method="post">
 
-            <h3 class="govuk-heading-s">What benefit does your request relate to?</h3>
-            <div class="govuk-form-group">
+            <div class="govuk-form-group govuk-!-width-one-half">
             <label class="govuk-label" for="sort">
            
-             
-              
-            </label>
-            <select class="govuk-select" id="sort" name="sort">
-              <option value="choose" selected>Choose an option</option>
-              <option value="attendance">Attendance allowence</option>
-              <option value="adultdis">Adult disability payment</option>
-              <option value="accesstowork">Access to work</option>
-              <option value="bereavement">Bereavement allowance</option>
-              <option value="">Bereavement benefit</option>
-              <option value="">Carer's allowance</option>
-              <option value="">Child benefit</option>
-              <option value="">Child disability payment</option>
-              <option value="">Child support</option>
-              <option value="">Child tax credit</option>
-              <option value="">Council tax credit</option>
-              <option value="">Council tax benefit</option>
-              <option value="">Disability living allowance</option>
-              <option value="">Employment and support allowance</option>
-              <option value="">Housing benefit</option>
-              <option value="">Incapacity benefit</option>
-              <option value="">Industrail death benefit</option>
-              <option value="">Industrial disabilty benefit</option>
-              <option value="">Income support</option>
-              <option value="">Jobseeker's allowance</option>
-              <option value="">Maternity allowance</option>
-              <option value="">Pension credit</option>
-              <option value="">Personal inderpendance payment</option>
-              <option value="">Rates relief</option>
-              <option value="">Retirment pension</option>
-              <option value="">Severe disability allowance</option>
-              <option value="">Socila fund</option>
-              <option value="">State pension</option>
-              <option value="">Tax credits</option>
-              <option value="">Universal credit</option>
-              <option value="">War disability benefit group</option>
-              <option value="">Widows benefit</option>
-              <option value="">Winter fuel payment</option>
-              <option value="">Widowed parents allowance</option>
-              
-            </select>
-          </div>
+                      
+                       <h1 class="govuk-label-wrapper">
+                         <label class="govuk-label govuk-label--s" for="event-name">
+                           What providor do you want to send the request to?
+                         </label>
+                       </h1>
+                       <div id="event-name-hint" class="govuk-hint">
+                            Known providers will appear as you type.</div>
+                                         
+                              <select class="govuk-select" id="country" name="country"
+                                data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="Barclays">Barclays</option>
+                                <option value="Monzo">Monzo</option>
+                                <option value="Santandar">Santandar</option>
+                                <option value="Tescos">Tescos</option>
+                                <option value="Ryainair">Ryanair</option>
+                                <option value="British Airways">British Airways</option>
+                                <option value="Bank of Scotland">Bank of Scotland</option>
+                                <option value="Royal Bank of Scotland">Royal Bank of Scotland</option>
+                                <option value="Finland">Finland</option>
+                                <option value="France">France</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Greece">Greece</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Ireland">Ireland</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Latvia">Latvia</option>
+                                <option value="Lithuania">Lithuania</option>
+                                <option value="Luxembourg">Luxembourg</option>
+                                <option value="Malta">Malta</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Slovakia">Slovakia</option>
+                                <option value="Slovenia">Slovenia</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sweden">Sweden</option>
+                              </select>   
            
-               
- 
+          </div>
+
+          <p class="govuk-body">
+               <a href="manually-add-providor.html" class="govuk-link">Enter details for new provider manually</a>.
+           </p>
+           
+              
+
+    <br>
               
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+       <button href="add-benefit.html" type="" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
          Back
-       </a>
+       </button>
       </div>
-
-   </form>
-
+    </form>
 
 </div>
 </div>

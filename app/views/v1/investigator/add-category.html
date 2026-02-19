@@ -42,58 +42,69 @@
     
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add benefit</h2>
+  <h2 class="govuk-heading-m">Add category</h2>
 
-   <form action="/v1/investigator/add-providor" method="post">
+   <form method="post">
 
-            <h3 class="govuk-heading-s">What benefit does your request relate to?</h3>
-            <div class="govuk-form-group">
-            <label class="govuk-label" for="sort">
            
-             
+             <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+       What category of information do you want to request?      
+      </h1>
+    </legend>
+   
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType" name="categoryType" type="radio" value="financial">
+        <label class="govuk-label govuk-radios__label" for="categoryType">
+          Financial
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-2" name="categoryType" type="radio" value="education">
+        <label class="govuk-label govuk-radios__label" for="categoryType-2">
+          Educational
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-3" name="categoryType" type="radio" value="employment">
+        <label class="govuk-label govuk-radios__label" for="categoryType-3">
+          Employment
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-4" name="categoryType" type="radio" value="travel">
+        <label class="govuk-label govuk-radios__label" for="categoryType-4">
+          Travel
+        </label>
+      </div>
+       <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-6" name="categoryType" type="radio" value="insurance">
+        <label class="govuk-label govuk-radios__label" for="categoryType-5">
+          Insurance
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-6" name="categoryType" type="radio" value="utility">
+        <label class="govuk-label govuk-radios__label" for="categoryType-6">
+          Utility
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="categoryType-7" name="categoryType" type="radio" value="other">
+        <label class="govuk-label govuk-radios__label" for="categoryType-7">
+          Other
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
               
-            </label>
-            <select class="govuk-select" id="sort" name="sort">
-              <option value="choose" selected>Choose an option</option>
-              <option value="attendance">Attendance allowence</option>
-              <option value="adultdis">Adult disability payment</option>
-              <option value="accesstowork">Access to work</option>
-              <option value="bereavement">Bereavement allowance</option>
-              <option value="">Bereavement benefit</option>
-              <option value="">Carer's allowance</option>
-              <option value="">Child benefit</option>
-              <option value="">Child disability payment</option>
-              <option value="">Child support</option>
-              <option value="">Child tax credit</option>
-              <option value="">Council tax credit</option>
-              <option value="">Council tax benefit</option>
-              <option value="">Disability living allowance</option>
-              <option value="">Employment and support allowance</option>
-              <option value="">Housing benefit</option>
-              <option value="">Incapacity benefit</option>
-              <option value="">Industrail death benefit</option>
-              <option value="">Industrial disabilty benefit</option>
-              <option value="">Income support</option>
-              <option value="">Jobseeker's allowance</option>
-              <option value="">Maternity allowance</option>
-              <option value="">Pension credit</option>
-              <option value="">Personal inderpendance payment</option>
-              <option value="">Rates relief</option>
-              <option value="">Retirment pension</option>
-              <option value="">Severe disability allowance</option>
-              <option value="">Socila fund</option>
-              <option value="">State pension</option>
-              <option value="">Tax credits</option>
-              <option value="">Universal credit</option>
-              <option value="">War disability benefit group</option>
-              <option value="">Widows benefit</option>
-              <option value="">Winter fuel payment</option>
-              <option value="">Widowed parents allowance</option>
+            
               
-            </select>
-          </div>
-           
-               
  
               
       <div class="govuk-button-group">

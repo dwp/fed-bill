@@ -7,3 +7,5 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
+
+require('./views/v1/investigator/routes.js')

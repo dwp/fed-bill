@@ -42,70 +42,78 @@
     
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add benefit</h2>
+  <h2 class="govuk-heading-m">Add new providor manually</h2>
 
-   <form action="/v1/investigator/add-providor" method="post">
+   <form action="" method="post">
 
-            <h3 class="govuk-heading-s">What benefit does your request relate to?</h3>
+  
             <div class="govuk-form-group">
             <label class="govuk-label" for="sort">
            
-             
-              
-            </label>
-            <select class="govuk-select" id="sort" name="sort">
-              <option value="choose" selected>Choose an option</option>
-              <option value="attendance">Attendance allowence</option>
-              <option value="adultdis">Adult disability payment</option>
-              <option value="accesstowork">Access to work</option>
-              <option value="bereavement">Bereavement allowance</option>
-              <option value="">Bereavement benefit</option>
-              <option value="">Carer's allowance</option>
-              <option value="">Child benefit</option>
-              <option value="">Child disability payment</option>
-              <option value="">Child support</option>
-              <option value="">Child tax credit</option>
-              <option value="">Council tax credit</option>
-              <option value="">Council tax benefit</option>
-              <option value="">Disability living allowance</option>
-              <option value="">Employment and support allowance</option>
-              <option value="">Housing benefit</option>
-              <option value="">Incapacity benefit</option>
-              <option value="">Industrail death benefit</option>
-              <option value="">Industrial disabilty benefit</option>
-              <option value="">Income support</option>
-              <option value="">Jobseeker's allowance</option>
-              <option value="">Maternity allowance</option>
-              <option value="">Pension credit</option>
-              <option value="">Personal inderpendance payment</option>
-              <option value="">Rates relief</option>
-              <option value="">Retirment pension</option>
-              <option value="">Severe disability allowance</option>
-              <option value="">Socila fund</option>
-              <option value="">State pension</option>
-              <option value="">Tax credits</option>
-              <option value="">Universal credit</option>
-              <option value="">War disability benefit group</option>
-              <option value="">Widows benefit</option>
-              <option value="">Winter fuel payment</option>
-              <option value="">Widowed parents allowance</option>
-              
-            </select>
-          </div>
+                      
+                       <h1 class="govuk-label-wrapper">
+                         <label class="govuk-label govuk-label--s" for="event-name">
+                           What providor do you want to send the request to?
+                         </label>
+                       </h1>
+                       <div id="event-name-hint" class="govuk-hint">
+                            Known providers will appear as you type.</div>
+                                         
+                             <div class="govuk-form-group">
+                                               
+                       <input class="govuk-input govuk-!-width-one-third" id="event-name" name="eventName" type="text">
+                       </div>
+
+                       <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+      Do you have an email address for the provider?
+      </h1>
+    </legend>
+   
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" checked data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional" id="conditional-contact">
+        <div class="govuk-form-group govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Email address
+          </label>
+         
+          <input class="govuk-input govuk-!-width-one-half govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" aria-describedby="contact-by-email-error" autocomplete="email">
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          No, I want the request to be posted
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+       
+      </div>
+      
+  </fieldset>
+</div>         
            
-               
- 
+</div>
+</form>
+    
+
               
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+       <button href="add-providor.html" type="submit" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
          Back
-       </a>
+       </button>
       </div>
-
-   </form>
 
 
 </div>
