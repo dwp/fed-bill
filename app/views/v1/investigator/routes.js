@@ -19,3 +19,24 @@ router.post('/'+ version +'/investigator/add-category', function(request, respon
 		response.redirect("add-subject")
 	}
 })
+
+//router.post('/'+ version +'/investigator/start-request-for-info', function(request, response) {
+
+	
+		//response.redirect("add-providor")
+
+//})
+	
+router.post('/'+ version +'/investigator/add-benefit', function(request, response) {
+
+	
+		response.redirect("add-providor")
+	
+})
+
+router.post('/'+ version +'/investigator/add-providor', function(request, response) {
+
+	
+		response.redirect("add-category")
+	
+})
