@@ -14,8 +14,8 @@ router.post('/'+ version +'/investigator/add-category', function(request, respon
 
 	var categoryType = request.session.data['categoryType']
 	if (categoryType == "financial"){
-		response.redirect (version + "/invetigator/add-subject-financial")
+		response.redirect ("add-subject-financial")
 	} else {
-		response.redirect( version + "/invetigator/add-subject")
+		response.redirect("add-subject")
 	}
 })
