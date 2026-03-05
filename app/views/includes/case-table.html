@@ -1,125 +1,6 @@
-{% extends "layouts/main-cfems.html" %}
 
-{% set pageName="Home" %}
 
 {% block content %}
-
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full ">
-
-    <section class="dwp-quick-reference" aria-label="Case information">
-  <dl class="dwp-quick-reference__block">
-    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-    <dd class="dwp-quick-reference__primary">I-187054 John Smith</dd>
-    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
-    <dd class="dwp-quick-reference__secondary">NI number QQ190226A</dd>
-  </dl>
-</section>
-
-
-    <nav class="dwp-horizontal-navigation" aria-label="Horizontal">
-  <ul class="dwp-horizontal-navigation__list">
-    <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-1" href="#s-item-1" class="dwp-horizontal-navigation__link" aria-current="true">Inital review</a>
-    </li>
-    <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
-      <a id="s-item-2" href="#s-item-2" class="dwp-horizontal-navigation__link">Build case</a>
-    </li>
-    <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Decision</a>
-    </li>
-     <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Close case</a>
-    </li>
-  </ul>
-</nav>
-
-<br>
-<div style="background-color: rgb(242, 243, 245);  padding: 20px 30px 12px 30px;">
-
-  
-    
-  <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add providor</h2>
-
-   <form method="post">
-
-            <div class="govuk-form-group govuk-!-width-one-half">
-            <label class="govuk-label" for="sort">
-           
-                      
-  <h1 class="govuk-label-wrapper">
-    <label class="govuk-label govuk-label--s" for="event-name">
-      What providor do you want to send the request to?
-    </label>
-  </h1>
-  <div id="event-name-hint" class="govuk-hint">
-       Known providers will appear as you type.</div>
-                    
-         <select class="govuk-select" id="country" name="country"
-           data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
-           <option value="" selected disabled>Select an option</option>
-           <option value="Barclays">Barclays</option>
-           <option value="Monzo">Monzo</option>
-           <option value="Santandar">Santandar</option>
-           <option value="Tescos">Tescos</option>
-           <option value="Ryainair">Ryanair</option>
-           <option value="British Airways">British Airways</option>
-           <option value="Bank of Scotland">Bank of Scotland</option>
-           <option value="Royal Bank of Scotland">Royal Bank of Scotland</option>
-           <option value="Finland">Finland</option>
-           <option value="France">France</option>
-           <option value="Germany">Germany</option>
-           <option value="Greece">Greece</option>
-           <option value="Hungary">Hungary</option>
-           <option value="Ireland">Ireland</option>
-           <option value="Italy">Italy</option>
-           <option value="Latvia">Latvia</option>
-           <option value="Lithuania">Lithuania</option>
-           <option value="Luxembourg">Luxembourg</option>
-           <option value="Malta">Malta</option>
-           <option value="Netherlands">Netherlands</option>
-           <option value="Poland">Poland</option>
-           <option value="Portugal">Portugal</option>
-           <option value="Romania">Romania</option>
-           <option value="Slovakia">Slovakia</option>
-           <option value="Slovenia">Slovenia</option>
-           <option value="Spain">Spain</option>
-           <option value="Sweden">Sweden</option>
-         </select>   
-           
-          </div>
-
-          <p class="govuk-body">
-               <a href="manually-add-providor.html" class="govuk-link">Enter details for new provider manually</a>.
-           </p>
-           
-              
-
-    <br>
-              
-      <div class="govuk-button-group">
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Save and continue
-       </button>
-       <button href="javascript:history.back()" type="" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
-         Back
-       </button>
-      </div>
-    </form>
-
-</div>
-</div>
-
-</div>
-
-<br>
-
-
-
-
 
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
@@ -287,8 +168,6 @@
   </div>
 </div>
 
-    
-  </div>
-</div>
+   
 
 {% endblock %}
