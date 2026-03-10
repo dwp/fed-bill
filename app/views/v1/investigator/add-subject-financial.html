@@ -38,89 +38,140 @@
 <br>
 <div style="background-color: rgb(242, 243, 245);  padding: 20px 30px 12px 30px;">
 
-  
-    
   <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add subject's details</h2>
+  <div class="govuk-grid-column-one-half">
+  <h2 class="govuk-heading-m">Add subject</h2>
 
-   <form action="/v1/investigator/add-providor" method="post">
+    <form method="post">
 
-           <p>You need to tell us at least two of the subject's details.</p>
+      <p>You need to tell us at least two of the subject's details. 
 
-            <p>You can add another subject at the end of this section. You can add up to 20 subjects to this request.</p>  
-          
-           
-    <div class="govuk-form-group govuk-!-width-one-half">
-            
+          You can add another subject at the end of this section. You can add up to 20 subjects to this request.</p>     
+
+          <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--m" for="event-name">
+              <label class="govuk-label govuk-label--s" for="event-name">
                 What is the subject's name?
               </label>
             </h1>
             <div id="event-name-hint" class="govuk-hint">
               This can be their first name, last name, full name or initials.
-            </div>
-            <input class="govuk-input" id="event-name" name="eventName" type="text"            aria-describedby="event-name-hint">
-         
-            
-           
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                   <h1 class="govuk-fieldset__heading">
-                    Do you know the subject by another name?
-                    </h1>
-                </legend>
-               
+            </div> <input class="govuk-input govuk-!-width-one-half" id="event-name" name="eventName" type="text"            aria-describedby="event-name-hint"></div>
 
-          <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-                <label class="govuk-label govuk-radios__label" for="contact">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__conditional" id="conditional-contact">
-                <div class="govuk-form-group govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
-                    Enter any other names or initials for the subject
-                  </label>
-                 
-                  <input class="govuk-input govuk-!-width-one-half govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" aria-describedby="contact-by-email-error" autocomplete="email">
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-                <label class="govuk-label govuk-radios__label" for="contact-2">
-                  No
-                </label>
-              </div>
-              <div class="govuk-radios__conditional            govuk-radios__conditional--hidden" id="conditional-contact-2">
-       
-          </div>
-         </div>  
-         <br> 
- 
-       
-            <h1 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--m" for="event-name">
+            <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+       Do you know the subject by another name? 
+       </h1>
+    </legend>
+  
+  
+
+      <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--s" for="event-name">
               What is the subject's date of birth?              
             </h1>
             
-            <input class="govuk-input" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
-         
+            <input class="govuk-input govuk-!-width-one-half" id="event-name" name="dob" type="text" aria-describedby="event-name-hint"></div>
+            
 
+            <br>
+            <br>
+
+<fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    <h1 class="govuk-fieldset__heading">
+      What is your address?
+    </h1>
+  </legend>
+  <div id="event-name-hint" class="govuk-hint">
+   Enter the address details you know. You do not need to enter a full address.
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-1">
+      Address line 1
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
+  </div>
+  <div class="govuk-form-group govuk-!-width-two-thirds">
+    <label class="govuk-label" for="address-line-2">
+      Address line 2 
+    </label>
+    <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-one-half" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-postcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+  </div>
+</fieldset>
+
+<br>
+<br>
+
+
+           <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--s" for="event-name">
+                What is the subject's sort code? 
+              </label>
+            </h1>
+            <div id="event-name-hint" class="govuk-hint">
+              Must be 6 digits long
+            </div> <input class="govuk-input govuk-input--width-5 govuk-input--extra-letter-spacing" id="event-name" name="sortCode" type="text"            aria-describedby="event-name-hint"></div>
+           
+            <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--s" for="event-name">
+                What is the subject's account number? 
+              </label>
+            </h1>
+            <div id="event-name-hint" class="govuk-hint">
+              Must be between 6 and 8 digits long
+            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="event-name" name="accountNo" type="text"            aria-describedby="event-name-hint"></div>
+
+            <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--s" for="event-name">
+                What is the subject's card number?
+              </label>
+            </h1>
+            <div id="event-name-hint" class="govuk-hint">
+              Enter the last 4 digits or the full 16 digits
+            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="event-name" name="cardNo" type="text"            aria-describedby="event-name-hint"></div>
+
+            
+    <br>
+     
+        
+   
+    </div>
+  </fieldset>
+</div>
+            
+            
+          
+           
+ 
               
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-       <a href="javascript:history.back()" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
          Back
        </a>
       </div>
 
    </form>
-
 
 </div>
 </div>
@@ -131,176 +182,14 @@
 
 
 
+{% include '/includes/case-table.html' %}
 
 
-<div class="govuk-tabs" data-module="govuk-tabs">
-  <h2 class="govuk-tabs__title">
-    Contents
-  </h2>
-  <ul class="govuk-tabs__list">
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-      <a class="govuk-tabs__tab" href="#past-day">
-        Case history
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-week">
-       Claimant
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-month">
-        Relationships
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-year">
-        Payments
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-year">
-        Risks
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-year">
-        Referal data
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-year">
-        Documents
-      </a>
-    </li>
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#past-year">
-        Decisions
-      </a>
-    </li>
-  </ul>
-  <div class="govuk-tabs__panel" id="past-day">
-    <h2 class="govuk-heading-l">Case history</h2>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-       <tr class="govuk-table__row">
-          <td class="govuk-table__cell">David Francis</td>
-          <td class="govuk-table__cell">1234567</td>
-          <td class="govuk-table__cell">01 Jan 2026 12:03 PM</td>
-          <td class="govuk-table__cell">Review Activity [DF-23050] -EX-01</td>
-          <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell govuk-link" href="#past-year">View details</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Paul Farmer</td>
-          <td class="govuk-table__cell">098765</td>
-          <td class="govuk-table__cell">14 Feb 2025 16:05 PM</td>
-           <td class="govuk-table__cell">RFI sent</td>
-          <td class="govuk-table__cell">Request for bank statements related to case investigation.</td>
-           <td class="govuk-table__cell govuk-link" href="#past-year">View details</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Rita Patel</td>
-          <td class="govuk-table__cell">298765</td>
-          <td class="govuk-table__cell">03 Jun 2023 09:18 AM</td>
-           <td class="govuk-table__cell">Record a request for evidence updated</td>
-          <td class="govuk-table__cell">Logged response</td>
-          <td class="govuk-table__cell govuk-link" href="#past-year">View details</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
-    <h2 class="govuk-heading-l">Past week</h2>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Case manager</th>
-          <th scope="col" class="govuk-table__header">Cases opened</th>
-          <th scope="col" class="govuk-table__header">Cases closed</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">David Francis</td>
-          <td class="govuk-table__cell">24</td>
-          <td class="govuk-table__cell">18</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Paul Farmer</td>
-          <td class="govuk-table__cell">16</td>
-          <td class="govuk-table__cell">20</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Rita Patel</td>
-          <td class="govuk-table__cell">24</td>
-          <td class="govuk-table__cell">27</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
-    <h2 class="govuk-heading-l">Past month</h2>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Case manager</th>
-          <th scope="col" class="govuk-table__header">Cases opened</th>
-          <th scope="col" class="govuk-table__header">Cases closed</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">David Francis</td>
-          <td class="govuk-table__cell">98</td>
-          <td class="govuk-table__cell">95</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Paul Farmer</td>
-          <td class="govuk-table__cell">122</td>
-          <td class="govuk-table__cell">131</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Rita Patel</td>
-          <td class="govuk-table__cell">126</td>
-          <td class="govuk-table__cell">142</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
-    <h2 class="govuk-heading-l">Past year</h2>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Case manager</th>
-          <th scope="col" class="govuk-table__header">Cases opened</th>
-          <th scope="col" class="govuk-table__header">Cases closed</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">David Francis</td>
-          <td class="govuk-table__cell">1380</td>
-          <td class="govuk-table__cell">1472</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Paul Farmer</td>
-          <td class="govuk-table__cell">1129</td>
-          <td class="govuk-table__cell">1083</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Rita Patel</td>
-          <td class="govuk-table__cell">1539</td>
-          <td class="govuk-table__cell">1265</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
     
   </div>
 </div>
 
 {% endblock %}
+    
+  

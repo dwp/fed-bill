@@ -13,7 +13,7 @@ router.post('/'+ version +'/investigator/add-category', function(request, respon
 
 
 	var categoryType = request.session.data['categoryType']
-	if (categoryType == "financial"){
+	if (categoryType == "finance"){
 		response.redirect ("add-subject-financial")
 	} else {
 		response.redirect("add-subject")
@@ -38,5 +38,26 @@ router.post('/'+ version +'/investigator/add-providor', function(request, respon
 
 	
 		response.redirect("add-category")
+	
+})
+
+router.post('/'+ version +'/investigator/add-subject-financial', function(request, response) {
+
+	
+		response.redirect("add-request")
+	
+})
+
+router.post('/'+ version +'/investigator/add-request', function(request, response) {
+
+	
+		response.redirect("add-another-subject")
+	
+})
+
+router.post('/'+ version +'/investigator/add-another-subject', function(request, response) {
+
+	
+		response.redirect("check-answers")
 	
 })

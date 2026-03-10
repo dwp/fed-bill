@@ -1,0 +1,287 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+    <section class="dwp-quick-reference" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-quick-reference__primary">I-187054 John Smith</dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+    <dd class="dwp-quick-reference__secondary">NI number QQ190226A</dd>
+  </dl>
+</section>
+
+
+    <nav class="dwp-horizontal-navigation" aria-label="Horizontal">
+  <ul class="dwp-horizontal-navigation__list">
+    <li class="dwp-horizontal-navigation__item">
+      <a id="s-item-1" href="#s-item-1" class="dwp-horizontal-navigation__link" aria-current="true">Inital review</a>
+    </li>
+    <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
+      <a id="s-item-2" href="#s-item-2" class="dwp-horizontal-navigation__link">Build case</a>
+    </li>
+    <li class="dwp-horizontal-navigation__item">
+      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Decision</a>
+    </li>
+     <li class="dwp-horizontal-navigation__item">
+      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Close case</a>
+    </li>
+  </ul>
+</nav>
+
+<br>
+<div style="background-color: rgb(242, 243, 245);  padding: 20px 30px 12px 30px;">
+
+  
+    
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <h2 class="govuk-heading-m">Check your answers before creating the request</h2>
+  {{data | dump
+  }} 
+  
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full-from-desktop">
+
+            <h2 class="govuk-heading-m">Add provider</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What provider do you want to send the request to? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['provider']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+
+          
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Preferred contact details
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              <p class="govuk-body">sarah.phillips@example.com</p>
+              <!--or/if email  {{data['email']}} or address -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        
+        <h2 class="govuk-heading-m">Add category</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is your request about?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['categoryType']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+            </dd>
+          </div>
+          
+        </dl>
+
+         
+        <h2 class="govuk-heading-m">Add subject details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's name? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['subjectName']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's name? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['subjectName']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's date of birth? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['dob']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subjects address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's sort code? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['sortCode']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's account number? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['accountNo']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's card number? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['cardNo']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What details do you need from the provider about the subject?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               <!-- check boxes {{data['address-line-1']}}-->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What information do you need from the provider about the subject?
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <!-- check boxes {{data['address-line-1']}}-->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the start date for your request? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['startDate']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the end date for your request? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['endDate']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Add any additional information about your request
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['additonalInfo']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Add another subject</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to add another subject?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <!-- radio {{data['address-line-1']}}-->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+            </dd>
+          </div>
+        </dl>
+       
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          
+          </div>
+    </div>
+  </main>
+           
+               
+ 
+              
+      
+       <button type="submit" class="govuk-button" data-module="govuk-button">
+         Create request
+       </button>
+       
+      
+
+   </form>
+
+
+</div>
+</div>
+
+</div>
+
+<br>
+
+{% include '/includes/case-table.html' %}
+
+    
+  </div>
+</div>
+
+{% endblock %}

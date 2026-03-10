@@ -41,70 +41,48 @@
   
     
   <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
-
+  <div class="govuk-grid-column-two-thirds">
+  <h2 class="govuk-heading-m">Add another subject</h2>
 
    <form method="post">
 
-           
-             <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <p>You have requested financial information about 1 subject.  You can add 4 more subjects to this request. </p>     
+
+      
+
+            <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <h1 class="govuk-fieldset__heading">
-       What is your request about?      
+       Do you want to add another subject?
       </h1>
     </legend>
-   
+  
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType" name="categoryType" type="radio" value="Finance">
-        <label class="govuk-label govuk-radios__label" for="categoryType">
-          Finance
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"  data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Yes
         </label>
       </div>
+      
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-2" name="categoryType" type="radio" value="education">
-        <label class="govuk-label govuk-radios__label" for="categoryType-2">
-          Educational
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" >
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          No
         </label>
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-3" name="categoryType" type="radio" value="employment">
-        <label class="govuk-label govuk-radios__label" for="categoryType-3">
-          Employment
-        </label>
+      <div class="govuk-radios" id="conditional-contact-2">
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-4" name="categoryType" type="radio" value="travel">
-        <label class="govuk-label govuk-radios__label" for="categoryType-4">
-          Travel
-        </label>
-      </div>
-       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-6" name="categoryType" type="radio" value="insurance">
-        <label class="govuk-label govuk-radios__label" for="categoryType-5">
-          Insurance
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-6" name="categoryType" type="radio" value="utility">
-        <label class="govuk-label govuk-radios__label" for="categoryType-6">
-          Utilities
-        </label>
-      </div>
-      <div class="govuk-radios__divider">or</div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="categoryType-7" name="categoryType" type="radio" value="other">
-        <label class="govuk-label govuk-radios__label" for="categoryType-7">
-          My request is about something else
-        </label>
+
       </div>
     </div>
   </fieldset>
 </div>
-              
             
-              
+            
+          </div>
+           
  
               
       <div class="govuk-button-group">
@@ -118,14 +96,12 @@
 
    </form>
 
-
 </div>
 </div>
 
 </div>
 
 <br>
-
 
 {% include '/includes/case-table.html' %}
 
