@@ -50,9 +50,8 @@
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full-from-desktop">
-
-            <h2 class="govuk-heading-m">Add provider</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <h2 class="govuk-heading-m">Add provider</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              What provider do you want to send the request to? 
@@ -115,11 +114,12 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's name? 
+              Do you know the subject by another name?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{data['subjectName']}}
+               {{data['anotherName']}}
             </dd>
+            <!--add in if yes show other name -->
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
