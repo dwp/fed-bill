@@ -25,7 +25,21 @@ router.post('/'+ version +'/portal/confirm-who-you-are', function(request, respo
 	
 })
 
+router.post('/'+ version +'/portal/confirm-subject-name', function(request, response) {
+
+	
+		response.redirect("upload-files")
+	
+})
+
 router.post('/'+ version +'/portal/upload-files', function(request, response) {
+
+	
+		response.redirect("uploaded-files")
+	
+})
+
+router.post('/'+ version +'/portal/uploaded-files', function(request, response) {
 
 	
 		response.redirect("confirmation")

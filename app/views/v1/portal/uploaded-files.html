@@ -30,17 +30,47 @@
       <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-upload-1-hint">
     </div>
   </div>
+ <br>
+<button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Upload another file
+    </button>
+ 
 
-</div>
+ <p class="govuk-body govuk-!-display-none" id="refreshPageProgress"><a href="#" class="govuk-link">Refresh page to update file upload progress</a></p>
 
-   
+
+
+    <table class="govuk-table">
+  <!--<caption class="govuk-table__caption govuk-table__caption--m"></caption>-->
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">File name</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Size</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Status</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Action</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">
+          <a class="govuk-link" href="#">subject.name.pdf</a></th>
+      <td class="govuk-table__cell">2 MB</td>
+      <td class="govuk-table__cell">
+          <strong class="govuk-tag govuk-tag--green">
+          Uploaded
+          </strong></td>
+      <td class="govuk-table__cell"><a class="govuk-link" href="./upload-files.html">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
+<br>
 
      <form method="post">
 
              
           <div class="govuk-button-group">
               <button type="submit" class="govuk-button" data-module="govuk-button">
-                Upload file
+                Send response
               </button>
                <a class="govuk-link" href="./portal-start.html">Cancel</a>
            </div>
