@@ -8,45 +8,18 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full ">
 
-    <section class="dwp-quick-reference" aria-label="Case information">
-  <dl class="dwp-quick-reference__block">
-    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-    <dd class="dwp-quick-reference__primary">I-187054 John Smith</dd>
-    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
-    <dd class="dwp-quick-reference__secondary">NI number QQ190226A</dd>
-  </dl>
-</section>
-
-
-    <nav class="dwp-horizontal-navigation" aria-label="Horizontal">
-  <ul class="dwp-horizontal-navigation__list">
-    <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-1" href="#s-item-1" class="dwp-horizontal-navigation__link" aria-current="true">Inital review</a>
-    </li>
-    <li class="dwp-horizontal-navigation__item dwp-horizontal-navigation__item--selected">
-      <a id="s-item-2" href="#s-item-2" class="dwp-horizontal-navigation__link">Build case</a>
-    </li>
-    <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Decision</a>
-    </li>
-     <li class="dwp-horizontal-navigation__item">
-      <a id="s-item-3" href="#s-item-3" class="dwp-horizontal-navigation__link">Close case</a>
-    </li>
-  </ul>
-</nav>
-
-<br>
-<div style="background-color: rgb(242, 243, 245);  padding: 20px 30px 12px 30px;">
-
-  
+   
+   {% include '/includes/name-and-nino.html' %}
     
+    {% include '/includes/cfem-investigator-layout.html' %}
+
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <h2 class="govuk-heading-m">Add another subject</h2>
+  <h2 class="govuk-heading-l">Add another account</h2>
 
    <form method="post">
 
-      <p>You have requested financial information about 1 subject.  You can add 4 more subjects to this request. </p>     
+      <p>You have requested financial information about 1 account.  You can add 9 more account to this request.</p>     
 
       
 
@@ -54,7 +27,7 @@
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <h1 class="govuk-fieldset__heading">
-       Do you want to add another subject?
+       Do you want to add another account?
       </h1>
     </legend>
   
