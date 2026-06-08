@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+
+{% set pageName="Home" %}
+
+{% block content %}
+<a href="cfems-design-tools.html" class="govuk-back-link">Back</a>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">
+      Page body with tabs
+    </h1>
+
+    <p class="govuk-body">
+        This set body set up is how cfems pages are structured, displaying the subjects name and nino top left, tabs to navigate through cfems areas and page content is within a grey block.</p>
+        <p> These can be found in the includes folder in this prototype labled cfems-investigator-layout and name-and-nino.
+     </p>
+
+     <p>Page navigation component can be found <a href="https://design-system.dwp.gov.uk/components/horizontal-navigation" class="govuk-link">here</a>.</p>
+
+     <hr>
+     <br>
+
+
+   {% include '/includes/name-and-nino.html' %}
+    
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+
+    
+    <p class="govuk-body">
+        You can add any components or content in this space as you would in a regualr prototype.
+     </p>
+
+     <br>
+
+    <br>
+ 
+    
+    
+  </div>
+</div>
+
+{% endblock %}

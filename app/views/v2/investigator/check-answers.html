@@ -5,18 +5,20 @@
 {% block content %}
 
 
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
   <div class="govuk-grid-column-full ">
 
   {% include '/includes/name-and-nino.html' %}
     
     {% include '/includes/cfem-investigator-layout.html' %}
 
-  
+
+    
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-  <h2 class="govuk-heading-m">Check your answers before creating the request</h2>
-  
+  <h2 class="govuk-heading-l">Check your answers before creating the request</h2>
+  <!--{{data | dump
+  }} -->
   
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
@@ -26,7 +28,7 @@
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Who do you want to send the request to? 
+             Who do you want to send the request to? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{data['provider']}}
@@ -45,6 +47,7 @@
             <dd class="govuk-summary-list__value">
 
               <p class="govuk-body">sarah.phillips@example.com</p>
+              <!--or/if email  {{data['email']}} or address -->
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> contact details</span></a>
@@ -66,25 +69,34 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
           </div>
-          
-        </dl>
-        
-
-         
-       <h2 class="govuk-heading-m">Account details</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
+           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's name? 
+              What financial information do you need?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{data['loanAccount-name']}}
+               {{data['requestType']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
           </div>
           
+        </dl>
+
+         
+        <h2 class="govuk-heading-m">Account details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the subject's name? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['fullName']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's date of birth? 
@@ -131,31 +143,26 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What infomation do you need about the account?
+              What is the subject's card number? 
             </dt>
             <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet"></ul>
-              {% for item in data['account-info'] | list%}
-
-              <li>{{item}}</li>
-              
-              {% endfor %}
-              {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
+               {{data['cardNo']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
-            </div>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Which account holder details do you want to request?
+            </dt>
             
-        
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What loan infomation do you want to request within the investigation period?
-            </dt>
             <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet"></ul>
-               {% for item in data['loan-info'] | list%}
-                <li>{{item}}</li>
+              <ul class="govuk-list"></ul>
+              {% for item in data['holder-dets'] | list %}
+ 
+               {{item}}
+ 
               {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -164,27 +171,80 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Add any additional information about your request
+              Do you want account opening information for this account?
             </dt>
             <dd class="govuk-summary-list__value">
-                {{data['additial-loan-info']}}
+              {{data['opening-info']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
-          
-          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want bank statements for this account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['bank-state']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Request for other accounts with this provider?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['other-accounts']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the start date for your request? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the end date for your request? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Add any additional information about your request
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['more-info']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
         </dl>
 
         <h2 class="govuk-heading-m">Add another subject</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want to add another subject?
+              Do you want to add another account?
             </dt>
             <dd class="govuk-summary-list__value">
-                {{data['add-another']}}
+             {{data['add-another']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>

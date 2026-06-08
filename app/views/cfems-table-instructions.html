@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<style>.govuk-width-container { min-width: 1480px  }</style>
+<a href="cfems-design-tools.html" class="govuk-back-link">Back</a>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">
+     CFEMs table
+    </h1>
+    
+   <p class="govuk-body">
+        This a tab table displayed on all cfem screens adding to the overall layout of the cfem page straucture.</p><p>* Content of table to be updated, currently built to just look how cfems currently works.</p>
+      
+        <p> These can be found in the includes folder in this prototype labled case-table.
+     </p>
+
+     <p>This is the Tabs component in the gov service manual which can be found <a href="https://design-system.service.gov.uk/components/tabs/" class="govuk-link">here</a>.</p>
+
+
+     <hr>
+     <br>
+
+     {% include '/includes/case-table.html' %}
+ 
+ 
+    
+  </div>
+</div>
+
+{% endblock %}

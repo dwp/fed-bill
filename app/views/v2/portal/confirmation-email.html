@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Response sent 
+          </h1>
+          <div class="govuk-panel__body">
+            Your submission number<br><strong>HDJ2123F</strong>
+          </div>
+        </div>
+        <p class="govuk-body">Your response has been sent to the Authorised Officer. </p>
+        
+    
+       
+         <h2 class="govuk-heading-m">Get a confirmation email</h2>
+
+         <p>We do not have your email address. If you would like a confirmation email sent to you, you can provide an email address now. </p>
+
+        <p class="govuk-body">
+           <a href="add-email.html" class="govuk-link">Get a confirmation email</a> 
+        </p>
+
+         <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body">
+          We will contact you if we need any more information about your response. 
+        </p>
+         <p class="govuk-body">
+          If you have not sent all the information we asked for, you can <a href="./portal-start.html" class="govuk-link">use the service to send another response.</a> 
+        </p>
+       
+      </div>
+    </div>
+  </main>
+</div>
+
+
+     
+    
+  </div>
+</div>
+
+{% endblock %}
