@@ -25,46 +25,44 @@
 
       <p>Dear {{data['provider']}}</p>
 
-<p>We are authorised under Section 109 BZA of the Social Security Administration Act 1992 (as amended by the Social Security Fraud Act 2001) to issue you with this request for information (RFI). </p>
+<p>We are authorised under Section 109BZA of the Social Security Administration Act 1992 (as amended by the Social Security Fraud Act 2001) to issue you with this request for information (RFI).  </p>
 
-<p>You need to respond to this request by <b>6 May 2026</b>. You may be prosecuted if you do not respond.</p>
-
-<h2 class="govuk-heading-s">Your reference number</h2>
-<p>79Q5S7Y9X1</p>
 
 <h2 class="govuk-heading-s">What we need from you</h2>
 
-<p>We have reasonable grounds to believe that the following subject has committed, is committing or intends to commit a benefit offence. We are contacting you because we believe you may have information about them.</p>
+<p>We believe that you hold information on the following subject that will help with our investigation. Please do not tell the party in question we have contacted you. This may harm the result of the investigation.</p>
 
+<h2 class="govuk-heading-s">Subject details:</h2>
 
-<h2 class="govuk-heading-s">Information we're asking for:</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>Full name:{{data['fullName']}}</li>
+  <li>Date of birth: {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}</li>
+  <li>Address: {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}</li>
+</ul>
 
-<p>You need to provide all details related to the transaction below:</p>
+<p>{{data['additional-info']}}</p>
 
-<p>Date the transaction was made <b> {{data['transaction-day']}}/{{data['transaction-month']}}/{{data['transaction-year']}}</b></p>
+<h2 class="govuk-heading-s">Information we're asking for</h2>
 
-<p>The transaction was a <b>{{data['creditType']}}</b> payment of <b>{{data['payment-amount']}}</b> with reference number <b>{{data['pay-ref']}}</b>.</p>
-
-<p>This transaction relates to the bank statement with account number <b>{{data['accountNo']}}</b> and sort code <b>{{data['sortCode']}}</b>. </p>
-
+<p>{{data['request-info']}}</p>
 
 
 <h2 class="govuk-heading-s">Respond to this request</h2>
 
-<p>Go to <b>www.gov.uk/respond‑to‑request‑for‑information</b> or search ‘Respond to a request for information’.</p>
+<p>You need to respond to this request by <b>6 May 2026</b>. This request is a legal requirement. If you do not respond, this may lead to prosecution.</p>
 
-<p class="govuk-body"></p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>enter your reference number</li>
-  <li>confirm the name of your organisation</li>
-  <li>upload the information we have asked for</li>
-</ul>
+<p>Go to <b>www.gov.uk/respond‑to‑request‑for‑information</b> or search ‘Respond to a request for information’ on GOV.UK.</p>
+
+<h2 class="govuk-heading-s">Your reference number:</h2>
+<p>79Q5S7Y9X1</p>
 
 <p>You do not have to send all the information we have asked for at once. You can send more than one response to a request.</p>
 
-<p>30MB is the maximum file size for each file. We do not accept MP4 files.</p>
+
 
 <h2 class="govuk-heading-s">If you need more support</h2>
+
+<p>Call  <b>03794 432 433</b>  to speak to the Authorised Investigator for this case.</p>
 
 <p class="govuk-body">Contact us if you: </p>
 <ul class="govuk-list govuk-list--bullet">
@@ -73,8 +71,6 @@
   <li>do not have the information we have asked for</li>
   <li>cannot use the service</li>
 </ul>
-
-<p>Call  <b>03794 432 433</b>  to speak to the Authorised Investigator for this case.</p>
 
 <h2 class="govuk-heading-s">About this request</h2>
 
@@ -85,6 +81,7 @@
 <p>A Brodie (1234)<br>
 Authorised Officer<br>
 Authorised under Section 109BZA of the Social Security Administration Act 1992.</p>
+
 <br>
 
             <div class="govuk-form-group">
@@ -106,7 +103,7 @@ Authorised under Section 109BZA of the Social Security Administration Act 1992.<
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
         <label class="govuk-label govuk-radios__label" for="contact-2">
-          No
+          No, I want to make a change
         </label>
       </div>
       <div class="govuk-radios" id="conditional-contact-2">
@@ -126,7 +123,9 @@ Authorised under Section 109BZA of the Social Security Administration Act 1992.<
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-     
+       <!--<a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+         Back
+       </a>-->
       </div>
 
    </form>

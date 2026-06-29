@@ -38,11 +38,15 @@
 <br>
 <div style="background-color: rgb(242, 243, 245);  padding: 20px 30px 12px 30px;">
 
-  
+  <a href="#" class="govuk-back-link">Back</a>
     
+
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-  <h2 class="govuk-heading-m">Add new providor manually</h2>
+  
+  <br>
+    <h2 class="govuk-heading-l">Enter details for a new provider</h2>
+  
 
    <form action="" method="post">
 
@@ -52,8 +56,8 @@
            
                       
                        <h1 class="govuk-label-wrapper">
-                         <label class="govuk-label govuk-label--s" for="event-name">
-                           What providor do you want to send the request to?
+                         <label class="govuk-label govuk-label--m" for="event-name">
+                           Which provider do you want to send the request to?
                          </label>
                        </h1>
                        <div id="event-name-hint" class="govuk-hint">
@@ -65,7 +69,7 @@
                        </div>
 
                        <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <!--<fieldset class="govuk-fieldset" aria-describedby="contact-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
       Do you have an email address for the provider?
@@ -98,12 +102,48 @@
        
       </div>
       
-  </fieldset>
+  </fieldset>-->
+
+  <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    <h1 class="govuk-fieldset__heading">
+      Address
+    </h1>
+  </legend>
+  <div id="event-name-hint" class="govuk-hint">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-1">
+      Address line 1
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+  </div>
+  <div class="govuk-form-group govuk-!-width-two-thirds">
+    <label class="govuk-label" for="address-line-2">
+      Address line 2 (optional)
+    </label>
+    <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-one-half" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-postcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+  </div>
+</fieldset>
+
 </div>         
            
 </div>
 </form>
     
+<br>
 
               
       <div class="govuk-button-group">
@@ -111,8 +151,12 @@
          Save and continue
        </button>
        <button href="javascript:history.back()" type="submit" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
+         Save and exit
+       </button>
+        <button href="javascript:history.back()" type="submit" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
          Back
        </button>
+       <a class="govuk-link" href="cfems-home.html">Cancel</a>
       </div>
 
 

@@ -157,13 +157,15 @@
               Which account holder details do you want to request?
             </dt>
             
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list"></ul>
-              {% for item in data['holder-dets'] | list %}
+              <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+            {% for item in data['holder-dets'] %}
  
-               {{item}}
+             <li>{{item}}</li>
  
-              {% endfor %}
+              {% endfor %} 
+
+             </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>

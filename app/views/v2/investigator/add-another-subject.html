@@ -15,32 +15,32 @@
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <h2 class="govuk-heading-l">Add another transaction</h2>
+  <h2 class="govuk-heading-l">Add another subject</h2>
 
    <form method="post">
 
-      <p>You have requested information about 1 transaction.  You can add 9 more transactions to this request.</p>     
+      <p>You have requested information about 1 subject.  You can add 9 more subjects to this request.</p>     
 
       
 
             <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <h1 class="govuk-fieldset__heading">
-       Do you want to add another transaction?
+       Do you want to add another subject?
       </h1>
     </legend>
-  <br>
+  
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"  data-aria-controls="conditional-contact">
+        <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes"  data-aria-controls="conditional-contact">
         <label class="govuk-label govuk-radios__label" for="contact">
           Yes
         </label>
       </div>
       
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" >
+        <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
         <label class="govuk-label govuk-radios__label" for="contact-2">
           No
         </label>
@@ -62,10 +62,12 @@
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-      <button href="rfi-dashboard.html" type="submit" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
+       <button href="rfi-dashboard.html" type="submit" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)" data-module="govuk-button">
          Save and exit
        </button>
-       
+      <!-- <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+         Back
+       </a>-->
       </div>
 
    </form>

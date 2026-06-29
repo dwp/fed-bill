@@ -8,7 +8,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
 
-var version = "v1";
+var version = "v2";
 
 
 //router.post('/'+ version +'/investigator/start-request-for-info', function(request, response) {
@@ -118,7 +118,14 @@ router.post('/'+ version +'/investigator/loan-request', function(request, respon
 router.post('/'+ version +'/investigator/add-subject-financial-transaction', function(request, response) {
 
 	
-		response.redirect("add-another-account")
+		response.redirect("add-another-transaction")
+	
+})
+
+router.post('/'+ version +'/investigator/add-another-transaction', function(request, response) {
+
+	
+		response.redirect("check-answers-transaction")
 	
 })
 
@@ -146,6 +153,7 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
     }
 
 })
+
 
 router.post('/'+ version +'/investigator/check-answers', function(request, response) {
 
@@ -206,9 +214,31 @@ router.post('/'+ version +'/investigator/add-subject-other', function(request, r
 router.post('/'+ version +'/investigator/other-request', function(request, response) {
 
 	
-		response.redirect("add-another-account")
+		response.redirect("add-another-subject")
 	
 })
+
+router.post('/'+ version +'/investigator/add-another-subject', function(request, response) {
+
+	
+		response.redirect("check-answers-other")
+	
+})
+
+router.post('/'+ version +'/investigator/check-answers-other', function(request, response) {
+
+	
+		response.redirect("review-request-other")
+	
+})
+
+router.post('/'+ version +'/investigator/review-request-other', function(request, response) {
+
+	
+		response.redirect("declaration")
+	
+})
+
 router.post('/'+ version +'/investigator/add-subject-employment', function(request, response) {
 
 	
