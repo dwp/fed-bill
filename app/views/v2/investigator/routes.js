@@ -69,7 +69,7 @@ router.post('/' + version + '/investigator/add-subject-financial', function(requ
 router.post('/'+ version +'/investigator/add-subject-financial-accounts', function(request, response) {
 
 	
-		response.redirect("accounts-request")
+		response.redirect("bank-account-request")
 	
 })
 
@@ -88,6 +88,13 @@ router.post('/'+ version +'/investigator/bank-account-request', function(request
 })
 
 router.post('/'+ version +'/investigator/bank-account-request-2', function(request, response) {
+
+	
+		response.redirect("bank-account-request-3")
+	
+})
+
+router.post('/'+ version +'/investigator/bank-account-request-3', function(request, response) {
 
 	
 		response.redirect("add-another-account")
