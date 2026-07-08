@@ -13,23 +13,23 @@ var version = "v2";
 
 //router.post('/'+ version +'/investigator/start-request-for-info', function(request, response) {
 
-	
+
 		//response.redirect("add-providor")
 
 //})
-	
+
 //router.post('/'+ version +'/investigator/add-benefit', function(request, response) {
 
-	
+
 		//response.redirect("add-providor")
-	
+
 //})
 
 router.post('/'+ version +'/investigator/add-providor', function(request, response) {
 
-	
+
 		response.redirect("add-category")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-category', function(request, response) {
@@ -41,7 +41,7 @@ router.post('/'+ version +'/investigator/add-category', function(request, respon
 	}
     else if (categoryType == "Employment"){
         response.redirect("add-subject-employment")
-    } 
+    }
     else {
 		response.redirect("add-subject-other")
 	}
@@ -59,7 +59,7 @@ router.post('/' + version + '/investigator/add-subject-financial', function(requ
     }
     else if (requestType == "Loans and mortgages"){
         response.redirect("add-subject-financial-loans")
-    } 
+    }
     else {
         response.redirect("add-subject-other")
     }
@@ -68,95 +68,144 @@ router.post('/' + version + '/investigator/add-subject-financial', function(requ
 
 router.post('/'+ version +'/investigator/add-subject-financial-accounts', function(request, response) {
 
-	
+
 		response.redirect("bank-account-request")
-	
+
 })
 
 router.post('/'+ version +'/investigator/accounts-request', function(request, response) {
 
-	
+
 		response.redirect("bank-account-request")
-	
+
 })
 
 router.post('/'+ version +'/investigator/bank-account-request', function(request, response) {
 
-	
+
 		response.redirect("bank-account-request-2")
-	
+
 })
 
 router.post('/'+ version +'/investigator/bank-account-request-2', function(request, response) {
 
-	
+
 		response.redirect("bank-account-request-3")
-	
+
 })
 
 router.post('/'+ version +'/investigator/bank-account-request-3', function(request, response) {
 
-	
-		response.redirect("add-another-account")
-	
+    // Initialize accounts array if it doesn't exist
+    if (!request.session.data['accounts']) {
+        request.session.data['accounts'] = []
+    }
+
+    // Add current account details to the array
+    var account = {
+        fullName: request.session.data['fullName'],
+        dob: (request.session.data['dob-day'] || '') + '/' + (request.session.data['dob-month'] || '') + '/' + (request.session.data['dob-year'] || ''),
+        address: (request.session.data['address-line-1'] || '') + (request.session.data['address-line-2'] ? ', ' + request.session.data['address-line-2'] : '') + ', ' + (request.session.data['addressTown'] || '') + ', ' + (request.session.data['addressPostcode'] || ''),
+        sortCode: request.session.data['sortCode'],
+        accountNo: request.session.data['accountNo'],
+        cardNo: request.session.data['cardNo'],
+        openingInfo: request.session.data['opening-info'],
+        bankState: request.session.data['bank-state']
+    }
+
+    request.session.data['accounts'].push(account)
+
+    response.redirect("add-another-account")
+
 })
 
 //router.post('/'+ version +'/investigator/add-request', function(request, response) {
 
-	
+
 		//response.redirect("add-another-account")
-	
+
 //})
 
 router.post('/'+ version +'/investigator/add-subject-financial-loans', function(request, response) {
 
-	
+
 		response.redirect("loan-request")
-	
+
 })
 
 router.post('/'+ version +'/investigator/loan-request', function(request, response) {
 
-	
+
 		response.redirect("add-another-account")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-subject-financial-transaction', function(request, response) {
 
-	
+
 		response.redirect("add-another-transaction")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-another-transaction', function(request, response) {
 
-	
+
 		response.redirect("check-answers-transaction")
-	
+
 })
 
 //router.post('/'+ version +'/investigator/add-another-account', function(request, response) {
 
-	
+
 		//response.redirect("check-answers")
-	
+
 //})
 
 router.post('/' + version + '/investigator/add-another-account', function(request, response) {
 
+    var addAnother = request.session.data['add-another']
     var requestType = request.session.data['requestType']
-    if (requestType == "Accounts and bank statements"){
-        response.redirect("check-answers")
-    }
-    else if (requestType == "Specific transaction details"){
-        response.redirect("check-answers-transaction")
-    }
-    else if (requestType == "Loans and mortgages"){
-        response.redirect("check-answers-loan")
-    } 
-    else {
-        response.redirect("add-subject")
+
+    if (addAnother == "Yes") {
+        // Clear account-specific data for next entry
+        delete request.session.data['fullName']
+        delete request.session.data['dob-day']
+        delete request.session.data['dob-month']
+        delete request.session.data['dob-year']
+        delete request.session.data['address-line-1']
+        delete request.session.data['address-line-2']
+        delete request.session.data['addressTown']
+        delete request.session.data['addressPostcode']
+        delete request.session.data['sortCode']
+        delete request.session.data['accountNo']
+        delete request.session.data['cardNo']
+        delete request.session.data['opening-info']
+        delete request.session.data['bank-state']
+        delete request.session.data['add-another']
+        delete request.session.data['holder-dets']
+        delete request.session.data['withHint']
+        delete request.session.data['contact']
+        delete request.session.data['sah-day']
+        delete request.session.data['sah-month']
+        delete request.session.data['sah-year']
+        delete request.session.data['eah-day']
+        delete request.session.data['eah-month']
+        delete request.session.data['eah-year']
+
+        response.redirect("add-subject-financial-accounts")
+    } else {
+        if (requestType == "Accounts and bank statements"){
+            response.redirect("check-answers")
+        }
+        else if (requestType == "Specific transaction details"){
+            response.redirect("check-answers-transaction")
+        }
+        else if (requestType == "Loans and mortgages"){
+            response.redirect("check-answers-loan")
+        }
+        else {
+            response.redirect("add-subject")
+        }
     }
 
 })
@@ -164,97 +213,97 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
 
 router.post('/'+ version +'/investigator/check-answers', function(request, response) {
 
-	
+
 		response.redirect("review-request")
-	
+
 })
 
 router.post('/'+ version +'/investigator/review-request', function(request, response) {
 
-	
+
 		response.redirect("declaration")
-	
+
 })
 
 router.post('/'+ version +'/investigator/declaration', function(request, response) {
 
-	
+
 		response.redirect("rfi-dashboard")
-	
+
 })
 
 router.post('/'+ version +'/investigator/check-answers-transaction', function(request, response) {
 
-	
+
 		response.redirect("review-request-transaction")
-	
+
 })
 
 router.post('/'+ version +'/investigator/check-answers-loan', function(request, response) {
 
-	
+
 		response.redirect("review-request-loan")
-	
+
 })
 
 router.post('/'+ version +'/investigator/review-request-loan', function(request, response) {
 
-	
+
 		response.redirect("declaration")
-	
+
 })
 
 router.post('/'+ version +'/investigator/review-request-transaction', function(request, response) {
 
-	
+
 		response.redirect("declaration")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-subject-other', function(request, response) {
 
-	
+
 		response.redirect("other-request")
-	
+
 })
 
 router.post('/'+ version +'/investigator/other-request', function(request, response) {
 
-	
+
 		response.redirect("add-another-subject")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-another-subject', function(request, response) {
 
-	
+
 		response.redirect("check-answers-other")
-	
+
 })
 
 router.post('/'+ version +'/investigator/check-answers-other', function(request, response) {
 
-	
+
 		response.redirect("review-request-other")
-	
+
 })
 
 router.post('/'+ version +'/investigator/review-request-other', function(request, response) {
 
-	
+
 		response.redirect("declaration")
-	
+
 })
 
 router.post('/'+ version +'/investigator/add-subject-employment', function(request, response) {
 
-	
+
 		response.redirect("select-eq1")
-	
+
 })
 router.post('/'+ version +'/investigator/select-eq1', function(request, response) {
 
-	
+
 		response.redirect("check-answers-employment")
-	
+
 })
