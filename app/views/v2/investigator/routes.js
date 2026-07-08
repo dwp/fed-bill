@@ -147,10 +147,26 @@ router.post('/'+ version +'/investigator/add-subject-financial-transaction', fun
 
 })
 
-router.post('/'+ version +'/investigator/add-another-transaction', function(request, response) {
+router.post('/' + version + '/investigator/add-another-transaction', function(request, response) {
 
+    var addAnother = request.session.data['add-another']
 
-		response.redirect("check-answers-transaction")
+    if (addAnother == "Yes") {
+        // Clear transaction-specific data
+        delete request.session.data['transaction-day']
+        delete request.session.data['transaction-month']
+        delete request.session.data['transaction-year']
+        delete request.session.data['payment-amount']
+        delete request.session.data['creditType']
+        delete request.session.data['pay-ref']
+        delete request.session.data['sortCode']
+        delete request.session.data['accountNo']
+        delete request.session.data['add-another']
+
+        response.redirect("add-subject-financial-transaction")
+    } else {
+        response.redirect("check-answers-transaction")
+    }
 
 })
 
@@ -191,25 +207,46 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
         delete request.session.data['eah-day']
         delete request.session.data['eah-month']
         delete request.session.data['eah-year']
+        delete request.session.data['loanAccount-name']
+        delete request.session.data['transaction-day']
+        delete request.session.data['transaction-month']
+        delete request.session.data['transaction-year']
+        delete request.session.data['payment-amount']
+        delete request.session.data['creditType']
+        delete request.session.data['pay-ref']
 
-        response.redirect("add-subject-financial-accounts")
-    } else {
-        if (requestType == "Accounts and bank statements"){
-            response.redirect("check-answers")
+        if (requestType == "Loans and mortgages") {
+            response.redirect("add-subject-financial-loans")
+        } else if (requestType == "Specific transaction details") {
+            response.redirect("add-subject-financial-transaction")
+        } else {
+            response.redirect("add-subject-financial-accounts")
         }
-        else if (requestType == "Specific transaction details"){
+    } else {
+        if (requestType == "Specific transaction details"){
             response.redirect("check-answers-transaction")
         }
         else if (requestType == "Loans and mortgages"){
             response.redirect("check-answers-loan")
         }
         else {
-            response.redirect("add-subject")
+            response.redirect("check-answers")
         }
     }
 
 })
 
+
+router.post('/' + version + '/investigator/remove-account', function(request, response) {
+    var removeAccount = request.session.data['remove-account']
+    var id = request.session.data['id']
+
+    if (removeAccount == 'Yes') {
+        request.session.data['accounts'].splice(id, 1)
+    }
+
+    response.redirect("check-answers")
+})
 
 router.post('/'+ version +'/investigator/check-answers', function(request, response) {
 
@@ -274,11 +311,23 @@ router.post('/'+ version +'/investigator/other-request', function(request, respo
 
 })
 
-router.post('/'+ version +'/investigator/add-another-subject', function(request, response) {
-
-
-		response.redirect("check-answers-other")
-
+router.post('/' + version + '/investigator/add-another-subject', function(request, response) {
+    var addAnother = request.session.data['add-another']
+    if (addAnother == "Yes") {
+        delete request.session.data['fullName']
+        delete request.session.data['dob-day']
+        delete request.session.data['dob-month']
+        delete request.session.data['dob-year']
+        delete request.session.data['address-line-1']
+        delete request.session.data['address-line-2']
+        delete request.session.data['addressTown']
+        delete request.session.data['addressPostcode']
+        delete request.session.data['withHint']
+        delete request.session.data['add-another']
+        response.redirect("add-subject-other")
+    } else {
+        response.redirect("check-answers-other")
+    }
 })
 
 router.post('/'+ version +'/investigator/check-answers-other', function(request, response) {

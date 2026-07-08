@@ -9,17 +9,17 @@
   <div class="govuk-grid-column-full ">
 
   {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
 
-  
-    
+
+
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
   <h2 class="govuk-heading-m">Check your answers before creating the request</h2>
- 
-  
+
+
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
@@ -28,7 +28,7 @@
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Who do you want to send the request to? 
+             Who do you want to send the request to?
             </dt>
             <dd class="govuk-summary-list__value">
               {{data['provider']}}
@@ -38,7 +38,7 @@
             </dd>
           </div>
 
-          
+
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -55,10 +55,10 @@
           </div>
         </dl>
 
-        
-       
 
-         
+
+
+
         <h2 class="govuk-heading-m">Request</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
@@ -83,20 +83,20 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
           </div>
-          
+
         </dl>
 
-         
+
         <h2 class="govuk-heading-m">Request details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          
-        
-          
-          
-         
+
+
+
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              When was the transaction made? 
+              When was the transaction made?
             </dt>
             <dd class="govuk-summary-list__value">
               {{data['transaction-day']}}/{{data['transaction-month']}}/{{data['transaction-year']}}
@@ -140,7 +140,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's sort code? 
+              What is the subject's sort code?
             </dt>
             <dd class="govuk-summary-list__value">
                {{data['sortCode']}}
@@ -151,7 +151,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's account number? 
+              What is the subject's account number?
             </dt>
             <dd class="govuk-summary-list__value">
                {{data['accountNo']}}
@@ -161,57 +161,33 @@
             </dd>
           </div>
           </dl>
-         
-          <h2 class="govuk-heading-m">Add another subject</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to add another account?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{data['add-another']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
-            </dd>
-          </div>
-        </dl>
-        
 
-       
-       
+          <div class="govuk-button-group">
+          <a href="add-subject-financial-transaction" class="govuk-button govuk-button--secondary">
+            Add another account
+          </a>
+        </div>
+
+
+
+
         <form method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
-          
-          </div>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Create request
+          </button>
+        </form>
+
+      </div>
     </div>
   </main>
-           
-               
- 
-              
-      
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Create request
-       </button>
-      
-       
-      
 
-   </form>
+  <br>
+  {% include '/includes/case-table.html' %}
 
-
-</div>
-</div>
-
-</div>
-
-<br>
-
-{% include '/includes/case-table.html' %}
-
-    
   </div>
+</div>
+</div>
 </div>
 
 {% endblock %}

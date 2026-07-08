@@ -9,17 +9,17 @@
   <div class="govuk-grid-column-full ">
 
   {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
 
-  
-    
+
+
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
   <h2 class="govuk-heading-m">Check your answers before creating the request</h2>
- 
-  
+
+
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
@@ -38,10 +38,10 @@
             </dd>
           </div>
 
-          
 
-          
-       
+
+
+
 
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -50,7 +50,7 @@
             <dd class="govuk-summary-list__value">
 
               <p class="govuk-body"> 11 tree lane<br>town<br>city<br>AB21 8HG</p>
-            
+
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
@@ -58,10 +58,10 @@
           </div>
         </dl>
 
-        
-       
 
-         
+
+
+
         <h2 class="govuk-heading-m">Request details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
@@ -75,18 +75,18 @@
              <!-- <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a> -->
             </dd>
           </div>
-          
-          
+
+
         </dl>
 
-         
+
         <h2 class="govuk-heading-m">Request 1</h2>
-     
-          
+
+
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Full name 
+              Full name
             </dt>
             <dd class="govuk-summary-list__value">
                {{data['fullName']}}
@@ -139,33 +139,33 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
           </div>
-         
+
           </dl>
 
-         
-       
 
-           
-        
+
+
+
+
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               <h2 class="govuk-heading-m">Request 2</h2>
             </dt>
             <dd class="govuk-summary-list__value">
-            
+
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="remove-subject.html">Remove<span class="govuk-visually-hidden"> previous application number</span></a>
             </dd>
           </div>
-       
-          
-        
+
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Full name 
+              Full name
             </dt>
             <dd class="govuk-summary-list__value">
                {{data['fullName']}}
@@ -218,60 +218,38 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
           </div>
-         
+
           </dl>
 
-          
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to add another subject?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{data['add-another']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
-            </dd>
-          </div>
-        </dl>
 
-        
-        
+        <div class="govuk-button-group">
+          <a href="add-subject-other" class="govuk-button govuk-button--secondary">
+            Add another account
+          </a>
+        </div>
 
-       
-       
+
+
+
+
+
         <form method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
-          
-          </div>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Create request
+          </button>
+        </form>
+
+      </div>
     </div>
   </main>
-           
-               
- 
-              
-      
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Create request
-       </button>
-       
-      
 
-   </form>
+  <br>
+  {% include '/includes/case-table.html' %}
 
-
-</div>
-</div>
-
-</div>
-
-<br>
-
-{% include '/includes/case-table.html' %}
-
-    
   </div>
+</div>
+</div>
 </div>
 
 {% endblock %}

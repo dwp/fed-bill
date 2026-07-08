@@ -85,7 +85,12 @@
 
 
         {% for account in data['accounts'] %}
-        <h2 class="govuk-heading-m">Account {{ loop.index }} details</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 class="govuk-heading-m">Account {{ loop.index }} details</h2>
+          {% if data['accounts'] | length > 1 %}
+            <p class="govuk-body"><a class="govuk-link" href="remove-account?id={{ loop.index0 }}">Remove<span class="govuk-visually-hidden"> account {{ loop.index }}</span></a></p>
+          {% endif %}
+        </div>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -178,52 +183,29 @@
         </dl>
         {% endfor %}
 
-        <h2 class="govuk-heading-m">Add another subject</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to add another account?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{data['add-another']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
-            </dd>
-          </div>
-        </dl>
+        <div class="govuk-button-group">
+          <a href="add-subject-financial-accounts" class="govuk-button govuk-button--secondary">
+            Add another account
+          </a>
+        </div>
 
         <form method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Create request
+          </button>
+        </form>
 
-          </div>
+      </div>
     </div>
   </main>
 
-
-
-
-
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Create request
-       </button>
-
-
-
-   </form>
-
-
-</div>
-</div>
-
-</div>
-
-<br>
-
-{% include '/includes/case-table.html' %}
-
+  <br>
+  {% include '/includes/case-table.html' %}
 
   </div>
+</div>
+</div>
 </div>
 
 {% endblock %}
