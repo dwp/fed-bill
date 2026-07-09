@@ -4,7 +4,7 @@ metadata:
   name: FED.bill
   title: Fed-Bill
   description: |
-    A blank prototype kit version 13.18.1 with DWP Frontend installed
+    A blank prototype kit version 13.20.2 with DWP Frontend installed
 
   annotations:
     gitlab.com/project-slug: dwp/user-centred-design/fed-bill
@@ -14,7 +14,7 @@ metadata:
     dwp.gov.uk/license: unknown
 
     dwp.gov.uk/last-verified.by: Zoe McClatchey
-    dwp.gov.uk/last-verified.on: 2026-07-07
+    dwp.gov.uk/last-verified.on: 2026-07-09
 
     dwp.gov.uk/open-source.approved: "true"
     dwp.gov.uk/open-source.location: none
