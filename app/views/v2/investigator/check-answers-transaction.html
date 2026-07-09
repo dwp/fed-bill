@@ -162,11 +162,21 @@
           </div>
           </dl>
 
-          <div class="govuk-button-group">
-          <a href="add-subject-financial-transaction" class="govuk-button govuk-button--secondary">
-            Add another account
-          </a>
-        </div>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to add another transaction?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['add-another'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-another-transaction">
+                Change<span class="govuk-visually-hidden"> add another transaction</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
 
 
 

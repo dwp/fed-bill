@@ -134,10 +134,24 @@ router.post('/'+ version +'/investigator/add-subject-financial-loans', function(
 })
 
 router.post('/'+ version +'/investigator/loan-request', function(request, response) {
+		response.redirect("add-another-loan")
+})
 
-
-		response.redirect("add-another-account")
-
+router.post('/' + version + '/investigator/add-another-loan', function(request, response) {
+    var addAnother = request.session.data['add-another']
+    if (addAnother == "Yes") {
+        delete request.session.data['loanAccount-name']
+        delete request.session.data['sah-day']
+        delete request.session.data['sah-month']
+        delete request.session.data['sah-year']
+        delete request.session.data['eah-day']
+        delete request.session.data['eah-month']
+        delete request.session.data['eah-year']
+        delete request.session.data['add-another']
+        response.redirect("add-subject-financial-loans")
+    } else {
+        response.redirect("check-answers-loan")
+    }
 })
 
 router.post('/'+ version +'/investigator/add-subject-financial-transaction', function(request, response) {

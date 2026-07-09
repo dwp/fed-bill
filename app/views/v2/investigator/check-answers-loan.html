@@ -175,11 +175,21 @@
 
         </dl>
 
-        <div class="govuk-button-group">
-          <a href="add-subject-financial-loans" class="govuk-button govuk-button--secondary">
-            Add another account
-          </a>
-        </div>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to add another account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['add-another'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-another-loan">
+                Change<span class="govuk-visually-hidden"> add another account</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
 
         <form method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
