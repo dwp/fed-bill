@@ -8,9 +8,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full ">
 
-   
+
    {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
   <div class="govuk-grid-row">
@@ -19,9 +19,9 @@
 
    <form method="post">
 
-      <p>You have requested financial information about 1 account.  You can add 9 more accounts to this request.</p>     
+      <p>You have requested financial information about 1 account.  You can add 9 more accounts to this request.</p>
 
-      
+
 
             <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
@@ -30,7 +30,7 @@
        Do you want to add another account?
       </h1>
     </legend>
-  
+
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"  data-aria-controls="conditional-contact">
@@ -38,7 +38,7 @@
           Yes
         </label>
       </div>
-      
+
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" >
         <label class="govuk-label govuk-radios__label" for="contact-2">
@@ -52,12 +52,12 @@
     </div>
   </fieldset>
 </div>
-            
-            
+
+
           </div>
-           
- 
-              
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -73,13 +73,13 @@
 </div>
 
 </div>
-
+</div>
 <br>
 
 {% include '/includes/case-table.html' %}
 
-    
-  </div>
+
+
 </div>
 
 {% endblock %}

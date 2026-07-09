@@ -1,0 +1,109 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% include "includes/name-and-nino.html" %}
+    {% include "includes/cfem-investigator-layout.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m">Remove account {{ (data['id'] | int) + 1 }}</h2>
+
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full-from-desktop">
+
+              {% set account = data['accounts'][data['id'] | int] %}
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Full name
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{account.fullName}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date of birth
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{account.dob}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Address
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{account.address}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Sort code
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{account.sortCode}}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Account number
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{account.accountNo}}
+                  </dd>
+                </div>
+              </dl>
+
+              <form method="post">
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                      <h1 class="govuk-fieldset__heading">
+                        Are you sure you want to remove account {{ (data['id'] | int) + 1 }}?
+                      </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="remove-account-yes" name="remove-account" type="radio" value="Yes">
+                        <label class="govuk-label govuk-radios__label" for="remove-account-yes">
+                          Yes, remove account details
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="remove-account-no" name="remove-account" type="radio" value="No">
+                        <label class="govuk-label govuk-radios__label" for="remove-account-no">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                  Continue
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+</div>
+<div>
+  <br>
+  {% include "includes/case-table.html" %}
+
+  </div>
+</div>
+
+{% endblock %}
