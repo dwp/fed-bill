@@ -135,10 +135,8 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <ul class="govuk-list govuk-list--bullet"></ul>
-              {% for item in data['account-info'] | list%}
-
+              {% for item in data['account-info'] %}
               <li>{{item}}</li>
-
               {% endfor %}
               {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
             </dd>
@@ -154,7 +152,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
                 <ul class="govuk-list govuk-list--bullet"></ul>
-               {% for item in data['loan-info'] | list%}
+               {% for item in data['loan-info'] %}
                 <li>{{item}}</li>
               {% endfor %}
             </dd>
