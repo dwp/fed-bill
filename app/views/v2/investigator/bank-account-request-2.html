@@ -18,83 +18,22 @@
    <form method="post">
 
            
-             <div class="govuk-form-group">
+  <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-       Request account information      
+       Enter the date range for the requested bank statements  
       </h1>
     </legend>
     <br>
 
-    <p>Here are the account holder details you have entered:</p>
-
-    <div class="govuk-inset-text">
-      <p>Account name: {{data['fullName']}} <br>
-      Sort Code: {{data['sortCode']}} <br>
-      Account number: {{data['accountNo']}} </p>
-    </div>
-
-    <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-        What other accounts details would you like to request?
-      </h1>
-    </legend>
-    <div id="countries-hint" class="govuk-hint">
-      Select all that apply
-    </div>
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Account holder name">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
-          All account details
-        </label>
-      </div>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Date of Birth">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
-          All account bank statements
-        </label>
-      </div>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Full account number">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
-          All opening statements 
-        </label>
-      </div>
-      </div>
-        <div class="govuk-checkboxes__divider">or</div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="None" data-behaviour="exclusive">
-        <label class="govuk-label govuk-checkboxes__label" for="countries-5">
-          None of the above
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
-      <br>
-  
-
-    
-   
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-        Select the date range for the requested bank statements
-      </h1>
+    
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+       Start date
     </legend>
-     <legend class="govuk-fieldset__legend">
-      Start date
-    </legend>
-    <div id="dob-hint" class="govuk-hint">
-      
-    </div>
+    
     <div class="govuk-date-input" id="dob">
       <div class="govuk-date-input__item">
         <div class="govuk-form-group">
@@ -125,7 +64,7 @@
   </fieldset>
 </div>
 
-     <legend class="govuk-fieldset__legend">
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       End date (optional)
     </legend>
     <div id="dob-hint" class="govuk-hint">
