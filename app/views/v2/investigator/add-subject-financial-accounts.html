@@ -9,7 +9,7 @@
   <div class="govuk-grid-column-full ">
 
   {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
   <div class="govuk-grid-row">
@@ -18,7 +18,7 @@
 
     <form method="post">
 
-      <p>Answer at least two of the following questions. You do not need to complete every field.</p>     
+      <p>Answer at least two of the following questions. You do not need to complete every field.</p>
 
           <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
@@ -30,10 +30,10 @@
               This can be their first name, last name, full name or initials.
             </div> <input class="govuk-input govuk-!-width-one-half" id="fullName" name="fullName" type="text"            aria-describedby="event-name-hint"></div>
 
-            
+
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    
-  
+
+
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -115,6 +115,9 @@
 <br>
 
 <h2 class="govuk-heading-m">Bank or building society account details</h2>
+    <p>
+     Enter the bank details you know, sort code can not be entered without account number.
+   </p>
 
 <div class="govuk-form-group">
   <label class="govuk-label" for="sort-code">
@@ -145,7 +148,7 @@
 </div>
 <div class="govuk-form-group">
   <label class="govuk-label" for="roll-number">
-    Building society roll number 
+    Building society roll number
   </label>
   <div id="roll-number-hint" class="govuk-hint">
     Must be between 8 and 11 characters long
@@ -153,22 +156,22 @@
   <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="roll-number" name="rollNumber" type="text" spellcheck="false" aria-describedby="roll-number-hint">
 </div>
 
-           
 
-            
+
+
     <br>
-     
-        
-   
+
+
+
     </div>
   </fieldset>
 </div>
-            
-            
-          
-           
- 
-              
+
+
+
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -192,10 +195,9 @@
 
 
 
-    
+
   </div>
 </div>
 
 {% endblock %}
-    
-  
+

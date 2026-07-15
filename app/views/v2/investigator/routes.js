@@ -133,7 +133,12 @@ router.post('/'+ version +'/investigator/add-subject-financial-loans', function(
 
 })
 
+
 router.post('/'+ version +'/investigator/loan-request', function(request, response) {
+  response.redirect("loan-request-2")
+})
+
+router.post('/'+ version +'/investigator/loan-request-2', function(request, response) {
 		response.redirect("add-another-loan")
 })
 

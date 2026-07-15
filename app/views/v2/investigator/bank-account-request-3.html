@@ -9,7 +9,7 @@
   <div class="govuk-grid-one-half">
 
      {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
     <div class="govuk-grid-row">
@@ -17,7 +17,7 @@
 
    <form method="post">
 
-           
+
              <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -27,8 +27,57 @@
     </legend>
     <br>
 
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Do you want account holder name, address and date of birth?
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+            <label class="govuk-label govuk-radios__label" for="signIn">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+            <label class="govuk-label govuk-radios__label" for="signIn-2">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <br>
 
     <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Do you want the account holders address history?
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+            <label class="govuk-label govuk-radios__label" for="signIn">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+            <label class="govuk-label govuk-radios__label" for="signIn-2">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <br>
+
+   <!-- <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
@@ -71,27 +120,30 @@
           Address history
         </label>
       </div>
-     
-    
+
+
   </fieldset>
-</div>
+</div>-->
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        Date range for address history 
+        Date range for address history
       </h1>
     </legend>
-    <br>
+    <div id="countries-hint" class="govuk-hint">
+      Only complete this is you have slected you want to request address history.
+    </div>
+
 
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-    
+
      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
        Start date
     </legend>
-    
+
     <div class="govuk-date-input" id="dob">
       <div class="govuk-date-input__item">
         <div class="govuk-form-group">
@@ -118,7 +170,7 @@
         </div>
       </div>
     </div>
-  
+
   </fieldset>
 </div>
 
@@ -126,7 +178,7 @@
       End date (optional)
     </legend>
     <div id="dob-hint" class="govuk-hint">
-      Leave blank to ask for information up to the current date. 
+      Leave blank to ask for information up to the current date.
     </div>
     <div class="govuk-date-input" id="end-date">
       <div class="govuk-date-input__item">
@@ -167,7 +219,7 @@
     </label>
   </h1>
   <div id="with-hint-hint" class="govuk-hint">
-    We will send this in a letter to the provider. Add any information you want them to know. Do not include reasons for your request. Write clearly without acronyms or abbreviations. 
+    We will send this in a letter to the provider. Add any information you want them to know. Do not include reasons for your request. Write clearly without acronyms or abbreviations.
   </div>
   <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
@@ -176,7 +228,7 @@
 </div>
 </fieldset>
 </div>
-              
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -199,7 +251,7 @@
 
 {% include '/includes/case-table.html' %}
 
-    
+
   </div>
 </div>
 

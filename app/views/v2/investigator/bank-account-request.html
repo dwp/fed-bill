@@ -9,7 +9,7 @@
   <div class="govuk-grid-one-half">
 
      {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
     <div class="govuk-grid-row">
@@ -17,7 +17,7 @@
 
    <form method="post">
 
-           
+
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -33,11 +33,11 @@
       Sort Code: {{data['sortCode']}} <br>
       Account number: {{data['accountNo']}} </p>
     </div>
-  
-   
+
+
     <div class="govuk-form-group">
 
-  
+
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
@@ -67,7 +67,7 @@
 <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        Do you want account opening information for this account?
+        Do you want  all opening account information, including ID, for this account?
       </h1>
     </legend>
     <div class="govuk-radios" data-module="govuk-radios">
@@ -96,7 +96,7 @@
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Account holder name">
         <label class="govuk-label govuk-checkboxes__label" for="countries">
-          All account details 
+          List of all account details
         </label>
       </div>
       <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -110,7 +110,7 @@
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Date of Birth">
         <label class="govuk-label govuk-checkboxes__label" for="countries">
-          All account opening statements
+          All opening account information including ID
         </label>
       </div>
   </fieldset>
@@ -123,11 +123,11 @@
 </div>
 
 <br>
-              
-            
-              
- 
-              
+
+
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -151,7 +151,7 @@
 
 {% include '/includes/case-table.html' %}
 
-    
+
   </div>
 </div>
 

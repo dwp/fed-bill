@@ -15,7 +15,7 @@
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
 
-    <h1 class="govuk-heading-l">Request loan information</h1>
+    <h1 class="govuk-heading-l">Request account details</h1>
 
     <p>Here are the account details you have entered:</p>
 
@@ -27,7 +27,7 @@
 
     <form method="post">
 
-      <div class="govuk-form-group">
+      <!--<div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
@@ -45,9 +45,15 @@
         </label>
       </div>
       <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="account-info-1" name="account-info" type="checkbox" value="Name on the account">
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-1">
+          Loan or mortgage account number
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="account-info-2" name="account-info" type="checkbox" value="Bank details used for repayment">
         <label class="govuk-label govuk-checkboxes__label" for="account-info-2">
-          Bank details used for repayment (sort code and account number)
+          Bank details used for repayment
         </label>
       </div>
       <div class="govuk-checkboxes__item">
@@ -76,8 +82,58 @@
       </div>
     </div>
   </fieldset>
-</div>
+</div>-->
 
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want account holder name, address and date of birth?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+              <label class="govuk-label govuk-radios__label" for="signIn">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+              <label class="govuk-label govuk-radios__label" for="signIn-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <br>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want the account holders address history?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+              <label class="govuk-label govuk-radios__label" for="signIn">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+              <label class="govuk-label govuk-radios__label" for="signIn-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <br>
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
@@ -165,7 +221,7 @@
 
 
 
-<div class="govuk-form-group">
+<!--<div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
@@ -218,7 +274,7 @@
   <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="additial-loan-info" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
     You can enter up to 2000 characters
-  </div>
+  </div>-->
 </div>
 
 
