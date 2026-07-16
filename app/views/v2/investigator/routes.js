@@ -82,8 +82,19 @@ router.post('/'+ version +'/investigator/accounts-request', function(request, re
 
 router.post('/'+ version +'/investigator/bank-account-request', function(request, response) {
 
-	// Only show the bank statement date range page if bank statements were requested
-	if (request.session.data['bank-state'] == "Yes") {
+	// Work out whether the "All account bank statements" checkbox was ticked
+	var requestedDetails = request.session.data['holder-dets']
+	var wantsAllBankStatements = false
+	if (Array.isArray(requestedDetails)) {
+		wantsAllBankStatements = requestedDetails.indexOf('All account bank statements') !== -1
+	} else {
+		wantsAllBankStatements = requestedDetails == 'All account bank statements'
+	}
+
+	// Only show the bank statement date range page if bank statements were requested,
+	// either via "Do you want bank statements for this account?" or the
+	// "All account bank statements" option
+	if (request.session.data['bank-state'] == "Yes" || wantsAllBankStatements) {
 		response.redirect("bank-account-request-2")
 	} else {
 		response.redirect("bank-account-request-3")
