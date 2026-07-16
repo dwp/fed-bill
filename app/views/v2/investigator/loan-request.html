@@ -20,8 +20,12 @@
     <p>Here are the account details you have entered:</p>
 
     <div class="govuk-inset-text">
-      <p>Name:{{data['fullName']}} <br>
-      Account number: {{data['accountnumber']}}</p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% if data['loanAccount-name'] %}<li>Name: {{data['loanAccount-name']}}</li>{% endif %}
+        {% if data['dob-day'] or data['dob-month'] or data['dob-year'] %}<li>Date of birth: {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}</li>{% endif %}
+        {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}<li>Address: {{data['address-line-1']}}{% if data['address-line-2'] %}, {{data['address-line-2']}}{% endif %}{% if data['addressTown'] %}, {{data['addressTown']}}{% endif %}{% if data['addressPostcode'] %}, {{data['addressPostcode']}}{% endif %}</li>{% endif %}
+        {% if data['accountNo'] %}<li>Account number: {{data['accountNo']}}</li>{% endif %}
+      </ul>
     </div>
 
 

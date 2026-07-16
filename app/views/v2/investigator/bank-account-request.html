@@ -26,12 +26,18 @@
       </h1>
     </legend>
 
+    {% set hasBankDetails = data['sortCode'] or data['accountNo'] or data['cardNo'] or data['rollNumber'] %}
+
     <p>Here are the account holder details you have entered:</p>
 
     <div class="govuk-inset-text">
-      <p>Account name: {{data['fullName']}} <br>
-      Sort Code: {{data['sortCode']}} <br>
-      Account number: {{data['accountNo']}} </p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% if data['fullName'] %}<li>Account name: {{data['fullName']}}</li>{% endif %}
+        {% if data['sortCode'] %}<li>Sort code: {{data['sortCode']}}</li>{% endif %}
+        {% if data['accountNo'] %}<li>Account number: {{data['accountNo']}}</li>{% endif %}
+        {% if data['cardNo'] %}<li>Card number: {{data['cardNo']}}</li>{% endif %}
+        {% if data['rollNumber'] %}<li>Building society roll number: {{data['rollNumber']}}</li>{% endif %}
+      </ul>
     </div>
 
 
@@ -39,6 +45,7 @@
 
 
 
+{% if hasBankDetails %}
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -86,10 +93,11 @@
     </div>
   </fieldset>
   <br>
+{% endif %}
   <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        What other account details would you like to request from {{data['provider']}}?
+        {% if hasBankDetails %}What other account details would you like to request from {{data['provider']}}?{% else %}What accounts details would you like to request?{% endif %}
       </h1>
     </legend>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">

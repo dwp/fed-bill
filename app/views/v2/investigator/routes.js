@@ -82,8 +82,12 @@ router.post('/'+ version +'/investigator/accounts-request', function(request, re
 
 router.post('/'+ version +'/investigator/bank-account-request', function(request, response) {
 
-
+	// Only show the bank statement date range page if bank statements were requested
+	if (request.session.data['bank-state'] == "Yes") {
 		response.redirect("bank-account-request-2")
+	} else {
+		response.redirect("bank-account-request-3")
+	}
 
 })
 
@@ -101,16 +105,23 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
         request.session.data['accounts'] = []
     }
 
+    // Work out which details the user actually entered so the summary only shows those
+    var hasDob = request.session.data['dob-day'] || request.session.data['dob-month'] || request.session.data['dob-year']
+    var hasAddress = request.session.data['address-line-1'] || request.session.data['address-line-2'] || request.session.data['addressTown'] || request.session.data['addressPostcode']
+    var hasBankDetails = request.session.data['sortCode'] || request.session.data['accountNo'] || request.session.data['cardNo'] || request.session.data['rollNumber']
+
     // Add current account details to the array
     var account = {
         fullName: request.session.data['fullName'],
-        dob: (request.session.data['dob-day'] || '') + '/' + (request.session.data['dob-month'] || '') + '/' + (request.session.data['dob-year'] || ''),
-        address: (request.session.data['address-line-1'] || '') + (request.session.data['address-line-2'] ? ', ' + request.session.data['address-line-2'] : '') + ', ' + (request.session.data['addressTown'] || '') + ', ' + (request.session.data['addressPostcode'] || ''),
+        dob: hasDob ? ((request.session.data['dob-day'] || '') + '/' + (request.session.data['dob-month'] || '') + '/' + (request.session.data['dob-year'] || '')) : '',
+        address: hasAddress ? ((request.session.data['address-line-1'] || '') + (request.session.data['address-line-2'] ? ', ' + request.session.data['address-line-2'] : '') + ', ' + (request.session.data['addressTown'] || '') + ', ' + (request.session.data['addressPostcode'] || '')) : '',
         sortCode: request.session.data['sortCode'],
         accountNo: request.session.data['accountNo'],
         cardNo: request.session.data['cardNo'],
+        rollNumber: request.session.data['rollNumber'],
         openingInfo: request.session.data['opening-info'],
-        bankState: request.session.data['bank-state']
+        bankState: request.session.data['bank-state'],
+        hasBankDetails: hasBankDetails ? true : false
     }
 
     request.session.data['accounts'].push(account)
