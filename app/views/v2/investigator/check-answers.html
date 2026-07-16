@@ -207,6 +207,36 @@
             </dd>
           </div>
           {% endif %}
+          {% if account.statementDateRange %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date range do you want the bank statements for?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.statementDateRange}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if account.requestedDetails %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What account details would you like to request?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+              {% for item in account.requestedDetails %}
+                <li>{{item}}</li>
+              {% endfor %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
+            </dd>
+          </div>
+          {% endif %}
         </dl>
         {% endfor %}
 

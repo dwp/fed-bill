@@ -73,6 +73,7 @@
 
        <h2 class="govuk-heading-m">Account details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          {% if data['loanAccount-name'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's name?
@@ -84,7 +85,9 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
           </div>
+          {% endif %}
 
+          {% if data['dob-day'] or data['dob-month'] or data['dob-year'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's date of birth?
@@ -96,6 +99,8 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
             </dd>
           </div>
+          {% endif %}
+          {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subjects address?
@@ -107,6 +112,8 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
           </div>
+          {% endif %}
+          {% if data['sortCode'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's sort code?
@@ -118,6 +125,8 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
+          {% endif %}
+          {% if data['accountNo'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's account number?
@@ -129,37 +138,49 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
+          {% endif %}
+          {% if data['account-info'] or data['loan-sah-day'] or data['loan-eah-day'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What infomation do you need about the account?
             </dt>
             <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet"></ul>
+              {% if data['account-info'] %}
+              <ul class="govuk-list govuk-list--bullet">
               {% for item in data['account-info'] %}
               <li>{{item}}</li>
               {% endfor %}
+              </ul>
+              {% endif %}
+              {% if data['loan-sah-day'] or data['loan-eah-day'] %}
               {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
             </div>
+          {% endif %}
 
 
+          {% if data['loan-info'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What loan infomation do you want to request within the investigation period?
             </dt>
             <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet"></ul>
+                <ul class="govuk-list govuk-list--bullet">
                {% for item in data['loan-info'] %}
                 <li>{{item}}</li>
               {% endfor %}
+                </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
+          {% endif %}
+          {% if data['additial-loan-info'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Add any additional information about your request
@@ -171,6 +192,7 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
+          {% endif %}
 
 
         </dl>

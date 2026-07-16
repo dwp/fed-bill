@@ -109,6 +109,8 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
     var hasDob = request.session.data['dob-day'] || request.session.data['dob-month'] || request.session.data['dob-year']
     var hasAddress = request.session.data['address-line-1'] || request.session.data['address-line-2'] || request.session.data['addressTown'] || request.session.data['addressPostcode']
     var hasBankDetails = request.session.data['sortCode'] || request.session.data['accountNo'] || request.session.data['cardNo'] || request.session.data['rollNumber']
+    var hasStatementDates = request.session.data['start-day'] || request.session.data['start-month'] || request.session.data['start-year']
+    var hasEndDate = request.session.data['end-day'] || request.session.data['end-month'] || request.session.data['end-year']
 
     // Add current account details to the array
     var account = {
@@ -121,6 +123,8 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
         rollNumber: request.session.data['rollNumber'],
         openingInfo: request.session.data['opening-info'],
         bankState: request.session.data['bank-state'],
+        statementDateRange: hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : 'present')) : '',
+        requestedDetails: request.session.data['holder-dets'],
         hasBankDetails: hasBankDetails ? true : false
     }
 
@@ -229,6 +233,13 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
         delete request.session.data['bank-state']
         delete request.session.data['add-another']
         delete request.session.data['holder-dets']
+        delete request.session.data['rollNumber']
+        delete request.session.data['start-day']
+        delete request.session.data['start-month']
+        delete request.session.data['start-year']
+        delete request.session.data['end-day']
+        delete request.session.data['end-month']
+        delete request.session.data['end-year']
         delete request.session.data['withHint']
         delete request.session.data['contact']
         delete request.session.data['sah-day']
