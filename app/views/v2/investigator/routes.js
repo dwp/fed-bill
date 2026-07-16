@@ -111,6 +111,8 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
     var hasBankDetails = request.session.data['sortCode'] || request.session.data['accountNo'] || request.session.data['cardNo'] || request.session.data['rollNumber']
     var hasStatementDates = request.session.data['start-day'] || request.session.data['start-month'] || request.session.data['start-year']
     var hasEndDate = request.session.data['end-day'] || request.session.data['end-month'] || request.session.data['end-year']
+    var hasAddrHistDates = request.session.data['addr-start-day'] || request.session.data['addr-start-month'] || request.session.data['addr-start-year']
+    var hasAddrHistEndDate = request.session.data['addr-end-day'] || request.session.data['addr-end-month'] || request.session.data['addr-end-year']
 
     // Add current account details to the array
     var account = {
@@ -125,6 +127,10 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
         bankState: request.session.data['bank-state'],
         statementDateRange: hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : 'present')) : '',
         requestedDetails: request.session.data['holder-dets'],
+        holderInfo: request.session.data['holder-info'],
+        addressHistory: request.session.data['address-history'],
+        addressHistoryDateRange: hasAddrHistDates ? ((request.session.data['addr-start-day'] || '') + '/' + (request.session.data['addr-start-month'] || '') + '/' + (request.session.data['addr-start-year'] || '') + ' to ' + (hasAddrHistEndDate ? ((request.session.data['addr-end-day'] || '') + '/' + (request.session.data['addr-end-month'] || '') + '/' + (request.session.data['addr-end-year'] || '')) : 'present')) : '',
+        additionalInfo: request.session.data['withHint'],
         hasBankDetails: hasBankDetails ? true : false
     }
 
@@ -240,6 +246,14 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
         delete request.session.data['end-day']
         delete request.session.data['end-month']
         delete request.session.data['end-year']
+        delete request.session.data['holder-info']
+        delete request.session.data['address-history']
+        delete request.session.data['addr-start-day']
+        delete request.session.data['addr-start-month']
+        delete request.session.data['addr-start-year']
+        delete request.session.data['addr-end-day']
+        delete request.session.data['addr-end-month']
+        delete request.session.data['addr-end-year']
         delete request.session.data['withHint']
         delete request.session.data['contact']
         delete request.session.data['sah-day']

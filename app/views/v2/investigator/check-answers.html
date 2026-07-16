@@ -92,104 +92,90 @@
           {% endif %}
         </div>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          {% if account.fullName %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's name?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.fullName}}
+               {{account.fullName or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.dob %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's date of birth?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{account.dob}}
+              {{account.dob or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.address %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subjects address?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{account.address}}
+              {{account.address or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.sortCode %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's sort code?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.sortCode}}
+               {{account.sortCode or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.accountNo %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's account number?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.accountNo}}
+               {{account.accountNo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.cardNo %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's card number?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.cardNo}}
+               {{account.cardNo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.rollNumber %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the subject's building society roll number?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.rollNumber}}
+               {{account.rollNumber or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> roll number</span></a>
             </dd>
           </div>
-          {% endif %}
           {% if account.hasBankDetails %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Do you want account opening information for this account?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{account.openingInfo}}
+              {{account.openingInfo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
@@ -200,43 +186,91 @@
               Do you want bank statements for this account?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.bankState}}
+               {{account.bankState or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
           {% endif %}
-          {% if account.statementDateRange %}
+          {% if account.bankState == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What date range do you want the bank statements for?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.statementDateRange}}
+               {{account.statementDateRange or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
             </dd>
           </div>
           {% endif %}
-          {% if account.requestedDetails %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What account details would you like to request?
             </dt>
             <dd class="govuk-summary-list__value">
+              {% if account.requestedDetails %}
               <ul class="govuk-list govuk-list--bullet">
               {% for item in account.requestedDetails %}
                 <li>{{item}}</li>
               {% endfor %}
               </ul>
+              {% else %}
+              -
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
             </dd>
           </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want account holder name, address and date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.holderInfo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> account holder name, address and date of birth</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want the account holders address history?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.addressHistory or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history</span></a>
+            </dd>
+          </div>
+          {% if account.addressHistory == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date range do you want the address history for?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.addressHistoryDateRange or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history date range</span></a>
+            </dd>
+          </div>
           {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional information about the request
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.additionalInfo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> additional information</span></a>
+            </dd>
+          </div>
         </dl>
         {% endfor %}
 
