@@ -94,7 +94,7 @@
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's name?
+              Full name
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.fullName or '-'}}
@@ -105,7 +105,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's date of birth?
+             Date of Birth
             </dt>
             <dd class="govuk-summary-list__value">
               {{account.dob or '-'}}
@@ -116,7 +116,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subjects address?
+              Address
             </dt>
             <dd class="govuk-summary-list__value">
               {{account.address or '-'}}
@@ -127,7 +127,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's sort code?
+              Sort code
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.sortCode or '-'}}
@@ -138,7 +138,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's account number?
+              Account number
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.accountNo or '-'}}
@@ -149,7 +149,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's card number?
+             Card number
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.cardNo or '-'}}
@@ -160,7 +160,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the subject's building society roll number?
+              Building society roll number
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.rollNumber or '-'}}
@@ -172,18 +172,7 @@
           {% if account.hasBankDetails %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want account opening information for this account?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{account.openingInfo or '-'}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want bank statements for this account?
+              Request bank statements for this account
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.bankState or '-'}}
@@ -192,23 +181,21 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% if account.bankState == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date range do you want the bank statements for?
+              Request opening account information for this account
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.statementDateRange or '-'}}
+              {{account.openingInfo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
             </dd>
           </div>
           {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What account details would you like to request?
+              What other account details would you like to request?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if account.requestedDetails %}
@@ -221,13 +208,26 @@
               -
               {% endif %}
             </dd>
+            {% if account.bankState == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date range for requested bank statements
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{account.statementDateRange or '-'}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
+              </dd>
+            </div>
+            {% endif %}
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want account holder name, address and date of birth?
+              Request account name, address and date of birth
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.holderInfo or '-'}}
@@ -238,7 +238,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want the account holders address history?
+              Request address history
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.addressHistory or '-'}}
@@ -250,7 +250,7 @@
           {% if account.addressHistory == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date range do you want the address history for?
+              Address history date range
             </dt>
             <dd class="govuk-summary-list__value">
                {{account.addressHistoryDateRange or '-'}}
@@ -277,7 +277,7 @@
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want to add another account?
+              Add an additional account holder?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['add-another'] }}
