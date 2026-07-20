@@ -8,9 +8,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full ">
 
-   
+
    {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
   <div class="govuk-grid-row">
@@ -19,28 +19,23 @@
 
    <form method="post">
 
-    <!--<p>All proportionate and lawful checks must be recorded.</p>-->
+     <p class="govuk-body">By sending this request to {{data['provider']}}, you confirm that you have completed and recorded the following checks:</p>
+     <ul class="govuk-list govuk-list--bullet">
+       <li>the request is required and necessary</li>
+       <li>the request is proportionate and lawful</li>
+       <li>less intrusive enquiries have been ruled out</li>
+       <li>the risk of obtaining collateral information have been reviewed</li>
+     </ul>
 
- 
-     <p class="govuk-body">By sending this request to {{data['provider']}}, you confirm that:</p>
-       <ul class="govuk-list govuk-list--bullet">
-         <li>you have completed and recorded less intrusive checks</li>
-         <li>your request is required, necessary and proportionate </li>
-         <li>your request complies with current legislation</li>
-         <li>you accept the risk of requesting collateral information</li>
-         <!--<li>all proportionate and lawful checks have been recorded</li>-->
-       </ul>
-
-       <p>All proportionate and lawful checks have been recorded.</p>
 <br>
-            
+
 </div>
-            
-            
+
+
           </div>
-           
- 
-              
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Send request
@@ -61,7 +56,7 @@
 
 {% include '/includes/case-table.html' %}
 
-    
+
   </div>
 </div>
 
