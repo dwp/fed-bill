@@ -212,7 +212,7 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
             </dd>
           </div>
-          {% if account.bankState == "Yes" %}
+          {% if account.bankState == "Yes" or account.requestedDetails == "All account bank statements" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date range for requested bank statements
