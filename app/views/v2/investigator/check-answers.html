@@ -114,19 +114,17 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
             </dd>
           </div>
-          {% if account.hasAddress %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if account.addressLine1 %}{{account.addressLine1}}<br>{% endif %}{% if account.addressLine2 %}{{account.addressLine2}}<br>{% endif %}{% if account.addressTown %}{{account.addressPostcode}}<br>{% endif %}{% if account.addressPostcode %}{{account.addressPostcode}}<br>{% endif %}
+              {% if account.addressLine1 %}{{account.addressLine1}}<br>{% endif %}{% if account.addressLine2 %}{{account.addressLine2}}<br>{% endif %}{% if account.addressTown %}{{account.addressTown}}<br>{% endif %}{% if account.addressPostcode %}{{account.addressPostcode}}<br>{% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
           </div>
-          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Sort code
@@ -210,23 +208,23 @@
               -
               {% endif %}
             </dd>
-            {% if account.bankState == "Yes" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Date range for requested bank statements
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{account.statementDateRange or '-'}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
-              </dd>
-            </div>
-            {% endif %}
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
             </dd>
           </div>
+          {% if account.bankState == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date range for requested bank statements
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{account.statementDateRange or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
+            </dd>
+          </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Request account name, address and date of birth

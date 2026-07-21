@@ -36,35 +36,28 @@
 
 <!--<p>We believe that you hold information on the following subjects that will help with our investigation. Please do not tell the party in question that we have contacted you — this may harm the investigation.</p>-->
 
-<h2 class="govuk-heading-s">Account holder details</h2>
+
 
 {% for account in data['accounts'] %}
-<p>
-  {% if data['accounts'] | length > 1 %}<strong>Account {{ loop.index }}</strong><br>{% endif %}
-  {% if account.fullName %}Name: {{account.fullName}}<br>{% endif %}
-  {% if account.dob %}Date of birth: {{account.dob}}<br>{% endif %}
-  {% if account.sortCode %}Sort Code: {{account.sortCode}}<br>{% endif %}
-  {% if account.accountNo %}Account number: {{account.accountNo}}<br>{% endif %}
-  {% if account.cardNo %}Card number: {{account.cardNo}}<br>{% endif %}
-  {% if account.rollNumber %}Building society roll number: {{account.rollNumber}}<br>{% endif %}
-  {% if account.hasAddress %}Address:<br>{{account.addressLine1}}<br>{{account.addressLine2}}<br>{{account.addressTown}}<br>{{account.addressPostcode}}{% endif %}
-</p>
-{% endfor %}
+     {% if data['accounts'] | length > 1 %}<h2 class="govuk-heading-s">Account holder details {{ loop.index }}</h2>{% endif %}
 
-
-<h2 class="govuk-heading-s">Information we're asking for:</h2>
-
-<p class="govuk-body">You need to provide:</p>
-{% for account in data['accounts'] %}
-<ul class="govuk-list govuk-list--bullet">
-  {% if data['accounts'] | length > 1 %}<li><strong>Account {{ loop.index }}</strong></li>{% endif %}
+<ul class="govuk-body">
+  {% if account.fullName %}<li>Name: {{account.fullName}}</li>{% endif %}
+  {% if account.dob %}<li>Date of birth: {{account.dob}}</li>{% endif %}
+  {% if account.sortCode %}<li>Sort Code: {{account.sortCode}}</li>{% endif %}
+  {% if account.accountNo %}<li>Account number: {{account.accountNo}}</li>{% endif %}
+  {% if account.cardNo %}<li>Card number: {{account.cardNo}}</li>{% endif %}
+  {% if account.rollNumber %}<li>Building society roll number: {{account.rollNumber}}</li>{% endif %}
+  {% if account.hasAddress %}<li>Address:<br>{{account.addressLine1}}<br>{{account.addressLine2}}<br>{{account.addressTown}}<br>{{account.addressPostcode}}</li>{% endif %}
+</ul>
+<h3 class="govuk-heading-s">Information we're asking for:</h3>
+<ul class="govuk-body">
   {% if account.openingInfo == "Yes" %}<li>All opening account information, including ID</li>{% endif %}
   {% if account.bankState == "Yes" %}<li>Bank statements for given account{% if account.statementDateRange %} from {{account.statementDateRange}}{% endif %}</li>{% endif %}
   {% if account.requestedDetails %}{% if account.requestedDetails is string %}<li>{{account.requestedDetails}}</li>{% else %}{% for item in account.requestedDetails %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
   {% if account.holderInfo == "Yes" %}<li>Account holder name, address and date of birth</li>{% endif %}
   {% if account.addressHistory == "Yes" %}<li>Address history{% if account.addressHistoryDateRange %}, between {{account.addressHistoryDateRange}}{% endif %}</li>{% endif %}
 </ul>
-{% if account.additionalInfo %}<p>{{account.additionalInfo}}</p>{% endif %}
 {% endfor %}
 
 <h2 class="govuk-heading-s">Reference number: hpts-hahk-qtwx</h2>
