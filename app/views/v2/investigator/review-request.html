@@ -27,7 +27,7 @@
 
 <p>We believe that you may hold information about the following subjects that will help with an investigation. Do not tell the party in question that we have contacted you — this may harm the investigation. </p>
 
-     <p>You are legally required to respond to this request by 6 May 2026.</p>
+     <p>You are legally required to respond to this request by {{ daysFromNow(10) }}.</p>
 
      <p>If you do not respond, this may lead to prosecution and a financial penalty. If you cannot comply with this notice, speak to the Authorised Officer to tell us why.
      </p>
@@ -38,25 +38,34 @@
 
 <h2 class="govuk-heading-s">Account holder details</h2>
 
+{% for account in data['accounts'] %}
 <p>
-  {% if data['fullName'] %}Name: {{data['fullName']}}<br>{% endif %}
-  {% if data['sortCode'] %}Sort Code: {{data['sortCode']}}<br>{% endif %}
-  {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
-  {% if data['cardNo'] %}Card number: {{data['cardNo']}}<br>{% endif %}
-  {% if data['rollNumber'] %}Building society roll number: {{data['rollNumber']}}{% endif %}
+  {% if data['accounts'] | length > 1 %}<strong>Account {{ loop.index }}</strong><br>{% endif %}
+  {% if account.fullName %}Name: {{account.fullName}}<br>{% endif %}
+  {% if account.dob %}Date of birth: {{account.dob}}<br>{% endif %}
+  {% if account.sortCode %}Sort Code: {{account.sortCode}}<br>{% endif %}
+  {% if account.accountNo %}Account number: {{account.accountNo}}<br>{% endif %}
+  {% if account.cardNo %}Card number: {{account.cardNo}}<br>{% endif %}
+  {% if account.rollNumber %}Building society roll number: {{account.rollNumber}}<br>{% endif %}
+  {% if account.hasAddress %}Address:<br>{{account.addressLine1}}<br>{{account.addressLine2}}<br>{{account.addressTown}}<br>{{account.addressPostcode}}{% endif %}
 </p>
+{% endfor %}
 
 
 <h2 class="govuk-heading-s">Information we're asking for:</h2>
 
 <p class="govuk-body">You need to provide:</p>
+{% for account in data['accounts'] %}
 <ul class="govuk-list govuk-list--bullet">
-  {% if data['opening-info'] == "Yes" %}<li>All opening account information, including ID</li>{% endif %}
-  {% if data['bank-state'] == "Yes" %}<li>Bank statements for given account{% if data['start-day'] or data['start-month'] or data['start-year'] %} from {{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}} to {{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}{% endif %}</li>{% endif %}
-  {% for item in data['holder-dets'] %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}
+  {% if data['accounts'] | length > 1 %}<li><strong>Account {{ loop.index }}</strong></li>{% endif %}
+  {% if account.openingInfo == "Yes" %}<li>All opening account information, including ID</li>{% endif %}
+  {% if account.bankState == "Yes" %}<li>Bank statements for given account{% if account.statementDateRange %} from {{account.statementDateRange}}{% endif %}</li>{% endif %}
+  {% if account.requestedDetails %}{% if account.requestedDetails is string %}<li>{{account.requestedDetails}}</li>{% else %}{% for item in account.requestedDetails %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
+  {% if account.holderInfo == "Yes" %}<li>Account holder name, address and date of birth</li>{% endif %}
+  {% if account.addressHistory == "Yes" %}<li>Address history{% if account.addressHistoryDateRange %}, between {{account.addressHistoryDateRange}}{% endif %}</li>{% endif %}
 </ul>
-
-<p>{{data['more-info']}}</p>
+{% if account.additionalInfo %}<p>{{account.additionalInfo}}</p>{% endif %}
+{% endfor %}
 
 <h2 class="govuk-heading-s">Reference number: hpts-hahk-qtwx</h2>
 

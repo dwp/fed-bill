@@ -26,7 +26,7 @@
 <p>Dear {{data['provider']}}</p>
      <p>We believe that you may hold information about the following subjects that will help with an investigation. Do not tell the party in question that we have contacted you — this may harm the investigation. </p>
 
-     <p>You are legally required to respond to this request by 6 May 2026.</p>
+     <p>You are legally required to respond to this request by {{ daysFromNow(10) }}.</p>
 
      <p>If you do not respond, this may lead to prosecution and a financial penalty. If you cannot comply with this notice, speak to the Authorised Officer to tell us why.
      </p>
@@ -37,19 +37,18 @@
 
      <p>{% if data['loanAccount-name'] %}Name: {{data['loanAccount-name']}}<br>{% endif %}
        {% if data['sortCode'] %}Sort Code: {{data['sortCode']}}<br>{% endif %}
-       {% if data['accountNo'] %}Account number: {{data['accountNo']}}{% endif %}</p>
+       {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+       {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}Address:<br> {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}{% endif %}</p>
 
 
      <h2 class="govuk-heading-s">Information we're asking for:</h2>
 
      <p class="govuk-body">You need to provide:</p>
      <ul class="govuk-list govuk-list--bullet">
-       <li>name on the accounts</li>
-       <li>bank details used for repayment</li>
-       <li>Adate the account was opened and, if applicable, the date the account was closed</li>
-       {% if data['loan-sah-day'] or data['loan-sah-month'] or data['loan-sah-year'] %}<li>Address history, between {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}</li>{% endif %}
-       <li>copies of loan applications or loan agreements</li>
-       <li>copies of any identification documents </li>
+       {% if data['account-info'] is string %}<li>{{data['account-info']}}</li>{% else %}{% for item in data['account-info'] %}<li>{{item}}</li>{% endfor %}{% endif %}
+       {% if data['account-holder-details'] == 'Yes' %}<li>Account holder name, address and date of birth</li>{% endif %}
+       {% if data['address-history'] == 'Yes' %}<li>Address history, between {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}</li>{% endif %}
+       {% if data['loan-info'] is string %}<li>{{data['loan-info']}}</li>{% else %}{% for item in data['loan-info'] %}<li>{{item}}</li>{% endfor %}{% endif %}
      </ul>
 
      <p>{{data['additial-loan-info']}}</p>

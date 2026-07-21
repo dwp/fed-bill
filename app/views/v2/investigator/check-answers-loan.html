@@ -106,8 +106,11 @@
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}
-            </dd>
+              {% if data['address-line-1'] %}{{data['address-line-1']}}<br>{% endif %}
+              {% if data['address-line-2'] %}{{data['address-line-2']}}<br>{% endif %}
+              {% if data['addressTown'] %}{{data['addressTown']}}<br>{% endif %}
+              {% if data['addressPostcode'] %}{{data['addressPostcode']}}<br>{% endif %}
+              </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
             </dd>
@@ -126,30 +129,68 @@
             </dd>
           </div>
           {% endif %}
-          {% if data['account-info'] or data['loan-sah-day'] or data['loan-eah-day'] %}
+          {% if data['account-holder-details'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Requested information
+              Do you want account holder name, address and date of birth?
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['account-info'] %}
-              <ul class="govuk-list govuk-list--bullet">
-              {% for item in data['account-info'] %}
-              <li>{{item}}</li>
-              {% endfor %}
-              </ul>
-              {% endif %}
-              {% if data['loan-sah-day'] or data['loan-eah-day'] %}
-              {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
-              {% endif %}
+              {{data['account-holder-details']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> account holder details</span></a>
             </dd>
-            </div>
+          </div>
+          {% endif %}
+          {% if data['address-history'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want the account holders address history?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['address-history']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['address-history'] == 'Yes' and (data['loan-sah-day'] or data['loan-eah-day']) %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address history date range
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history date range</span></a>
+            </dd>
+          </div>
           {% endif %}
 
 
+          {% if data['account-info'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Requested account details
+            </dt>
+            <dd class="govuk-summary-list__value">
+                <ul class="govuk-list govuk-list--bullet">
+              {% if data['account-info'] is string %}
+                <li>{{data['account-info']}}</li>
+              {% else %}
+               {% for item in data['account-info'] %}
+                <li>{{item}}</li>
+              {% endfor %}
+              {% endif %}
+                </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested account details</span></a>
+            </dd>
+          </div>
+          {% endif %}
           {% if data['loan-info'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -157,9 +198,13 @@
             </dt>
             <dd class="govuk-summary-list__value">
                 <ul class="govuk-list govuk-list--bullet">
+              {% if data['loan-info'] is string %}
+                <li>{{data['loan-info']}}</li>
+              {% else %}
                {% for item in data['loan-info'] %}
                 <li>{{item}}</li>
               {% endfor %}
+              {% endif %}
                 </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
