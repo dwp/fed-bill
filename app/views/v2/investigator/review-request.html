@@ -38,18 +38,22 @@
 
 <h2 class="govuk-heading-s">Account holder details</h2>
 
-<p>Name: {{data['fullName']}}<br>
-  Sort Code:{{data['sortCode']}}<br>
-  Account number: {{data['accountNo']}}</p>
+<p>
+  {% if data['fullName'] %}Name: {{data['fullName']}}<br>{% endif %}
+  {% if data['sortCode'] %}Sort Code: {{data['sortCode']}}<br>{% endif %}
+  {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+  {% if data['cardNo'] %}Card number: {{data['cardNo']}}<br>{% endif %}
+  {% if data['rollNumber'] %}Building society roll number: {{data['rollNumber']}}{% endif %}
+</p>
 
 
 <h2 class="govuk-heading-s">Information we're asking for:</h2>
 
 <p class="govuk-body">You need to provide:</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>Opening account details</li>
-  <li>Bank statements for given account from {{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}} to {{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}} </li>
-  <li>All account details connected to the named party</li>
+  {% if data['opening-info'] == "Yes" %}<li>All opening account information, including ID</li>{% endif %}
+  {% if data['bank-state'] == "Yes" %}<li>Bank statements for given account{% if data['start-day'] or data['start-month'] or data['start-year'] %} from {{data['start-day']}}/{{data['start-month']}}/{{data['start-year']}} to {{data['end-day']}}/{{data['end-month']}}/{{data['end-year']}}{% endif %}</li>{% endif %}
+  {% for item in data['holder-dets'] %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}
 </ul>
 
 <p>{{data['more-info']}}</p>

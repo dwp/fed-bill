@@ -35,9 +35,9 @@
 
      <h2 class="govuk-heading-s">Account holder details</h2>
 
-     <p>Name: {{data['loanAccount-name']}}<br>
-       Sort Code:{{data['sortCode']}}<br>
-       Account number: {{data['accountNo']}}</p>
+     <p>{% if data['loanAccount-name'] %}Name: {{data['loanAccount-name']}}<br>{% endif %}
+       {% if data['sortCode'] %}Sort Code: {{data['sortCode']}}<br>{% endif %}
+       {% if data['accountNo'] %}Account number: {{data['accountNo']}}{% endif %}</p>
 
 
      <h2 class="govuk-heading-s">Information we're asking for:</h2>
@@ -47,7 +47,7 @@
        <li>name on the accounts</li>
        <li>bank details used for repayment</li>
        <li>Adate the account was opened and, if applicable, the date the account was closed</li>
-       <li>Address history, between {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}</li>
+       {% if data['loan-sah-day'] or data['loan-sah-month'] or data['loan-sah-year'] %}<li>Address history, between {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}</li>{% endif %}
        <li>copies of loan applications or loan agreements</li>
        <li>copies of any identification documents </li>
      </ul>
