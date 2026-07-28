@@ -31,13 +31,11 @@
     <p>Here are the account holder details you have entered:</p>
 
     <div class="govuk-inset-text">
-      <ul class="govuk-list govuk-list--bullet">
-        {% if data['fullName'] %}<li>Account name: {{data['fullName']}}</li>{% endif %}
-        {% if data['sortCode'] %}<li>Sort code: {{data['sortCode']}}</li>{% endif %}
-        {% if data['accountNo'] %}<li>Account number: {{data['accountNo']}}</li>{% endif %}
-        {% if data['cardNo'] %}<li>Card number: {{data['cardNo']}}</li>{% endif %}
-        {% if data['rollNumber'] %}<li>Building society roll number: {{data['rollNumber']}}</li>{% endif %}
-      </ul>
+      {% if data['fullName'] %}Account name: {{data['fullName']}}<br>{% endif %}
+      {% if data['sortCode'] %}Sort code: {{data['sortCode']}}<br>{% endif %}
+      {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+      {% if data['cardNo'] %}Card number: {{data['cardNo']}}<br>{% endif %}
+      {% if data['rollNumber'] %}Building society roll number: {{data['rollNumber']}}<br>{% endif %}
     </div>
 
 

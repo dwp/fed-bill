@@ -127,13 +127,39 @@
             </dd>
           </div>
           {% endif %}
-          {% if data['account-holder-details'] %}
+          {% if data['bank-state'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want account holder name, address and date of birth?
+              Do you want transaction and balances for this account?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['account-holder-details']}}
+              {{data['bank-state']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> transaction and balances</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['bank-state'] == 'Yes' and (data['bank-start-day'] or data['bank-end-day']) %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Transaction and balances date range
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['bank-start-day']}}/{{data['bank-start-month']}}/{{data['bank-start-year']}} to {% if data['bank-end-day'] or data['bank-end-month'] or data['bank-end-year'] %}{{data['bank-end-day']}}/{{data['bank-end-month']}}/{{data['bank-end-year']}}{% else %}present{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> transaction and balances date range</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['holder-info'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to request confirmation of name, address and date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['holder-info']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> account holder details</span></a>
@@ -153,13 +179,13 @@
             </dd>
           </div>
           {% endif %}
-          {% if data['address-history'] == 'Yes' and (data['loan-sah-day'] or data['loan-eah-day']) %}
+          {% if data['address-history'] == 'Yes' and (data['addr-start-day'] or data['addr-end-day']) %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Address history date range
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}
+              {{data['addr-start-day']}}/{{data['addr-start-month']}}/{{data['addr-start-year']}} to {{data['addr-end-day']}}/{{data['addr-end-month']}}/{{data['addr-end-year']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history date range</span></a>
@@ -210,13 +236,13 @@
             </dd>
           </div>
           {% endif %}
-          {% if data['additial-loan-info'] %}
+          {% if data['additional-loan-info'] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Any additional information about your request
             </dt>
             <dd class="govuk-summary-list__value">
-                {{data['additial-loan-info']}}
+                {{data['additional-loan-info']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>

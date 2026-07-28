@@ -48,16 +48,19 @@
   {% if account.accountNo %}<li>Account number: {{account.accountNo}}</li>{% endif %}
   {% if account.cardNo %}<li>Card number: {{account.cardNo}}</li>{% endif %}
   {% if account.rollNumber %}<li>Building society roll number: {{account.rollNumber}}</li>{% endif %}
-  {% if account.hasAddress %}<li>Address:<br>{{account.addressLine1}}<br>{{account.addressLine2}}<br>{{account.addressTown}}<br>{{account.addressPostcode}}</li>{% endif %}
+  {% if account.hasAddress %}<li>Address:{% if account.addressLine1 %}<br>{{account.addressLine1}}{% endif %}{% if account.addressLine2 %}<br>{{account.addressLine2}}{% endif %}{% if account.addressTown %}<br>{{account.addressTown}}{% endif %}{% if account.addressPostcode %}<br>{{account.addressPostcode}}{% endif %}</li>{% endif %}
 </ul>
 <h3 class="govuk-heading-s">Information we're asking for:</h3>
 <ul class="govuk-body">
   {% if account.openingInfo == "Yes" %}<li>All opening account information, including ID</li>{% endif %}
   {% if account.bankState == "Yes" %}<li>Bank statements for given account{% if account.statementDateRange %} from {{account.statementDateRange}}{% endif %}</li>{% endif %}
+  {% if account.transactionBalances == "Yes" %}<li>Transactions and balances{% if account.transactionDateRange %} from {{account.transactionDateRange}}{% endif %}</li>{% endif %}
   {% if account.requestedDetails %}{% if account.requestedDetails is string %}<li>{{account.requestedDetails}}</li>{% else %}{% for item in account.requestedDetails %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
+  {% if account.loanInfo %}{% if account.loanInfo is string %}<li>{{account.loanInfo}}</li>{% else %}{% for item in account.loanInfo %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
   {% if account.holderInfo == "Yes" %}<li>Account holder name, address and date of birth</li>{% endif %}
   {% if account.addressHistory == "Yes" %}<li>Address history{% if account.addressHistoryDateRange %}, between {{account.addressHistoryDateRange}}{% endif %}</li>{% endif %}
 </ul>
+{% if account.additionalInfo %}<p>{{account.additionalInfo}}</p>{% endif %}
 {% endfor %}
 
 <h2 class="govuk-heading-s">Reference number: hpts-hahk-qtwx</h2>
@@ -92,63 +95,49 @@ Authorised Officer<br>
 
 <br>
 
-            <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-      Is the information in this request correct?
-      </h1>
-    </legend>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Is the information in this request correct?
+            </h1>
+          </legend>
 
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes"  data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
-          Yes
-        </label>
-      </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
 
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
-        <label class="govuk-label govuk-radios__label" for="contact-2">
-          No
-        </label>
-      </div>
-      <div class="govuk-radios" id="conditional-contact-2">
-      </div>
-
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-another-no">
+                No
+              </label>
+            </div>
           </div>
-
-
+        </fieldset>
+      </div>
 
       <div class="govuk-button-group">
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Save and continue
-       </button>
-       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
-         Back
-       </a>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+        <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+          Back
+        </a>
       </div>
-
-   </form>
-
-</div>
-</div>
-
+    </form>
+  </div>
 </div>
 
 <br>
 
 {% include '/includes/case-table.html' %}
 
-
-  </div>
+</div>
 </div>
 
 {% endblock %}

@@ -36,22 +36,23 @@
      <h2 class="govuk-heading-s">Account holder details</h2>
 
      <p>{% if data['loanAccount-name'] %}Name: {{data['loanAccount-name']}}<br>{% endif %}
-       {% if data['sortCode'] %}Sort Code: {{data['sortCode']}}<br>{% endif %}
-       {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
-       {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}Address:<br> {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}{% endif %}</p>
+      {% if data['dob-day'] or data['dob-month'] or data['dob-year'] %}Date of birth: {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}<br>{% endif %}
+      {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}Address: {% if data['address-line-1'] %}<br> {{data['address-line-1']}}{% endif %}{% if data['address-line-2'] %}<br> {{data['address-line-2']}}{% endif %}{% if data['addressTown'] %}<br> {{data['addressTown']}}{% endif %}{% if data['addressPostcode'] %}, {{data['addressPostcode']}}{% endif %}<br>{% endif %}
+      {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}</p>
 
 
      <h2 class="govuk-heading-s">Information we're asking for:</h2>
 
      <p class="govuk-body">You need to provide:</p>
      <ul class="govuk-list govuk-list--bullet">
-       {% if data['account-info'] is string %}<li>{{data['account-info']}}</li>{% else %}{% for item in data['account-info'] %}<li>{{item}}</li>{% endfor %}{% endif %}
-       {% if data['account-holder-details'] == 'Yes' %}<li>Account holder name, address and date of birth</li>{% endif %}
-       {% if data['address-history'] == 'Yes' %}<li>Address history, between {{data['loan-sah-day']}}/{{data['loan-sah-month']}}/{{data['loan-sah-year']}} to {{data['loan-eah-day']}}/{{data['loan-eah-month']}}/{{data['loan-eah-year']}}</li>{% endif %}
-       {% if data['loan-info'] is string %}<li>{{data['loan-info']}}</li>{% else %}{% for item in data['loan-info'] %}<li>{{item}}</li>{% endfor %}{% endif %}
+       {% if data['bank-state'] == 'Yes' %}<li>Transactions and balances, including outstanding balance{% if data['bank-start-day'] or data['bank-end-day'] %}, from {{data['bank-start-day']}}/{{data['bank-start-month']}}/{{data['bank-start-year']}} to {% if data['bank-end-day'] or data['bank-end-month'] or data['bank-end-year'] %}{{data['bank-end-day']}}/{{data['bank-end-month']}}/{{data['bank-end-year']}}{% else %}present{% endif %}{% endif %}</li>{% endif %}
+       {% if data['account-info'] %}{% if data['account-info'] is string %}<li>{{data['account-info']}}</li>{% else %}{% for item in data['account-info'] %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
+       {% if data['loan-info'] %}{% if data['loan-info'] is string %}<li>{{data['loan-info']}}</li>{% else %}{% for item in data['loan-info'] %}{% if item and item != "None" %}<li>{{item}}</li>{% endif %}{% endfor %}{% endif %}{% endif %}
+       {% if data['holder-info'] == 'Yes' %}<li>Account holder name, address and date of birth</li>{% endif %}
+       {% if data['address-history'] == 'Yes' %}<li>Address history, between {{data['addr-start-day']}}/{{data['addr-start-month']}}/{{data['addr-start-year']}} to {{data['addr-end-day']}}/{{data['addr-end-month']}}/{{data['addr-end-year']}}</li>{% endif %}
      </ul>
 
-     <p>{{data['additial-loan-info']}}</p>
+     <p>{{data['additional-loan-info']}}</p>
 
 
      <h2 class="govuk-heading-s">Reference number: hpts-hahk-qtwx</h2>
@@ -86,63 +87,49 @@
 
 
 
-            <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-      Is the information in this request correct?
-      </h1>
-    </legend>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Is the information in this request correct?
+            </h1>
+          </legend>
 
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes"  data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
-          Yes
-        </label>
-      </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-another">
+                Yes
+              </label>
+            </div>
 
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
-        <label class="govuk-label govuk-radios__label" for="contact-2">
-          No
-        </label>
-      </div>
-      <div class="govuk-radios" id="conditional-contact-2">
-      </div>
-
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-another-no">
+                No
+              </label>
+            </div>
           </div>
-
-
+        </fieldset>
+      </div>
 
       <div class="govuk-button-group">
-       <button type="submit" class="govuk-button" data-module="govuk-button">
-         Save and continue
-       </button>
-       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
-         Back
-       </a>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+        <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+          Back
+        </a>
       </div>
-
-   </form>
-
-</div>
-</div>
-
+    </form>
+  </div>
 </div>
 
 <br>
 
 {% include '/includes/case-table.html' %}
 
-
-  </div>
+</div>
 </div>
 
 {% endblock %}
