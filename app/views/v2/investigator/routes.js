@@ -81,6 +81,27 @@ router.post('/'+ version +'/investigator/accounts-request', function(request, re
 })
 
 router.post('/'+ version +'/investigator/bank-account-request', function(request, response) {
+	// Normalise the checkbox selections (a single checkbox arrives as a string)
+	var accountInfo = request.session.data['account-info']
+	var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
+
+	// Only ask for a statement date range when statements have actually been requested,
+	// either via the "Do you want bank statements for this account?" radio or the
+	// "All accounts bank statements" checkbox.
+	var wantsStatements = request.session.data['bank-state'] == "Yes" || details.indexOf("All accounts bank statements") !== -1
+
+	if (wantsStatements) {
+		response.redirect("bank-account-request-2")
+	} else {
+		response.redirect("bank-account-request-3")
+	}
+})
+
+router.post('/'+ version +'/investigator/bank-account-request-2', function(request, response) {
+		response.redirect("bank-account-request-3")
+})
+
+router.post('/'+ version +'/investigator/bank-account-request-3', function(request, response) {
 		response.redirect("add-another-account")
 })
 
@@ -258,6 +279,32 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
         var hasAddrHistDates = request.session.data['addr-start-day'] || request.session.data['addr-start-month'] || request.session.data['addr-start-year']
         var hasAddrHistEndDate = request.session.data['addr-end-day'] || request.session.data['addr-end-month'] || request.session.data['addr-end-year']
 
+        // A blank statement end date means "up to today", so populate it with today's date
+        var todayDate = new Date()
+        var today = todayDate.getDate() + '/' + (todayDate.getMonth() + 1) + '/' + todayDate.getFullYear()
+        var statementDateRange = hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : today)) : ''
+
+        // Build the "other accounts held by this person" sentence for the letter.
+        // The 3 checkboxes combine into one ordered statement; a bank-statement selection
+        // absorbs the plain "list" selection (matches the V5 design combinations).
+        var accountInfo = request.session.data['account-info']
+        var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
+        var wantsList = details.indexOf("List of all account details") !== -1
+        var wantsBankAll = details.indexOf("All accounts bank statements") !== -1
+        var wantsOpenAll = details.indexOf("All opening account information including ID") !== -1
+        var associatedAccountsText = ''
+        if (wantsBankAll && wantsOpenAll) {
+            associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range') + ', including account opening information, including any forms of ID provided'
+        } else if (wantsBankAll) {
+            associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range')
+        } else if (wantsList && wantsOpenAll) {
+            associatedAccountsText = 'List of all associated accounts held where the person is the named party and account opening information including any forms of ID provided'
+        } else if (wantsOpenAll) {
+            associatedAccountsText = 'Account opening information including any forms of ID provided for all associated accounts held where the person is the named party'
+        } else if (wantsList) {
+            associatedAccountsText = 'List of all associated accounts held where the person is the named party'
+        }
+
         // Add current account details to the array
         var account = {
             fullName: request.session.data['fullName'],
@@ -274,10 +321,11 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
             rollNumber: request.session.data['rollNumber'],
             openingInfo: request.session.data['opening-info'],
             bankState: request.session.data['bank-state'],
-            statementDateRange: hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : 'present')) : '',
+            statementDateRange: statementDateRange,
             transactionBalances: request.session.data['bank-state'],
             transactionDateRange: hasTransactionDates ? ((request.session.data['bank-start-day'] || '') + '/' + (request.session.data['bank-start-month'] || '') + '/' + (request.session.data['bank-start-year'] || '') + ' to ' + (hasTransactionEndDate ? ((request.session.data['bank-end-day'] || '') + '/' + (request.session.data['bank-end-month'] || '') + '/' + (request.session.data['bank-end-year'] || '')) : 'present')) : '',
             requestedDetails: request.session.data['account-info'],
+            associatedAccountsText: associatedAccountsText,
             loanInfo: request.session.data['loan-info'],
             holderInfo: request.session.data['holder-info'],
             addressHistory: request.session.data['address-history'],

@@ -92,33 +92,32 @@
   </fieldset>
   <br>
 {% endif %}
-  <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        {% if hasBankDetails %}What other account details would you like to request from {{data['provider']}}?{% else %}What accounts details would you like to request?{% endif %}
+        {% if hasBankDetails %}What information do you want for other accounts held by this person with {{data['provider'] or 'this provider'}}?{% else %}What account details would you like to request?{% endif %}
       </h1>
     </legend>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="List of all account details">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
+        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="List of all account details">
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-list">
           List of all accounts details
         </label>
       </div>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="All account bank statements">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
+        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="All accounts bank statements">
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
           All accounts bank statements
         </label>
       </div>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="All opening account information including ID">
-        <label class="govuk-label govuk-checkboxes__label" for="countries">
+        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="All opening account information including ID">
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
           All opening account information including ID
         </label>
       </div>
+    </div>
   </fieldset>
 </div>
 
