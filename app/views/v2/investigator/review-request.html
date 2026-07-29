@@ -39,7 +39,7 @@
 
 
 {% for account in data['accounts'] %}
-     {% if data['accounts'] | length > 1 %}<h2 class="govuk-heading-s">Account holder details {{ loop.index }}</h2>{% endif %}
+     <h2 class="govuk-heading-s">Account holder details {% if data['accounts'] | length > 1 %}{{ loop.index }}{% endif %}</h2>
 
 <p class="govuk-body">
   {% if account.fullName %}Name: {{account.fullName}}<br>{% endif %}
