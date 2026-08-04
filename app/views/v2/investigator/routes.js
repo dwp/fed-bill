@@ -88,7 +88,7 @@ router.post('/'+ version +'/investigator/bank-account-request', function(request
 	// Only ask for a statement date range when statements have actually been requested,
 	// either via the "Do you want bank statements for this account?" radio or the
 	// "All accounts bank statements" checkbox.
-	var wantsStatements = request.session.data['bank-state'] == "Yes" || details.indexOf("All accounts bank statements") !== -1
+	var wantsStatements = request.session.data['bank-state'] == "Yes" || details.indexOf("Bank statements") !== -1
 
 	if (wantsStatements) {
 		response.redirect("bank-account-request-2")
