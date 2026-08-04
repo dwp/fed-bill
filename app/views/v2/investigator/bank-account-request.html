@@ -44,7 +44,7 @@
 
 
 {% if hasBankDetails %}
-<div class="govuk-form-group">
+<!--<div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
@@ -89,42 +89,74 @@
         </label>
       </div>
     </div>
-  </fieldset>
+  </fieldset>-->
+
+      <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            What account information would you like to request for the account holder?
+          </h1>
+        </legend>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements">
+            <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
+              Bank statements
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="Opening account information, including identification documents">
+            <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
+              Opening account information, including identification documents
+            </label>
+          </div>
+          <div class="govuk-checkboxes__divider">or</div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="countries-5" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
+            <label class="govuk-label govuk-checkboxes__label" for="countries-5">
+              I do not want to request any additional account information
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
   <br>
 {% endif %}
+    <br>
   <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        {% if hasBankDetails %}What information do you want for other accounts held by this person with {{data['provider'] or 'this provider'}}?{% else %}What account details would you like to request?{% endif %}
+        {% if hasBankDetails %}What account information would you like to request for other accounts held by this account holder with {{data['provider'] or 'this provider'}}?{% else %}What account information would you like to request?{% endif %}
       </h1>
     </legend>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="List of all account details">
-        <label class="govuk-label govuk-checkboxes__label" for="account-info-list">
-          List of all accounts details
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="All accounts bank statements">
+        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements">
         <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
-          All accounts bank statements
+          Bank statements
         </label>
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="All opening account information including ID">
+        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="Opening account information, including identification documents">
         <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
-          All opening account information including ID
+          Opening account information, including identification documents
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="A list of all accounts held by this account holder">
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-list">
+          A list of all accounts held by this account holder
         </label>
       </div>
     </div>
   </fieldset>
-</div>
 
 
+   </div>
 
 
   </fieldset>
+</div>
 </div>
 
 <br>
@@ -144,11 +176,11 @@
 
    </form>
 
-</div>
+
 </div>
 
 
-</div>
+
 
 
 <br>
