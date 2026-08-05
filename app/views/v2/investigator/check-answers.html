@@ -65,9 +65,9 @@
             <dd class="govuk-summary-list__value">
                {{data['categoryType']}}
             </dd>
-            <dd class="govuk-summary-list__actions">
+           <!--<dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="add-category">Change<span class="govuk-visually-hidden"> what your request is about</span></a>
-            </dd>
+            </dd>-->
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -76,9 +76,9 @@
             <dd class="govuk-summary-list__value">
                {{data['requestType']}}
             </dd>
-            <dd class="govuk-summary-list__actions">
+            <!--<dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="add-subject-financial">Change<span class="govuk-visually-hidden"> what financial information you need</span></a>
-            </dd>
+            </dd>-->
           </div>
 
         </dl>
@@ -172,7 +172,7 @@
           {% if account.hasBankDetails %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Request account information for given account
+              Requested account information
             </dt>
             <dd class="govuk-summary-list__value">
               {% if account.holderAccountInfo %}
@@ -196,7 +196,7 @@
           {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What other account details would you like to request?
+              Requested information for other accounts with {{data['provider']}}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if account.requestedDetails %}

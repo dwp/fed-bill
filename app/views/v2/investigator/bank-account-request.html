@@ -94,7 +94,7 @@
       <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           <h1 class="govuk-fieldset__heading">
-            What account information would you like to request for the account holder?
+            What information would you like to request for this account?
           </h1>
         </legend>
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -119,14 +119,14 @@
           </div>
         </div>
       </fieldset>
-    </div>
+
   <br>
 {% endif %}
     <br>
   <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        {% if hasBankDetails %}What account information would you like to request for other accounts held by this account holder with {{data['provider'] or 'this provider'}}?{% else %}What account information would you like to request?{% endif %}
+        {% if hasBankDetails %}What information would you like to request for other accounts held by the same account holder with {{data['provider'] or 'this provider'}}?{% else %}What account information would you like to request?{% endif %}
       </h1>
     </legend>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -160,12 +160,14 @@
 
   </div>
   </div>
+      </div>
+
 
 
 
   </fieldset>
 </div>
-</div>
+
 
 <br>
 
