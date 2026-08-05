@@ -267,9 +267,20 @@ router.get('/'+ version +'/investigator/change-account', function(request, respo
 	request.session.data['addr-end-year'] = account.addrEndYear
 	request.session.data['withHint'] = account.additionalInfo
 
-	// Redirect using the allowlisted value (a hardcoded constant), never the raw query
-	// parameter, so the destination cannot be an untrusted/attacker-controlled URL.
-	response.redirect(CHANGE_ACCOUNT_PAGES[CHANGE_ACCOUNT_PAGES.indexOf(page)])
+	// Redirect with a hardcoded string literal in every branch. The untrusted `page`
+	// value is only ever used in the comparison, never passed to redirect(), so there is
+	// no data flow from user input into the redirect target (no open-redirect possible).
+	if (page === "add-subject-financial-accounts") {
+		response.redirect("add-subject-financial-accounts")
+	} else if (page === "bank-account-request") {
+		response.redirect("bank-account-request")
+	} else if (page === "bank-account-request-2") {
+		response.redirect("bank-account-request-2")
+	} else if (page === "bank-account-request-3") {
+		response.redirect("bank-account-request-3")
+	} else {
+		response.redirect("check-answers")
+	}
 })
 
 //router.post('/'+ version +'/investigator/add-request', function(request, response) {
