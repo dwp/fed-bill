@@ -172,24 +172,25 @@
           {% if account.hasBankDetails %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Request bank statements for this account
+              Request account information for given account
             </dt>
             <dd class="govuk-summary-list__value">
-               {{account.bankState or '-'}}
+              {% if account.holderAccountInfo %}
+              <ul class="govuk-list govuk-list--bullet">
+              {% if account.holderAccountInfo is string %}
+                <li>{{account.holderAccountInfo}}</li>
+              {% else %}
+              {% for item in account.holderAccountInfo %}
+                <li>{{item}}</li>
+              {% endfor %}
+              {% endif %}
+              </ul>
+              {% else %}
+              -
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> request bank statements for this account</span></a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Request opening account information for this account
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{account.openingInfo or '-'}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> request opening account information for this account</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> requested account holder details</span></a>
             </dd>
           </div>
           {% endif %}

@@ -84,11 +84,13 @@ router.post('/'+ version +'/investigator/bank-account-request', function(request
 	// Normalise the checkbox selections (a single checkbox arrives as a string)
 	var accountInfo = request.session.data['account-info']
 	var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
+	var holderAccountInfo = request.session.data['holder-account-info']
+	var holderDetails = holderAccountInfo ? (Array.isArray(holderAccountInfo) ? holderAccountInfo : [holderAccountInfo]) : []
 
 	// Only ask for a statement date range when statements have actually been requested,
-	// either via the "Do you want bank statements for this account?" radio or the
-	// "All accounts bank statements" checkbox.
-	var wantsStatements = request.session.data['bank-state'] == "Yes" || details.indexOf("Bank statements") !== -1
+	// either via the "Do you want bank statements for this account?" radio, the "for the
+	// account holder" checkbox, or the "other accounts held by this provider" checkbox.
+	var wantsStatements = request.session.data['bank-state'] == "Yes" || details.indexOf("Bank statements") !== -1 || holderDetails.indexOf("Bank statements") !== -1
 
 	if (wantsStatements) {
 		response.redirect("bank-account-request-2")
@@ -127,13 +129,20 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
 	var statementDateRange = hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : today)) : ''
 
 	// Normalise the account-info checkboxes (a single checkbox arrives as a string).
-	// These selections drive the Yes/No summary rows on the check answers page and the
-	// "other accounts held by this person" sentence in the letter.
+	// These selections drive the "other accounts held by this person" sentence in the letter
+	// and the bullet-list summary row on the check answers page.
 	var accountInfo = request.session.data['account-info']
 	var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
 	var wantsStatements = details.indexOf("Bank statements") !== -1
 	var wantsOpening = details.indexOf("Opening account information, including identification documents") !== -1
 	var wantsList = details.indexOf("A list of all accounts held by this account holder") !== -1
+
+	// Normalise the holder-account-info checkboxes (the "for the account holder" question).
+	// These drive the Yes/No flags used in the letter for the account itself.
+	var holderAccountInfo = request.session.data['holder-account-info']
+	var holderDetails = holderAccountInfo ? (Array.isArray(holderAccountInfo) ? holderAccountInfo : [holderAccountInfo]) : []
+	var wantsHolderStatements = holderDetails.indexOf("Bank statements") !== -1
+	var wantsHolderOpening = holderDetails.indexOf("Opening account information, including identification documents") !== -1
 
 	var associatedAccountsText = ''
 	if (wantsStatements && wantsOpening) {
@@ -162,10 +171,11 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
 		accountNo: request.session.data['accountNo'],
 		cardNo: request.session.data['cardNo'],
 		rollNumber: request.session.data['rollNumber'],
-		openingInfo: wantsOpening ? "Yes" : "No",
-		bankState: wantsStatements ? "Yes" : "No",
+		openingInfo: wantsHolderOpening ? "Yes" : "No",
+		bankState: wantsHolderStatements ? "Yes" : "No",
 		statementDateRange: statementDateRange,
 		requestedDetails: request.session.data['account-info'],
+		holderAccountInfo: request.session.data['holder-account-info'],
 		associatedAccountsText: associatedAccountsText,
 		holderInfo: request.session.data['holder-info'],
 		addressHistory: request.session.data['address-history'],
@@ -251,6 +261,7 @@ router.get('/'+ version +'/investigator/change-account', function(request, respo
 	request.session.data['cardNo'] = account.cardNo
 	request.session.data['rollNumber'] = account.rollNumber
 	request.session.data['account-info'] = account.requestedDetails
+	request.session.data['holder-account-info'] = account.holderAccountInfo
 	request.session.data['start-day'] = account.startDay
 	request.session.data['start-month'] = account.startMonth
 	request.session.data['start-year'] = account.startYear
