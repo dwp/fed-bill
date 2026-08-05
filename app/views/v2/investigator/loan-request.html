@@ -41,13 +41,13 @@
           </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes">
+              <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" {% if data['bank-state'] == 'Yes' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="bank-state">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No">
+              <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" {% if data['bank-state'] == 'No' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="bank-state-no">
                 No
               </label>
@@ -83,7 +83,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-start-day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-day" name="bank-start-day" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-day" name="bank-start-day" type="text" inputmode="numeric" value="{{ data['bank-start-day'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -91,7 +91,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-start-month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-month" name="bank-start-month" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-month" name="bank-start-month" type="text" inputmode="numeric" value="{{ data['bank-start-month'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -99,7 +99,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-start-year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-start-year" name="bank-start-year" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-start-year" name="bank-start-year" type="text" inputmode="numeric" value="{{ data['bank-start-year'] }}">
                   </div>
                 </div>
               </div>
@@ -122,7 +122,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-end-day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-day" name="bank-end-day" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-day" name="bank-end-day" type="text" inputmode="numeric" value="{{ data['bank-end-day'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -130,7 +130,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-end-month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-month" name="bank-end-month" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-month" name="bank-end-month" type="text" inputmode="numeric" value="{{ data['bank-end-month'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -138,7 +138,7 @@
                     <label class="govuk-label govuk-date-input__label" for="bank-end-year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-end-year" name="bank-end-year" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-end-year" name="bank-end-year" type="text" inputmode="numeric" value="{{ data['bank-end-year'] }}">
                   </div>
                 </div>
               </div>
@@ -159,25 +159,25 @@
           </div>
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="account-info-1" name="account-info" type="checkbox" value="Loan or mortgage account number">
+              <input class="govuk-checkboxes__input" id="account-info-1" name="account-info" type="checkbox" value="Loan or mortgage account number" {% if data['account-info'] and "Loan or mortgage account number" in data['account-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="account-info-1">
                 Loan or mortgage account number
               </label>
             </div>
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="account-info-2" name="account-info" type="checkbox" value="Bank details used for repayment">
+              <input class="govuk-checkboxes__input" id="account-info-2" name="account-info" type="checkbox" value="Bank details used for repayment" {% if data['account-info'] and "Bank details used for repayment" in data['account-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="account-info-2">
                 Bank details used for repayment
               </label>
             </div>
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="account-info-3" name="account-info" type="checkbox" value="Dates the account was opened and closed">
+              <input class="govuk-checkboxes__input" id="account-info-3" name="account-info" type="checkbox" value="Dates the account was opened and closed" {% if data['account-info'] and "Dates the account was opened and closed" in data['account-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="account-info-3">
                 Dates the account was opened and closed
               </label>
             </div>
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="account-info-4" name="account-info" type="checkbox" value="Type of loan or mortgage">
+              <input class="govuk-checkboxes__input" id="account-info-4" name="account-info" type="checkbox" value="Type of loan or mortgage" {% if data['account-info'] and "Type of loan or mortgage" in data['account-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="account-info-4">
                 Type of loan or mortgage
               </label>
@@ -205,13 +205,13 @@
           </div>
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="loan-info-1" name="loan-info" type="checkbox" value="Loan application or agreement">
+              <input class="govuk-checkboxes__input" id="loan-info-1" name="loan-info" type="checkbox" value="Loan application or agreement" {% if data['loan-info'] and "Loan application or agreement" in data['loan-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="loan-info-1">
                 Loan application or agreement
               </label>
             </div>
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="loan-info-2" name="loan-info" type="checkbox" value="Copies of ID provided">
+              <input class="govuk-checkboxes__input" id="loan-info-2" name="loan-info" type="checkbox" value="Copies of ID provided" {% if data['loan-info'] and "Copies of ID provided" in data['loan-info'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="loan-info-2">
                 Copies of ID provided
               </label>

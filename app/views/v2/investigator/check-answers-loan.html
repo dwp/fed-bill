@@ -32,7 +32,7 @@
               {{data['provider']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              <a class="govuk-link" href="add-providor">Change<span class="govuk-visually-hidden"> who to send the request to</span></a>
             </dd>
           </div>
 
@@ -63,7 +63,7 @@
                {{data['categoryType']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-<!--<a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>-->
+              <a class="govuk-link" href="add-category">Change<span class="govuk-visually-hidden"> what your request is about</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -74,7 +74,7 @@
               {{data['requestType']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <!--<a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>-->
+              <a class="govuk-link" href="add-subject-financial">Change<span class="govuk-visually-hidden"> the financial information requested</span></a>
             </dd>
           </div>
 
@@ -93,7 +93,7 @@
                {{data['loanAccount-name']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+              <a class="govuk-link" href="add-subject-financial-loans">Change<span class="govuk-visually-hidden"> full name</span></a>
             </dd>
           </div>
           {% endif %}
@@ -107,7 +107,7 @@
               {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+              <a class="govuk-link" href="add-subject-financial-loans">Change<span class="govuk-visually-hidden"> date of birth</span></a>
             </dd>
           </div>
           {% endif %}
@@ -122,7 +122,7 @@
               {% if data['addressPostcode'] %}{{data['addressPostcode']}}<br>{% endif %}
               </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
+              <a class="govuk-link" href="add-subject-financial-loans">Change<span class="govuk-visually-hidden"> address</span></a>
             </dd>
           </div>
           {% if data['accountNo'] %}
@@ -134,7 +134,7 @@
                {{data['accountNo']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="add-subject-financial-loans">Change<span class="govuk-visually-hidden"> account number</span></a>
             </dd>
           </div>
           {% endif %}
@@ -147,7 +147,7 @@
               {{data['bank-state']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> transaction and balances</span></a>
+              <a class="govuk-link" href="loan-request">Change<span class="govuk-visually-hidden"> transaction and balances</span></a>
             </dd>
           </div>
           {% endif %}
@@ -160,7 +160,7 @@
               {{data['bank-start-day']}}/{{data['bank-start-month']}}/{{data['bank-start-year']}} to {% if data['bank-end-day'] or data['bank-end-month'] or data['bank-end-year'] %}{{data['bank-end-day']}}/{{data['bank-end-month']}}/{{data['bank-end-year']}}{% else %}present{% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> transaction and balances date range</span></a>
+              <a class="govuk-link" href="loan-request">Change<span class="govuk-visually-hidden"> transaction and balances date range</span></a>
             </dd>
           </div>
           {% endif %}
@@ -173,7 +173,7 @@
               {{data['holder-info']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> account holder details</span></a>
+              <a class="govuk-link" href="loan-request-2">Change<span class="govuk-visually-hidden"> account holder details</span></a>
             </dd>
           </div>
           {% endif %}
@@ -186,7 +186,7 @@
               {{data['address-history']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history</span></a>
+              <a class="govuk-link" href="loan-request-2">Change<span class="govuk-visually-hidden"> address history</span></a>
             </dd>
           </div>
           {% endif %}
@@ -199,7 +199,7 @@
               {{data['addr-start-day']}}/{{data['addr-start-month']}}/{{data['addr-start-year']}} to {{data['addr-end-day']}}/{{data['addr-end-month']}}/{{data['addr-end-year']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history date range</span></a>
+              <a class="govuk-link" href="loan-request-2">Change<span class="govuk-visually-hidden"> address history date range</span></a>
             </dd>
           </div>
           {% endif %}
@@ -222,7 +222,7 @@
                 </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested account details</span></a>
+              <a class="govuk-link" href="loan-request">Change<span class="govuk-visually-hidden"> requested account details</span></a>
             </dd>
           </div>
           {% endif %}
@@ -243,7 +243,7 @@
                 </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="loan-request">Change<span class="govuk-visually-hidden"> requested loan information</span></a>
             </dd>
           </div>
           {% endif %}
@@ -256,7 +256,7 @@
                 {{data['additional-loan-info']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="loan-request-2">Change<span class="govuk-visually-hidden"> additional information about your request</span></a>
             </dd>
           </div>
           {% endif %}

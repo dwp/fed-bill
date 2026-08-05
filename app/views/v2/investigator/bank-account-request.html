@@ -99,13 +99,13 @@
         </legend>
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements">
+            <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements" {% if data['account-info'] and "Bank statements" in data['account-info'] %}checked{% endif %}>
             <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
               Bank statements
             </label>
           </div>
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="Opening account information, including identification documents">
+            <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['account-info'] and "Opening account information, including identification documents" in data['account-info'] %}checked{% endif %}>
             <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
               Opening account information, including identification documents
             </label>
@@ -131,19 +131,19 @@
     </legend>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements">
+        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements" {% if data['account-info'] and "Bank statements" in data['account-info'] %}checked{% endif %}>
         <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
           Bank statements
         </label>
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="Opening account information, including identification documents">
+        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['account-info'] and "Opening account information, including identification documents" in data['account-info'] %}checked{% endif %}>
         <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
           Opening account information, including identification documents
         </label>
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="A list of all accounts held by this account holder">
+        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="A list of all accounts held by this account holder" {% if data['account-info'] and "A list of all accounts held by this account holder" in data['account-info'] %}checked{% endif %}>
         <label class="govuk-label govuk-checkboxes__label" for="account-info-list">
           A list of all accounts held by this account holder
         </label>

@@ -38,13 +38,13 @@
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="holder-info" name="holder-info" type="radio" value="Yes">
+              <input class="govuk-radios__input" id="holder-info" name="holder-info" type="radio" value="Yes" {% if data['holder-info'] == 'Yes' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="holder-info">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="holder-info-no" name="holder-info" type="radio" value="No">
+              <input class="govuk-radios__input" id="holder-info-no" name="holder-info" type="radio" value="No" {% if data['holder-info'] == 'No' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="holder-info-no">
                 No
               </label>
@@ -62,13 +62,13 @@
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="address-history" name="address-history" type="radio" value="Yes">
+              <input class="govuk-radios__input" id="address-history" name="address-history" type="radio" value="Yes" {% if data['address-history'] == 'Yes' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="address-history">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="address-history-no" name="address-history" type="radio" value="No">
+              <input class="govuk-radios__input" id="address-history-no" name="address-history" type="radio" value="No" {% if data['address-history'] == 'No' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="address-history-no">
                 No
               </label>
@@ -100,7 +100,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-start-day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-day" name="addr-start-day" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-day" name="addr-start-day" type="text" inputmode="numeric" value="{{ data['addr-start-day'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -108,7 +108,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-start-month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-month" name="addr-start-month" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-month" name="addr-start-month" type="text" inputmode="numeric" value="{{ data['addr-start-month'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -116,7 +116,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-start-year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-start-year" name="addr-start-year" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-start-year" name="addr-start-year" type="text" inputmode="numeric" value="{{ data['addr-start-year'] }}">
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-end-day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-day" name="addr-end-day" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-day" name="addr-end-day" type="text" inputmode="numeric" value="{{ data['addr-end-day'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -146,7 +146,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-end-month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-month" name="addr-end-month" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-month" name="addr-end-month" type="text" inputmode="numeric" value="{{ data['addr-end-month'] }}">
                   </div>
                 </div>
                 <div class="govuk-date-input__item">
@@ -154,7 +154,7 @@
                     <label class="govuk-label govuk-date-input__label" for="addr-end-year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-end-year" name="addr-end-year" type="text" inputmode="numeric">
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-end-year" name="addr-end-year" type="text" inputmode="numeric" value="{{ data['addr-end-year'] }}">
                   </div>
                 </div>
               </div>
@@ -172,7 +172,7 @@
         <div id="additional-info-hint" class="govuk-hint">
           For example, outstanding balance or repayment history from a requested date. What you write here will be sent in a letter to the provider. Write clearly and avoid acronyms.
         </div>
-        <textarea class="govuk-textarea govuk-js-character-count" id="additional-info" name="additional-loan-info" rows="8" aria-describedby="additional-info-info additional-info-hint"></textarea>
+        <textarea class="govuk-textarea govuk-js-character-count" id="additional-info" name="additional-loan-info" rows="8" aria-describedby="additional-info-info additional-info-hint">{{ data['additional-loan-info'] }}</textarea>
         <div id="additional-info-info" class="govuk-hint govuk-character-count__message">
           You can enter up to 2000 characters
         </div>

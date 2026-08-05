@@ -102,7 +102,161 @@ router.post('/'+ version +'/investigator/bank-account-request-2', function(reque
 })
 
 router.post('/'+ version +'/investigator/bank-account-request-3', function(request, response) {
+	// Save the account the investigator has just finished entering before moving on to
+	// the "add another account" decision. Capturing it here (rather than only when the
+	// user finally answers "No") means every account in the loop is stored, and the
+	// add-another-account page can show an accurate running count.
+
+	// Initialise accounts array if it doesn't exist
+	if (!request.session.data['accounts']) {
+		request.session.data['accounts'] = []
+	}
+
+	// Work out which details the user actually entered so the summary only shows those
+	var hasDob = request.session.data['dob-day'] || request.session.data['dob-month'] || request.session.data['dob-year']
+	var hasAddress = request.session.data['address-line-1'] || request.session.data['address-line-2'] || request.session.data['addressTown'] || request.session.data['addressPostcode']
+	var hasBankDetails = request.session.data['sortCode'] || request.session.data['accountNo'] || request.session.data['cardNo'] || request.session.data['rollNumber']
+	var hasStatementDates = request.session.data['start-day'] || request.session.data['start-month'] || request.session.data['start-year']
+	var hasEndDate = request.session.data['end-day'] || request.session.data['end-month'] || request.session.data['end-year']
+	var hasAddrHistDates = request.session.data['addr-start-day'] || request.session.data['addr-start-month'] || request.session.data['addr-start-year']
+	var hasAddrHistEndDate = request.session.data['addr-end-day'] || request.session.data['addr-end-month'] || request.session.data['addr-end-year']
+
+	// A blank statement end date means "up to today", so populate it with today's date
+	var todayDate = new Date()
+	var today = todayDate.getDate() + '/' + (todayDate.getMonth() + 1) + '/' + todayDate.getFullYear()
+	var statementDateRange = hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : today)) : ''
+
+	// Normalise the account-info checkboxes (a single checkbox arrives as a string).
+	// These selections drive the Yes/No summary rows on the check answers page and the
+	// "other accounts held by this person" sentence in the letter.
+	var accountInfo = request.session.data['account-info']
+	var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
+	var wantsStatements = details.indexOf("Bank statements") !== -1
+	var wantsOpening = details.indexOf("Opening account information, including identification documents") !== -1
+	var wantsList = details.indexOf("A list of all accounts held by this account holder") !== -1
+
+	var associatedAccountsText = ''
+	if (wantsStatements && wantsOpening) {
+		associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range') + ', including account opening information, including any forms of ID provided'
+	} else if (wantsStatements) {
+		associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range')
+	} else if (wantsList && wantsOpening) {
+		associatedAccountsText = 'List of all associated accounts held where the person is the named party and account opening information including any forms of ID provided'
+	} else if (wantsOpening) {
+		associatedAccountsText = 'Account opening information including any forms of ID provided for all associated accounts held where the person is the named party'
+	} else if (wantsList) {
+		associatedAccountsText = 'List of all associated accounts held where the person is the named party'
+	}
+
+	// Add current account details to the array
+	var account = {
+		fullName: request.session.data['fullName'],
+		dob: hasDob ? ((request.session.data['dob-day'] || '') + '/' + (request.session.data['dob-month'] || '') + '/' + (request.session.data['dob-year'] || '')) : '',
+		address: hasAddress ? ((request.session.data['address-line-1'] || '') + (request.session.data['address-line-2'] ? ', ' + request.session.data['address-line-2'] : '') + ', ' + (request.session.data['addressTown'] || '') + ', ' + (request.session.data['addressPostcode'] || '')) : '',
+		addressLine1: request.session.data['address-line-1'],
+		addressLine2: request.session.data['address-line-2'],
+		addressTown: request.session.data['addressTown'],
+		addressPostcode: request.session.data['addressPostcode'],
+		hasAddress: !!hasAddress,
+		sortCode: request.session.data['sortCode'],
+		accountNo: request.session.data['accountNo'],
+		cardNo: request.session.data['cardNo'],
+		rollNumber: request.session.data['rollNumber'],
+		openingInfo: wantsOpening ? "Yes" : "No",
+		bankState: wantsStatements ? "Yes" : "No",
+		statementDateRange: statementDateRange,
+		requestedDetails: request.session.data['account-info'],
+		associatedAccountsText: associatedAccountsText,
+		holderInfo: request.session.data['holder-info'],
+		addressHistory: request.session.data['address-history'],
+		addressHistoryDateRange: hasAddrHistDates ? ((request.session.data['addr-start-day'] || '') + '/' + (request.session.data['addr-start-month'] || '') + '/' + (request.session.data['addr-start-year'] || '') + ' to ' + (hasAddrHistEndDate ? ((request.session.data['addr-end-day'] || '') + '/' + (request.session.data['addr-end-month'] || '') + '/' + (request.session.data['addr-end-year'] || '')) : 'present')) : '',
+		additionalInfo: request.session.data['withHint'],
+		hasBankDetails: hasBankDetails ? true : false,
+
+		// Raw date parts kept alongside the display strings so a "Change" from the check
+		// answers page can re-populate the date inputs cleanly (see the change-account route).
+		dobDay: request.session.data['dob-day'],
+		dobMonth: request.session.data['dob-month'],
+		dobYear: request.session.data['dob-year'],
+		startDay: request.session.data['start-day'],
+		startMonth: request.session.data['start-month'],
+		startYear: request.session.data['start-year'],
+		endDay: request.session.data['end-day'],
+		endMonth: request.session.data['end-month'],
+		endYear: request.session.data['end-year'],
+		addrStartDay: request.session.data['addr-start-day'],
+		addrStartMonth: request.session.data['addr-start-month'],
+		addrStartYear: request.session.data['addr-start-year'],
+		addrEndDay: request.session.data['addr-end-day'],
+		addrEndMonth: request.session.data['addr-end-month'],
+		addrEndYear: request.session.data['addr-end-year']
+	}
+
+	// When arriving here from a "Change" link the investigator is editing an existing
+	// account, so overwrite that entry in place and return to the check answers page
+	// rather than adding a new account and continuing the add-another loop.
+	var editId = request.session.data['editAccountId']
+	if (editId !== undefined && editId !== '' && request.session.data['accounts'][editId]) {
+		request.session.data['accounts'][editId] = account
+		delete request.session.data['editAccountId']
+		response.redirect("check-answers")
+	} else {
+		request.session.data['accounts'].push(account)
 		response.redirect("add-another-account")
+	}
+})
+
+// "Change" links on the check answers page point here. It loads the chosen account's
+// stored answers back into the flat session fields the edit pages read from, flags the
+// account as being edited (editAccountId), then sends the investigator to the relevant
+// page to re-walk the flow from that point. The rebuilt account overwrites the original
+// when the flow reaches bank-account-request-3 again.
+router.get('/'+ version +'/investigator/change-account', function(request, response) {
+	var id = request.query.id
+	var page = request.query.page
+	var accounts = request.session.data['accounts'] || []
+	var account = accounts[id]
+
+	// Fall back to the check answers page if the link is malformed or the account is gone.
+	if (!account || !page) {
+		response.redirect("check-answers")
+		return
+	}
+
+	request.session.data['editAccountId'] = id
+
+	// Restore the flat fields the edit forms bind to, so the pages pre-fill with the
+	// account's current answers (and unedited fields survive the overwrite).
+	request.session.data['fullName'] = account.fullName
+	request.session.data['dob-day'] = account.dobDay
+	request.session.data['dob-month'] = account.dobMonth
+	request.session.data['dob-year'] = account.dobYear
+	request.session.data['address-line-1'] = account.addressLine1
+	request.session.data['address-line-2'] = account.addressLine2
+	request.session.data['addressTown'] = account.addressTown
+	request.session.data['addressPostcode'] = account.addressPostcode
+	request.session.data['sortCode'] = account.sortCode
+	request.session.data['accountNo'] = account.accountNo
+	request.session.data['cardNo'] = account.cardNo
+	request.session.data['rollNumber'] = account.rollNumber
+	request.session.data['account-info'] = account.requestedDetails
+	request.session.data['start-day'] = account.startDay
+	request.session.data['start-month'] = account.startMonth
+	request.session.data['start-year'] = account.startYear
+	request.session.data['end-day'] = account.endDay
+	request.session.data['end-month'] = account.endMonth
+	request.session.data['end-year'] = account.endYear
+	request.session.data['holder-info'] = account.holderInfo
+	request.session.data['address-history'] = account.addressHistory
+	request.session.data['addr-start-day'] = account.addrStartDay
+	request.session.data['addr-start-month'] = account.addrStartMonth
+	request.session.data['addr-start-year'] = account.addrStartYear
+	request.session.data['addr-end-day'] = account.addrEndDay
+	request.session.data['addr-end-month'] = account.addrEndMonth
+	request.session.data['addr-end-year'] = account.addrEndYear
+	request.session.data['withHint'] = account.additionalInfo
+
+	response.redirect(page)
 })
 
 //router.post('/'+ version +'/investigator/add-request', function(request, response) {
@@ -208,7 +362,9 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
     var requestType = request.session.data['requestType']
 
     if (addAnother == "Yes") {
-        // Clear account-specific data for next entry
+        // The account just entered has already been saved to the accounts array in the
+        // bank-account-request-3 step, so here we only clear the per-account fields so
+        // the next iteration starts from a clean set of forms.
         delete request.session.data['fullName']
         delete request.session.data['dob-day']
         delete request.session.data['dob-month']
@@ -220,6 +376,8 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
         delete request.session.data['sortCode']
         delete request.session.data['accountNo']
         delete request.session.data['cardNo']
+        delete request.session.data['account-info']
+        delete request.session.data['editAccountId']
         delete request.session.data['opening-info']
         delete request.session.data['bank-state']
         delete request.session.data['add-another']
@@ -263,86 +421,11 @@ router.post('/' + version + '/investigator/add-another-account', function(reques
             response.redirect("add-subject-financial-accounts")
         }
     } else {
-        // Initialize accounts array if it doesn't exist
-        if (!request.session.data['accounts']) {
-            request.session.data['accounts'] = []
-        }
-
-        // Work out which details the user actually entered so the summary only shows those
-        var hasDob = request.session.data['dob-day'] || request.session.data['dob-month'] || request.session.data['dob-year']
-        var hasAddress = request.session.data['address-line-1'] || request.session.data['address-line-2'] || request.session.data['addressTown'] || request.session.data['addressPostcode']
-        var hasBankDetails = request.session.data['sortCode'] || request.session.data['accountNo'] || request.session.data['cardNo'] || request.session.data['rollNumber']
-        var hasStatementDates = request.session.data['start-day'] || request.session.data['start-month'] || request.session.data['start-year']
-        var hasEndDate = request.session.data['end-day'] || request.session.data['end-month'] || request.session.data['end-year']
-        var hasTransactionDates = request.session.data['bank-start-day'] || request.session.data['bank-start-month'] || request.session.data['bank-start-year']
-        var hasTransactionEndDate = request.session.data['bank-end-day'] || request.session.data['bank-end-month'] || request.session.data['bank-end-year']
-        var hasAddrHistDates = request.session.data['addr-start-day'] || request.session.data['addr-start-month'] || request.session.data['addr-start-year']
-        var hasAddrHistEndDate = request.session.data['addr-end-day'] || request.session.data['addr-end-month'] || request.session.data['addr-end-year']
-
-        // A blank statement end date means "up to today", so populate it with today's date
-        var todayDate = new Date()
-        var today = todayDate.getDate() + '/' + (todayDate.getMonth() + 1) + '/' + todayDate.getFullYear()
-        var statementDateRange = hasStatementDates ? ((request.session.data['start-day'] || '') + '/' + (request.session.data['start-month'] || '') + '/' + (request.session.data['start-year'] || '') + ' to ' + (hasEndDate ? ((request.session.data['end-day'] || '') + '/' + (request.session.data['end-month'] || '') + '/' + (request.session.data['end-year'] || '')) : today)) : ''
-
-        // Build the "other accounts held by this person" sentence for the letter.
-        // The 3 checkboxes combine into one ordered statement; a bank-statement selection
-        // absorbs the plain "list" selection (matches the V5 design combinations).
-        var accountInfo = request.session.data['account-info']
-        var details = accountInfo ? (Array.isArray(accountInfo) ? accountInfo : [accountInfo]) : []
-        var wantsList = details.indexOf("List of all account details") !== -1
-        var wantsBankAll = details.indexOf("All accounts bank statements") !== -1
-        var wantsOpenAll = details.indexOf("All opening account information including ID") !== -1
-        var associatedAccountsText = ''
-        if (wantsBankAll && wantsOpenAll) {
-            associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range') + ', including account opening information, including any forms of ID provided'
-        } else if (wantsBankAll) {
-            associatedAccountsText = 'Bank statements for all associated accounts held where the person is the named party from ' + (statementDateRange || 'the requested date range')
-        } else if (wantsList && wantsOpenAll) {
-            associatedAccountsText = 'List of all associated accounts held where the person is the named party and account opening information including any forms of ID provided'
-        } else if (wantsOpenAll) {
-            associatedAccountsText = 'Account opening information including any forms of ID provided for all associated accounts held where the person is the named party'
-        } else if (wantsList) {
-            associatedAccountsText = 'List of all associated accounts held where the person is the named party'
-        }
-
-        // Add current account details to the array
-        var account = {
-            fullName: request.session.data['fullName'],
-            dob: hasDob ? ((request.session.data['dob-day'] || '') + '/' + (request.session.data['dob-month'] || '') + '/' + (request.session.data['dob-year'] || '')) : '',
-            address: hasAddress ? ((request.session.data['address-line-1'] || '') + (request.session.data['address-line-2'] ? ', ' + request.session.data['address-line-2'] : '') + ', ' + (request.session.data['addressTown'] || '') + ', ' + (request.session.data['addressPostcode'] || '')) : '',
-            addressLine1: request.session.data['address-line-1'],
-            addressLine2: request.session.data['address-line-2'],
-            addressTown: request.session.data['addressTown'],
-            addressPostcode: request.session.data['addressPostcode'],
-            hasAddress: !!hasAddress,
-            sortCode: request.session.data['sortCode'],
-            accountNo: request.session.data['accountNo'],
-            cardNo: request.session.data['cardNo'],
-            rollNumber: request.session.data['rollNumber'],
-            openingInfo: request.session.data['opening-info'],
-            bankState: request.session.data['bank-state'],
-            statementDateRange: statementDateRange,
-            transactionBalances: request.session.data['bank-state'],
-            transactionDateRange: hasTransactionDates ? ((request.session.data['bank-start-day'] || '') + '/' + (request.session.data['bank-start-month'] || '') + '/' + (request.session.data['bank-start-year'] || '') + ' to ' + (hasTransactionEndDate ? ((request.session.data['bank-end-day'] || '') + '/' + (request.session.data['bank-end-month'] || '') + '/' + (request.session.data['bank-end-year'] || '')) : 'present')) : '',
-            requestedDetails: request.session.data['account-info'],
-            associatedAccountsText: associatedAccountsText,
-            loanInfo: request.session.data['loan-info'],
-            holderInfo: request.session.data['holder-info'],
-            addressHistory: request.session.data['address-history'],
-            addressHistoryDateRange: hasAddrHistDates ? ((request.session.data['addr-start-day'] || '') + '/' + (request.session.data['addr-start-month'] || '') + '/' + (request.session.data['addr-start-year'] || '') + ' to ' + (hasAddrHistEndDate ? ((request.session.data['addr-end-day'] || '') + '/' + (request.session.data['addr-end-month'] || '') + '/' + (request.session.data['addr-end-year'] || '')) : 'present')) : '',
-            additionalInfo: request.session.data['withHint'],
-            hasBankDetails: hasBankDetails ? true : false
-        }
-
-        request.session.data['accounts'].push(account)
-
-        if (requestType == "Specific transaction details"){
+        if (requestType == "Specific transaction details") {
             response.redirect("check-answers-transaction")
-        }
-        else if (requestType == "Loans and mortgages"){
+        } else if (requestType == "Loans and mortgages") {
             response.redirect("check-answers-loan")
-        }
-        else {
+        } else {
             response.redirect("check-answers")
         }
     }

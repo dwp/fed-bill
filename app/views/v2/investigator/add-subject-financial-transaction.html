@@ -39,7 +39,7 @@
           <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
             Day
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transaction-day" name="transaction-day" type="text" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transaction-day" name="transaction-day" type="text" inputmode="numeric" value="{{ data['transaction-day'] }}">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -47,7 +47,7 @@
           <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
             Month
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transaction-month" name="transaction-month" type="text" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="transaction-month" name="transaction-month" type="text" inputmode="numeric" value="{{ data['transaction-month'] }}">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -55,7 +55,7 @@
           <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
             Year
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transaction-year" name="transaction-year" type="text" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="transaction-year" name="transaction-year" type="text" inputmode="numeric" value="{{ data['transaction-year'] }}">
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
             </h1>
             <div id="event-name-hint" class="govuk-hint">
 
-            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="payment-amount" name="payment-amount" type="text"            aria-describedby="event-name-hint"></div>
+            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="payment-amount" name="payment-amount" type="text"            aria-describedby="event-name-hint" value="{{ data['payment-amount'] }}"></div>
 
 
                     <div class="govuk-form-group">
@@ -83,13 +83,13 @@
 
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="creditType" name="creditType" type="radio" value="Credit">
+        <input class="govuk-radios__input" id="creditType" name="creditType" type="radio" value="Credit" {% if data['creditType'] == 'Credit' %}checked{% endif %}>
         <label class="govuk-label govuk-radios__label" for="categoryType">
           Credit
         </label>
       </div>
             <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="creditType-debit" name="creditType" type="radio" value="Debit">
+        <input class="govuk-radios__input" id="creditType-debit" name="creditType" type="radio" value="Debit" {% if data['creditType'] == 'Debit' %}checked{% endif %}>
         <label class="govuk-label govuk-radios__label" for="categoryType-7">
           Debit
         </label>
@@ -107,7 +107,7 @@
             </h1>
             <div id="event-name-hint" class="govuk-hint">
 
-            </div> <input class="govuk-input govuk-!-width-two-thirds" id="pay-ref" name="pay-ref" type="text" aria-describedby="event-name-hint"></div>
+            </div> <input class="govuk-input govuk-!-width-two-thirds" id="pay-ref" name="pay-ref" type="text" aria-describedby="event-name-hint" value="{{ data['pay-ref'] }}"></div>
 <br>
 
             <h2 class="govuk-heading-m"> Which account is this transaction related to?</h2>
@@ -123,7 +123,7 @@
             </h1>
             <div id="event-name-hint" class="govuk-hint">
               Must be 6 digits long
-            </div> <input class="govuk-input govuk-input--width-5 govuk-input--extra-letter-spacing" id="event-name" name="sortCode" type="text"            aria-describedby="event-name-hint"></div>
+            </div> <input class="govuk-input govuk-input--width-5 govuk-input--extra-letter-spacing" id="event-name" name="sortCode" type="text"            aria-describedby="event-name-hint" value="{{ data['sortCode'] }}"></div>
 
             <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
@@ -133,7 +133,7 @@
             </h1>
             <div id="event-name-hint" class="govuk-hint">
               Must be between 6 and 8 digits long
-            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="event-name" name="accountNo" type="text"            aria-describedby="event-name-hint"></div>
+            </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="event-name" name="accountNo" type="text"            aria-describedby="event-name-hint" value="{{ data['accountNo'] }}"></div>
 
 <br>
 

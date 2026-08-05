@@ -34,7 +34,7 @@
               {{data['provider']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              <a class="govuk-link" href="add-providor">Change<span class="govuk-visually-hidden"> who to send the request to</span></a>
             </dd>
           </div>
 
@@ -65,7 +65,9 @@
             <dd class="govuk-summary-list__value">
                {{data['categoryType']}}
             </dd>
-
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-category">Change<span class="govuk-visually-hidden"> what your request is about</span></a>
+            </dd>
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -74,7 +76,9 @@
             <dd class="govuk-summary-list__value">
                {{data['requestType']}}
             </dd>
-
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial">Change<span class="govuk-visually-hidden"> what financial information you need</span></a>
+            </dd>
           </div>
 
         </dl>
@@ -96,7 +100,7 @@
                {{account.fullName or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> full name</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -107,7 +111,7 @@
               {{account.dob or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> date of birth</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -118,7 +122,7 @@
               {% if account.addressLine1 %}{{account.addressLine1}}<br>{% endif %}{% if account.addressLine2 %}{{account.addressLine2}}<br>{% endif %}{% if account.addressTown %}{{account.addressTown}}<br>{% endif %}{% if account.addressPostcode %}{{account.addressPostcode}}<br>{% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> address</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -129,7 +133,7 @@
                {{account.sortCode or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> sort code</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -140,7 +144,7 @@
                {{account.accountNo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> account number</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -151,7 +155,7 @@
                {{account.cardNo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> card number</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -162,7 +166,7 @@
                {{account.rollNumber or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> roll number</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> building society roll number</span></a>
             </dd>
           </div>
           {% if account.hasBankDetails %}
@@ -174,7 +178,7 @@
                {{account.bankState or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> request bank statements for this account</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -185,7 +189,7 @@
               {{account.openingInfo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> request opening account information for this account</span></a>
             </dd>
           </div>
           {% endif %}
@@ -209,10 +213,10 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> requested details</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> requested account details</span></a>
             </dd>
           </div>
-          {% if account.bankState == "Yes" or (account.requestedDetails and "All accounts bank statements" in account.requestedDetails) %}
+          {% if account.statementDateRange %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date range for requested bank statements
@@ -221,7 +225,7 @@
               {{account.statementDateRange or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date range</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-2">Change<span class="govuk-visually-hidden"> bank statement date range</span></a>
             </dd>
           </div>
           {% endif %}
@@ -233,7 +237,7 @@
                {{account.holderInfo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> account holder name, address and date of birth</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> request account holder name, address and date of birth</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -244,7 +248,7 @@
                {{account.addressHistory or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> request address history</span></a>
             </dd>
           </div>
           {% if account.addressHistory == "Yes" %}
@@ -256,7 +260,7 @@
                {{account.addressHistoryDateRange or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address history date range</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> address history date range</span></a>
             </dd>
           </div>
           {% endif %}
@@ -268,7 +272,7 @@
                {{account.additionalInfo or '-'}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> additional information</span></a>
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> additional information</span></a>
             </dd>
           </div>
         </dl>

@@ -42,7 +42,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-day">
             Day
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="text" autocomplete="bday-day" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-day" name="start-day" type="text" value="{{ data['start-day'] }}" autocomplete="bday-day" inputmode="numeric">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -50,7 +50,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-month">
             Month
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="text" autocomplete="bday-month" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-month" name="start-month" type="text" value="{{ data['start-month'] }}" autocomplete="bday-month" inputmode="numeric">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -58,7 +58,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-year">
             Year
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year" type="text" autocomplete="bday-year" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-year" name="start-year" type="text" value="{{ data['start-year'] }}" autocomplete="bday-year" inputmode="numeric">
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-day">
             Day
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-day" name="end-day" type="text" autocomplete="bday-day" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-day" name="end-day" type="text" value="{{ data['end-day'] }}" autocomplete="bday-day" inputmode="numeric">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -86,7 +86,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-month">
             Month
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="end-month" type="text" autocomplete="bday-month" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="end-month" name="end-month" type="text" value="{{ data['end-month'] }}" autocomplete="bday-month" inputmode="numeric">
         </div>
       </div>
       <div class="govuk-date-input__item">
@@ -94,7 +94,7 @@
           <label class="govuk-label govuk-date-input__label" for="dob-year">
             Year
           </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-year" name="end-year" type="text" autocomplete="bday-year" inputmode="numeric">
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="end-year" name="end-year" type="text" value="{{ data['end-year'] }}" autocomplete="bday-year" inputmode="numeric">
         </div>
       </div>
     </div>
