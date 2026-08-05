@@ -99,21 +99,21 @@
         </legend>
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements" {% if data['account-info'] and "Bank statements" in data['account-info'] %}checked{% endif %}>
-            <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
+            <input class="govuk-checkboxes__input" id="holder-account-info-statements" name="holder-account-info" type="checkbox" value="Bank statements" {% if data['holder-account-info'] and "Bank statements" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-statements">
               Bank statements
             </label>
           </div>
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['account-info'] and "Opening account information, including identification documents" in data['account-info'] %}checked{% endif %}>
-            <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
+            <input class="govuk-checkboxes__input" id="holder-account-info-opening" name="holder-account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['holder-account-info'] and "Opening account information, including identification documents" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-opening">
               Opening account information, including identification documents
             </label>
           </div>
           <div class="govuk-checkboxes__divider">or</div>
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="countries-5" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
-            <label class="govuk-label govuk-checkboxes__label" for="countries-5">
+            <input class="govuk-checkboxes__input" id="holder-account-info-none" name="holder-account-info" type="checkbox" value="none" data-behaviour="exclusive" {% if data['holder-account-info'] and "none" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-none">
               I do not want to request any additional account information
             </label>
           </div>
@@ -150,8 +150,8 @@
       </div>
     <div class="govuk-checkboxes__divider">or</div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="countries-5" name="countries" type="checkbox" value="none" data-behaviour="exclusive">
-      <label class="govuk-label govuk-checkboxes__label" for="countries-5">
+      <input class="govuk-checkboxes__input" id="account-info-none" name="account-info" type="checkbox" value="none" data-behaviour="exclusive" {% if data['account-info'] and "none" in data['account-info'] %}checked{% endif %}>
+      <label class="govuk-label govuk-checkboxes__label" for="account-info-none">
         I do not want to request any additional account information
       </label>
     </div>
