@@ -211,14 +211,25 @@ router.post('/'+ version +'/investigator/bank-account-request-3', function(reque
 // account as being edited (editAccountId), then sends the investigator to the relevant
 // page to re-walk the flow from that point. The rebuilt account overwrites the original
 // when the flow reaches bank-account-request-3 again.
+// The only pages a "Change" link is allowed to send the investigator to. Validating the
+// requested page against this allowlist prevents an open-redirect: `page` comes from the
+// query string (untrusted input) and must never be passed straight to redirect().
+var CHANGE_ACCOUNT_PAGES = [
+	"add-subject-financial-accounts",
+	"bank-account-request",
+	"bank-account-request-2",
+	"bank-account-request-3"
+]
+
 router.get('/'+ version +'/investigator/change-account', function(request, response) {
 	var id = request.query.id
 	var page = request.query.page
 	var accounts = request.session.data['accounts'] || []
 	var account = accounts[id]
 
-	// Fall back to the check answers page if the link is malformed or the account is gone.
-	if (!account || !page) {
+	// Fall back to the check answers page if the link is malformed, the account is gone,
+	// or the requested page is not one of the known (allowlisted) edit pages.
+	if (!account || CHANGE_ACCOUNT_PAGES.indexOf(page) === -1) {
 		response.redirect("check-answers")
 		return
 	}
@@ -256,7 +267,9 @@ router.get('/'+ version +'/investigator/change-account', function(request, respo
 	request.session.data['addr-end-year'] = account.addrEndYear
 	request.session.data['withHint'] = account.additionalInfo
 
-	response.redirect(page)
+	// Redirect using the allowlisted value (a hardcoded constant), never the raw query
+	// parameter, so the destination cannot be an untrusted/attacker-controlled URL.
+	response.redirect(CHANGE_ACCOUNT_PAGES[CHANGE_ACCOUNT_PAGES.indexOf(page)])
 })
 
 //router.post('/'+ version +'/investigator/add-request', function(request, response) {
