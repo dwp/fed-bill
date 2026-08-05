@@ -9,20 +9,20 @@
   <div class="govuk-grid-column-full ">
 
   {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
-  <h2 class="govuk-heading-l">Request for specific transaction details</h2>
+  <h2 class="govuk-heading-l">Request specific transaction details</h2>
 
     <form method="post">
 
-      <p>This request will ask {{data['provider']}} to provide all details of the transaction you have specified. For example, where the transaction has come from or been sent to.</p>     
-            
+      <p>This request will ask {{data['provider']}} for details about a specific transaction, including where the payment came from or where it was sent.</p>
+
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-    
-  
+
+
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -69,18 +69,18 @@
               </label>
             </h1>
             <div id="event-name-hint" class="govuk-hint">
-              
+
             </div> <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="payment-amount" name="payment-amount" type="text"            aria-describedby="event-name-hint"></div>
 
-            
+
                     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-       Was the payment credit or debit? 
+       Was the payment credit or debit?
       </h1>
     </legend>
-   
+
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="creditType" name="creditType" type="radio" value="Credit">
@@ -97,8 +97,8 @@
     </div>
   </fieldset>
 </div>
-            
-            
+
+
             <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
               <label class="govuk-label govuk-label--m" for="event-name">
@@ -106,13 +106,13 @@
               </label>
             </h1>
             <div id="event-name-hint" class="govuk-hint">
-             
+
             </div> <input class="govuk-input govuk-!-width-two-thirds" id="pay-ref" name="pay-ref" type="text" aria-describedby="event-name-hint"></div>
 <br>
 
             <h2 class="govuk-heading-m"> Which account is this transaction related to?</h2>
 
-            <p>Provide account details related to the bank statement that held the transaction.</p>
+            <p>Enter the account details for the account the transaction was paid into.</p>
 
 
         <div class="govuk-form-group">
@@ -124,7 +124,7 @@
             <div id="event-name-hint" class="govuk-hint">
               Must be 6 digits long
             </div> <input class="govuk-input govuk-input--width-5 govuk-input--extra-letter-spacing" id="event-name" name="sortCode" type="text"            aria-describedby="event-name-hint"></div>
-           
+
             <div class="govuk-form-group">
             <h1 class="govuk-label-wrapper">
               <label class="govuk-label govuk-label--s" for="event-name">
@@ -137,22 +137,22 @@
 
 <br>
 
-         
 
-            
+
+
     <br>
-     
-        
-   
+
+
+
     </div>
   </fieldset>
 </div>
-            
-            
-          
-           
- 
-              
+
+
+
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -176,10 +176,9 @@
 
 
 
-    
+
   </div>
 </div>
 
 {% endblock %}
-    
-  
+

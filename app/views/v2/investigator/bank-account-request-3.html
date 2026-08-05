@@ -143,6 +143,9 @@
      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
        Start date
     </legend>
+    <div id="dob-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
 
     <div class="govuk-date-input" id="dob">
       <div class="govuk-date-input__item">
@@ -178,7 +181,7 @@
       End date (optional)
     </legend>
     <div id="dob-hint" class="govuk-hint">
-      Leave blank to ask for information up to the current date.
+      Leave blank to request information up to the current date.
     </div>
     <div class="govuk-date-input" id="end-date">
       <div class="govuk-date-input__item">
@@ -212,7 +215,7 @@
 </div>
 
 
-<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
   <h1 class="govuk-label-wrapper">
     <label class="govuk-label govuk-label--m" for="with-hint">
       Can you provide more details about your request? (optional)
@@ -223,7 +226,7 @@
   </div>
   <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
-    You can enter up to 2000 characters
+    You can enter up to 5000 characters
   </div>
 </div>
 </fieldset>

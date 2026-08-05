@@ -9,7 +9,7 @@
   <div class="govuk-grid-one-half">
 
      {% include '/includes/name-and-nino.html' %}
-    
+
     {% include '/includes/cfem-investigator-layout.html' %}
 
     <div class="govuk-grid-row">
@@ -17,23 +17,25 @@
 
    <form method="post">
 
-           
+
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-       Enter the date range for the requested bank statements  
+       Enter the date range for the requested bank statements
       </h1>
     </legend>
     <br>
 
     <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-    
+
      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
        Start date
     </legend>
-    
+    <div id="dob-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
     <div class="govuk-date-input" id="dob">
       <div class="govuk-date-input__item">
         <div class="govuk-form-group">
@@ -60,7 +62,7 @@
         </div>
       </div>
     </div>
-  
+
   </fieldset>
 </div>
 
@@ -68,7 +70,7 @@
       End date (optional)
     </legend>
     <div id="dob-hint" class="govuk-hint">
-      Leave blank to ask for information up to the current date. 
+      Leave blank to request information up to the current date.
     </div>
     <div class="govuk-date-input" id="end-date">
       <div class="govuk-date-input__item">
@@ -100,10 +102,10 @@
 
   </fieldset>
 </div>
-              
 
- 
-              
+
+
+
       <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
@@ -126,7 +128,7 @@
 
 {% include '/includes/case-table.html' %}
 
-    
+
   </div>
 </div>
 
