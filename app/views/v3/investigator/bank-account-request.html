@@ -1,0 +1,205 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-one-half">
+
+     {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+    <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+
+   <form method="post">
+
+
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+       Request account information
+      </h1>
+    </legend>
+
+    {% set hasBankDetails = data['sortCode'] or data['accountNo'] or data['cardNo'] or data['rollNumber'] %}
+
+    <p>Here are the account holder details you have entered:</p>
+
+    <div class="govuk-inset-text">
+      {% if data['fullName'] %}Account name: {{data['fullName']}}<br>{% endif %}
+      {% if data['sortCode'] %}Sort code: {{data['sortCode']}}<br>{% endif %}
+      {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+      {% if data['cardNo'] %}Card number: {{data['cardNo']}}<br>{% endif %}
+      {% if data['rollNumber'] %}Building society roll number: {{data['rollNumber']}}<br>{% endif %}
+    </div>
+
+
+    <div class="govuk-form-group">
+
+
+
+{% if hasBankDetails %}
+<!--<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you want bank statements for this account?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+        <label class="govuk-label govuk-radios__label" for="signIn">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="signIn-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<br>
+
+<fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you want  all opening account information, including ID, for this account?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="opening-info" name="opening-info" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+        <label class="govuk-label govuk-radios__label" for="opening-info">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="signIn-2" name="opening-info" type="radio" value="No" aria-describedby="signIn-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="signIn-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>-->
+
+      <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            What information would you like to request for this account?
+          </h1>
+        </legend>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="holder-account-info-statements" name="holder-account-info" type="checkbox" value="Bank statements" {% if data['holder-account-info'] and "Bank statements" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-statements">
+              Bank statements
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="holder-account-info-opening" name="holder-account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['holder-account-info'] and "Opening account information, including identification documents" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-opening">
+              Opening account information, including identification documents
+            </label>
+          </div>
+          <div class="govuk-checkboxes__divider">or</div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="holder-account-info-none" name="holder-account-info" type="checkbox" value="none" data-behaviour="exclusive" {% if data['holder-account-info'] and "none" in data['holder-account-info'] %}checked{% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="holder-account-info-none">
+              I do not want to request any additional account information
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+  <br>
+{% endif %}
+    <br>
+  <fieldset class="govuk-fieldset" aria-describedby="account-info-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        {% if hasBankDetails %}What information would you like to request for other accounts held by the same account holder with {{data['provider'] or 'this provider'}}?{% else %}What account information would you like to request?{% endif %}
+      </h1>
+    </legend>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="account-info-statements" name="account-info" type="checkbox" value="Bank statements" {% if data['account-info'] and "Bank statements" in data['account-info'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-statements">
+          Bank statements
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="account-info-opening" name="account-info" type="checkbox" value="Opening account information, including identification documents" {% if data['account-info'] and "Opening account information, including identification documents" in data['account-info'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-opening">
+          Opening account information, including identification documents
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="account-info-list" name="account-info" type="checkbox" value="A list of all accounts held by this account holder" {% if data['account-info'] and "A list of all accounts held by this account holder" in data['account-info'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="account-info-list">
+          A list of all accounts held by this account holder
+        </label>
+      </div>
+    <div class="govuk-checkboxes__divider">or</div>
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="account-info-none" name="account-info" type="checkbox" value="none" data-behaviour="exclusive" {% if data['account-info'] and "none" in data['account-info'] %}checked{% endif %}>
+      <label class="govuk-label govuk-checkboxes__label" for="account-info-none">
+        I do not want to request any additional account information
+      </label>
+    </div>
+  </div>
+  </fieldset>
+
+  </div>
+  </div>
+      </div>
+
+
+
+
+  </fieldset>
+</div>
+
+
+<br>
+
+
+
+
+
+      <div class="govuk-button-group">
+       <button type="submit" class="govuk-button" data-module="govuk-button">
+         Save and continue
+       </button>
+       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+         Back
+       </a>
+      </div>
+
+   </form>
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+{% include '/includes/case-table.html' %}
+
+
+  </div>
+</div>
+
+{% endblock %}

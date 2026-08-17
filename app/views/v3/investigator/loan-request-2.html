@@ -1,0 +1,203 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+  {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+
+    <h1 class="govuk-heading-l">Request account details</h1>
+
+    <p>Here are the account details you have entered:</p>
+
+    <div class="govuk-inset-text">
+      {% if data['loanAccount-name'] %}Name: {{data['loanAccount-name']}}<br>{% endif %}
+      {% if data['dob-day'] or data['dob-month'] or data['dob-year'] %}Date of birth: {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}<br>{% endif %}
+      {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}Address: {{data['address-line-1']}}{% if data['address-line-2'] %}, {{data['address-line-2']}}{% endif %}{% if data['addressTown'] %}, {{data['addressTown']}}{% endif %}{% if data['addressPostcode'] %}, {{data['addressPostcode']}}{% endif %}<br>{% endif %}
+      {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+    </div>
+
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want to request confirmation of name, address and date of birth?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="holder-info" name="holder-info" type="radio" value="Yes" {% if data['holder-info'] == 'Yes' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="holder-info">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="holder-info-no" name="holder-info" type="radio" value="No" {% if data['holder-info'] == 'No' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="holder-info-no">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want the account holders address history?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="address-history" name="address-history" type="radio" value="Yes" {% if data['address-history'] == 'Yes' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="address-history">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="address-history-no" name="address-history" type="radio" value="No" {% if data['address-history'] == 'No' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="address-history-no">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Date range for address history
+            </h1>
+          </legend>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="addr-start-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                  Start date
+                </h1>
+              </legend>
+              <div id="addr-start-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="addr-start">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-start-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-day" name="addr-start-day" type="text" inputmode="numeric" value="{{ data['addr-start-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-start-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-month" name="addr-start-month" type="text" inputmode="numeric" value="{{ data['addr-start-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-start-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-start-year" name="addr-start-year" type="text" inputmode="numeric" value="{{ data['addr-start-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="addr-end-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                  End date
+                </h1>
+              </legend>
+              <div id="addr-end-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="addr-end">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-end-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-day" name="addr-end-day" type="text" inputmode="numeric" value="{{ data['addr-end-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-end-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-month" name="addr-end-month" type="text" inputmode="numeric" value="{{ data['addr-end-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="addr-end-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-end-year" name="addr-end-year" type="text" inputmode="numeric" value="{{ data['addr-end-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--m" for="additional-info">
+            Can you provide more details about your request? (optional)
+          </label>
+        </h1>
+        <div id="additional-info-hint" class="govuk-hint">
+          For example, outstanding balance or repayment history from a requested date. What you write here will be sent in a letter to the provider. Write clearly and avoid acronyms.
+        </div>
+        <textarea class="govuk-textarea govuk-js-character-count" id="additional-info" name="additional-loan-info" rows="8" aria-describedby="additional-info-info additional-info-hint">{{ data['additional-loan-info'] }}</textarea>
+        <div id="additional-info-info" class="govuk-hint govuk-character-count__message">
+          You can enter up to 2000 characters
+        </div>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+        <a href="loan-request" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+          Back
+        </a>
+      </div>
+
+    </form>
+
+  </div>
+  </div>
+
+
+
+  </div>
+  <br>
+
+  {% include '/includes/case-table.html' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,244 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+  {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+
+    <h1 class="govuk-heading-l">Request loan information</h1>
+
+    <p>Here are the account details you have entered:</p>
+
+    <div class="govuk-inset-text">
+      {% if data['loanAccount-name'] %}Name: {{data['loanAccount-name']}}<br>{% endif %}
+      {% if data['dob-day'] or data['dob-month'] or data['dob-year'] %}Date of birth: {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}<br>{% endif %}
+      {% if data['address-line-1'] or data['address-line-2'] or data['addressTown'] or data['addressPostcode'] %}Address: {{data['address-line-1']}}{% if data['address-line-2'] %}, {{data['address-line-2']}}{% endif %}{% if data['addressTown'] %}, {{data['addressTown']}}{% endif %}{% if data['addressPostcode'] %}, {{data['addressPostcode']}}{% endif %}<br>{% endif %}
+      {% if data['accountNo'] %}Account number: {{data['accountNo']}}<br>{% endif %}
+    </div>
+
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="bank-state-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want transaction and balances for this account?
+            </h1>
+          </legend>
+          <div id="bank-state-hint" class="govuk-hint">
+            This includes the request for outstanding balance
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state" name="bank-state" type="radio" value="Yes" {% if data['bank-state'] == 'Yes' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="bank-state">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="bank-state-no" name="bank-state" type="radio" value="No" {% if data['bank-state'] == 'No' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="bank-state-no">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="date-range-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Date range for requested transaction and balances
+            </h1>
+          </legend>
+          <div id="date-range-hint" class="govuk-hint">
+            Only complete this if you have selected you want to request transaction and balances.
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="start-date-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                 Start date
+                </h1>
+              </legend>
+              <div id="start-date-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="bank-start">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-start-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-day" name="bank-start-day" type="text" inputmode="numeric" value="{{ data['bank-start-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-start-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-start-month" name="bank-start-month" type="text" inputmode="numeric" value="{{ data['bank-start-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-start-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-start-year" name="bank-start-year" type="text" inputmode="numeric" value="{{ data['bank-start-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="end-date-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                 End date (optional)
+                </h1>
+              </legend>
+              <div id="end-date-hint" class="govuk-hint">
+                Leave blank to ask for information up to the current date. For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="bank-end">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-end-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-day" name="bank-end-day" type="text" inputmode="numeric" value="{{ data['bank-end-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-end-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="bank-end-month" name="bank-end-month" type="text" inputmode="numeric" value="{{ data['bank-end-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="bank-end-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="bank-end-year" name="bank-end-year" type="text" inputmode="numeric" value="{{ data['bank-end-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="account-details-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              What specific account details do you need?
+            </h1>
+          </legend>
+          <div id="account-details-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="account-info-1" name="account-info" type="checkbox" value="Loan or mortgage account number" {% if data['account-info'] and "Loan or mortgage account number" in data['account-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="account-info-1">
+                Loan or mortgage account number
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="account-info-2" name="account-info" type="checkbox" value="Bank details used for repayment" {% if data['account-info'] and "Bank details used for repayment" in data['account-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="account-info-2">
+                Bank details used for repayment
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="account-info-3" name="account-info" type="checkbox" value="Dates the account was opened and closed" {% if data['account-info'] and "Dates the account was opened and closed" in data['account-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="account-info-3">
+                Dates the account was opened and closed
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="account-info-4" name="account-info" type="checkbox" value="Type of loan or mortgage" {% if data['account-info'] and "Type of loan or mortgage" in data['account-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="account-info-4">
+                Type of loan or mortgage
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="loan-investigation-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              What loan information do you want to request within the investigation period?
+            </h1>
+          </legend>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              You can only request this information if the loan opening date is known to be within the investigation period.
+            </strong>
+          </div>
+          <div id="loan-investigation-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="loan-info-1" name="loan-info" type="checkbox" value="Loan application or agreement" {% if data['loan-info'] and "Loan application or agreement" in data['loan-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="loan-info-1">
+                Loan application or agreement
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="loan-info-2" name="loan-info" type="checkbox" value="Copies of ID provided" {% if data['loan-info'] and "Copies of ID provided" in data['loan-info'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="loan-info-2">
+                Copies of ID provided
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+        <a href="add-subject-financial-loans" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+          Back
+        </a>
+      </div>
+
+    </form>
+
+  </div>
+  </div>
+
+
+
+
+
+  </div><br>{% include '/includes/case-table.html' %}
+</div>
+
+{% endblock %}

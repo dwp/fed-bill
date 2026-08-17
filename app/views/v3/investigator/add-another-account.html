@@ -15,11 +15,14 @@
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <h2 class="govuk-heading-l">Add another subject</h2>
+  <h2 class="govuk-heading-l">Add another account</h2>
 
    <form method="post">
 
-      <p>You have requested information about 1 subject.  You can add 9 more subjects to this request.</p>
+      {% set accountCount = data['accounts'] | length %}
+      {% set remainingAccounts = 10 - accountCount %}
+
+      <p>You have requested financial information about {{ accountCount }} account{{ 's' if accountCount != 1 }}. You can add {{ remainingAccounts }} more account{{ 's' if remainingAccounts != 1 }} to this request.</p>
 
 
 
@@ -27,21 +30,21 @@
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
       <h1 class="govuk-fieldset__heading">
-       Do you want to add another subject?
+       Do you want to add another account?
       </h1>
     </legend>
 
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes"  data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="add-another-yes" name="add-another" type="radio" value="Yes">
+        <label class="govuk-label govuk-radios__label" for="add-another-yes">
           Yes
         </label>
       </div>
 
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <label class="govuk-label govuk-radios__label" for="add-another-no">
           No
         </label>
       </div>
@@ -49,27 +52,21 @@
       </div>
 
       </div>
-    </div>
-  </fieldset>
-</div>
+    </fieldset>
+  </div>
 
-
-          </div>
-
-
-
-      <div class="govuk-button-group">
+  <div class="govuk-button-group">
        <button type="submit" class="govuk-button" data-module="govuk-button">
          Save and continue
        </button>
-      <!-- <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
          Back
-       </a>-->
+       </a>
       </div>
 
    </form>
 
-</div>
+  </div>
 </div>
 
 </div>
@@ -78,8 +75,5 @@
 
 {% include '/includes/case-table.html' %}
 
-
-  </div>
-</div>
 
 {% endblock %}

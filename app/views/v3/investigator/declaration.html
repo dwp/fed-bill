@@ -1,0 +1,63 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+
+   {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <h2 class="govuk-heading-l">Declaration</h2>
+
+   <form method="post">
+
+     <p class="govuk-body">By sending this request to {{data['provider']}}, you confirm that you have completed and recorded the following checks:</p>
+     <ul class="govuk-list govuk-list--bullet">
+       <li>the request is required and necessary</li>
+       <li>the request is proportionate and lawful</li>
+       <li>less intrusive enquiries have been completed</li>
+       <li>the risk of obtaining collateral information have been reviewed</li>
+     </ul>
+
+<br>
+
+</div>
+
+
+          </div>
+
+
+
+      <div class="govuk-button-group">
+       <button type="submit" class="govuk-button" data-module="govuk-button">
+         Send request
+       </button>
+       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+         Back
+       </a>
+      </div>
+
+   </form>
+
+</div>
+</div>
+
+</div>
+
+<br>
+
+{% include '/includes/case-table.html' %}
+
+
+  </div>
+</div>
+
+{% endblock %}

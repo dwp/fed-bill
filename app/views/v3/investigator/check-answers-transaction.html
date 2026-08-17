@@ -1,0 +1,203 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+  {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <h2 class="govuk-heading-m">Check your answers before creating the request</h2>
+
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full-from-desktop">
+        <h2 class="govuk-heading-m">Add provider</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Who do you want to send the request to?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['provider']}}
+            </dd>
+            <!--<dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-providor">Change<span class="govuk-visually-hidden"> who to send the request to</span></a>
+            </dd>-->
+          </div>
+
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Preferred contact details
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              <p class="govuk-body">sarah.phillips@example.com</p>
+              <!--or/if email  {{data['email']}} or address -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+        </dl>
+
+
+
+
+
+        <h2 class="govuk-heading-m">Request</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is your request about?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['categoryType']}}
+            </dd>
+           <!-- <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-category">Change<span class="govuk-visually-hidden"> what your request is about</span></a>
+            </dd>-->
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Request financial information
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['requestType']}}
+            </dd>
+           <!-- <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial">Change<span class="govuk-visually-hidden"> the financial information requested</span></a>
+            </dd>-->
+          </div>
+
+        </dl>
+
+
+        <h2 class="govuk-heading-m">Request details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of transaction
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['transaction-day']}}/{{data['transaction-month']}}/{{data['transaction-year']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> date of transaction</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['payment-amount']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> payment amount</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Tyep of payment
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['creditType']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> type of payment</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment reference
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['pay-ref']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> payment reference</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['sortCode']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> sort code</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['accountNo']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial-transaction">Change<span class="govuk-visually-hidden"> account number</span></a>
+            </dd>
+          </div>
+          </dl>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Add another transaction?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['add-another'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-another-transaction">
+                Change<span class="govuk-visually-hidden"> add another transaction</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+
+
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Create request
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+  </div></div></div>
+  <br>
+  {% include '/includes/case-table.html' %}
+
+
+
+
+</div>
+
+{% endblock %}

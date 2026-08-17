@@ -1,0 +1,133 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+  {% include '/includes/name-and-nino.html' %}
+    
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <h2 class="govuk-heading-m">Remove request 2</h2>
+ 
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full-from-desktop">
+          
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Full name 
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['fullName']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['dob-day']}}/{{data['dob-month']}}/{{data['dob-year']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> licence type</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['address-line-1']}}<br>{{data['address-line-2']}}<br>{{data['addressTown']}}<br>{{data['addressPostcode']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional subject details
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['additional-info']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> licence type</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What would you like to request from {{data['provider']}}?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['request-info']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+         
+          </dl>
+
+
+   
+
+         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+       Are you sure you want to remove request 2?
+      </h1>
+    </legend>
+    <br>
+  
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes"  data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-radios__label" for="contact">
+          Yes, remove request details
+        </label>
+      </div>
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="add-another-no" name="add-another" type="radio" value="No" >
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios" id="conditional-contact-2">
+      </div>
+      <br>
+
+
+       <button type="submit" class="govuk-button" data-module="govuk-button">
+         Continue
+       </button>
+
+ 
+  </main>
+           
+
+
+</div>
+</div>
+
+</div>
+
+<br>
+
+{% include '/includes/case-table.html' %}
+
+    
+  </div>
+</div>
+
+{% endblock %}

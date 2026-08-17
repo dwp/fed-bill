@@ -1,0 +1,315 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+  {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <h2 class="govuk-heading-l">Check your answers before creating the request</h2>
+  <!--{{data | dump
+  }} -->
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full-from-desktop">
+        <h2 class="govuk-heading-m">Add provider</h2>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Who do you want to send the request to?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['provider']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-providor">Change<span class="govuk-visually-hidden"> who to send the request to</span></a>
+            </dd>
+          </div>
+
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Preferred contact details
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              <p class="govuk-body">sarah.phillips@example.com</p>
+              <!--or/if email  {{data['email']}} or address -->
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+        </dl>
+
+
+        <h2 class="govuk-heading-m">Request</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is your request about?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['categoryType']}}
+            </dd>
+           <!--<dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-category">Change<span class="govuk-visually-hidden"> what your request is about</span></a>
+            </dd>-->
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What financial information do you need?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{data['requestType']}}
+            </dd>
+            <!--<dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-subject-financial">Change<span class="govuk-visually-hidden"> what financial information you need</span></a>
+            </dd>-->
+          </div>
+
+        </dl>
+
+
+        {% for account in data['accounts'] %}
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 class="govuk-heading-m">Account {{ loop.index }} details</h2>
+          {% if data['accounts'] | length > 1 %}
+            <p class="govuk-body"><a class="govuk-link" href="remove-account?id={{ loop.index0 }}">Remove<span class="govuk-visually-hidden"> account {{ loop.index }}</span></a></p>
+          {% endif %}
+        </div>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.fullName or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> full name</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Date of Birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{account.dob or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if account.addressLine1 %}{{account.addressLine1}}<br>{% endif %}{% if account.addressLine2 %}{{account.addressLine2}}<br>{% endif %}{% if account.addressTown %}{{account.addressTown}}<br>{% endif %}{% if account.addressPostcode %}{{account.addressPostcode}}<br>{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.sortCode or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> sort code</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.accountNo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> account number</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Card number
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.cardNo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> card number</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Building society roll number
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.rollNumber or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=add-subject-financial-accounts">Change<span class="govuk-visually-hidden"> building society roll number</span></a>
+            </dd>
+          </div>
+          {% if account.hasBankDetails %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Requested account information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if account.holderAccountInfo %}
+              <ul class="govuk-list govuk-list--bullet">
+              {% if account.holderAccountInfo is string %}
+                <li>{{account.holderAccountInfo}}</li>
+              {% else %}
+              {% for item in account.holderAccountInfo %}
+                <li>{{item}}</li>
+              {% endfor %}
+              {% endif %}
+              </ul>
+              {% else %}
+              -
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> requested account holder details</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Requested information for other accounts with {{data['provider']}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if account.requestedDetails %}
+              <ul class="govuk-list govuk-list--bullet">
+              {% if account.requestedDetails is string %}
+                <li>{{account.requestedDetails}}</li>
+              {% else %}
+              {% for item in account.requestedDetails %}
+                <li>{{item}}</li>
+              {% endfor %}
+              {% endif %}
+              </ul>
+              {% else %}
+              -
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request">Change<span class="govuk-visually-hidden"> requested account details</span></a>
+            </dd>
+          </div>
+          {% if account.statementDateRange %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date range for requested bank statements
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{account.statementDateRange or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-2">Change<span class="govuk-visually-hidden"> bank statement date range</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Request account name, address and date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.holderInfo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> request account holder name, address and date of birth</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Request address history
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.addressHistory or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> request address history</span></a>
+            </dd>
+          </div>
+          {% if account.addressHistory == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address history date range
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.addressHistoryDateRange or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> address history date range</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional information about the request
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{account.additionalInfo or '-'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="change-account?id={{ loop.index0 }}&amp;page=bank-account-request-3">Change<span class="govuk-visually-hidden"> additional information</span></a>
+            </dd>
+          </div>
+        </dl>
+        {% endfor %}
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Add an additional account holder?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['add-another'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="add-another-account">
+                Change<span class="govuk-visually-hidden"> add another account</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Create request
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+  </div>
+</div>
+</div>
+    <br>
+    {% include '/includes/case-table.html' %}
+</div>
+
+{% endblock %}

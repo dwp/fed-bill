@@ -10,5 +10,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 require('./views/v1/investigator/routes.js')
 require('./views/v2/investigator/routes.js')
+require('./views/v3/investigator/routes.js')
 require('./views/v1/portal/routes.js')
 require('./views/v2/portal/routes.js')
+require('./views/v3/portal/routes.js')

@@ -1,0 +1,261 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-one-half">
+
+     {% include '/includes/name-and-nino.html' %}
+
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+    <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+
+   <form method="post">
+
+
+             <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+       Additional information about the request
+      </h1>
+    </legend>
+    <br>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Do you want account holder name, address and date of birth?
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="holder-info" name="holder-info" type="radio" value="Yes" aria-describedby="signIn-item-hint" {% if data['holder-info'] == 'Yes' %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="signIn">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="holder-info-no" name="holder-info" type="radio" value="No" aria-describedby="signIn-2-item-hint" {% if data['holder-info'] == 'No' %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="signIn-2">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <br>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Do you want the account holders address history?
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="address-history" name="address-history" type="radio" value="Yes" aria-describedby="signIn-item-hint" {% if data['address-history'] == 'Yes' %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="signIn">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="address-history-no" name="address-history" type="radio" value="No" aria-describedby="signIn-2-item-hint" {% if data['address-history'] == 'No' %}checked{% endif %}>
+            <label class="govuk-label govuk-radios__label" for="signIn-2">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <br>
+
+   <!-- <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Specific account details
+      </h1>
+    </legend>
+    <div id="countries-hint" class="govuk-hint">
+      Select all that apply
+    </div>
+   <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Account holder name">
+        <label class="govuk-label govuk-checkboxes__label" for="countries">
+          Account holder name
+        </label>
+      </div>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Date of Birth">
+        <label class="govuk-label govuk-checkboxes__label" for="countries">
+          Date of Birth
+        </label>
+      </div>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Full account number">
+        <label class="govuk-label govuk-checkboxes__label" for="countries">
+          Full account number
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Current registered postal address">
+        <label class="govuk-label govuk-checkboxes__label" for="countries-2">
+          Current registered postal address
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="holder-dets" name="holder-dets" type="checkbox" value="Current registered postal address">
+        <label class="govuk-label govuk-checkboxes__label" for="countries-2">
+          Address history
+        </label>
+      </div>
+
+
+  </fieldset>
+</div>-->
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Date range for address history
+      </h1>
+    </legend>
+    <div id="countries-hint" class="govuk-hint">
+      Only complete this is you have selected you want to request address history.
+    </div>
+
+
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+       Start date
+    </legend>
+    <div id="dob-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
+
+    <div class="govuk-date-input" id="dob">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-day" name="addr-start-day" type="text" value="{{ data['addr-start-day'] }}" autocomplete="bday-day" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-start-month" name="addr-start-month" type="text" value="{{ data['addr-start-month'] }}" autocomplete="bday-month" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-start-year" name="addr-start-year" type="text" value="{{ data['addr-start-year'] }}" autocomplete="bday-year" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      End date (optional)
+    </legend>
+    <div id="dob-hint" class="govuk-hint">
+      Leave blank to request information up to the current date.
+    </div>
+    <div class="govuk-date-input" id="end-date">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-day" name="addr-end-day" type="text" value="{{ data['addr-end-day'] }}" autocomplete="bday-day" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="addr-end-month" name="addr-end-month" type="text" value="{{ data['addr-end-month'] }}" autocomplete="bday-month" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="addr-end-year" name="addr-end-year" type="text" value="{{ data['addr-end-year'] }}" autocomplete="bday-year" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="with-hint">
+      Can you provide more details about your request? (optional)
+    </label>
+  </h1>
+  <div id="with-hint-hint" class="govuk-hint">
+    We will send this in a letter to the provider. Add any information you want them to know. Do not include reasons for your request. Write clearly without acronyms or abbreviations.
+  </div>
+  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="8" aria-describedby="with-hint-info with-hint-hint">{{ data['withHint'] }}</textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to 5000 characters
+  </div>
+</div>
+</fieldset>
+</div>
+
+      <div class="govuk-button-group">
+       <button type="submit" class="govuk-button" data-module="govuk-button">
+         Save and continue
+       </button>
+       <a href="start-request-for-info" class="govuk-button govuk-button" style="background-color: rgb(168, 169, 169)">
+         Back
+       </a>
+      </div>
+
+   </form>
+
+
+</div>
+</div>
+
+</div>
+
+<br>
+
+
+{% include '/includes/case-table.html' %}
+
+
+  </div>
+</div>
+
+{% endblock %}
