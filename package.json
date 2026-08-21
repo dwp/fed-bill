@@ -11,7 +11,7 @@
     "@govuk-prototype-kit/step-by-step": "2.2.4",
     "@x-govuk/govuk-prototype-components": "5.0.2",
     "govuk-frontend": "5.14.0",
-    "govuk-prototype-kit": "13.20.2"
+    "govuk-prototype-kit": "13.20.3"
   },
   "overrides": {
     "immutable": "5.1.9",
