@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <a href="how-to-respond.html" class="govuk-back-link">Back</a>
+
+
+    <h1 class="govuk-heading-l">
+      Tell us why you cannot respond to this request
+    </h1>
+    <p> If you cannot provide the information we've requested, tell us why.<p>
+      We'll review your response and decide what to do next. In some cases, we may contact you if we need more information.
+     <p> If we still require the information requested under this notice, we may contact you again to discuss how it can be provided.</p>
+
+     <form method="post">
+
+       <div class="govuk-form-group">
+         <h2 class="govuk-label-wrapper">
+           <label class="govuk-label govuk-label--m" for="event-name">
+             Enter your name
+           </label>
+         </h2>
+         <div id="with-hint-hint" class="govuk-hint">
+           Provide your name. We may need to contact you if we need clarification about your response on behalf of your organisation.
+         </div>
+         <input class="govuk-input govuk-!-width-two-thirds" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
+       </div>
+
+       <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
+         <h2 class="govuk-label-wrapper">
+           <label class="govuk-label govuk-label--m" for="with-hint">
+             Why can't you respond to this request?
+           </label>
+         </h2>
+         <div id="with-hint-hint" class="govuk-hint">
+           Include enough detail for us to understand why you cannot respond.
+         </div>
+         <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
+         <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+           You can enter up to 5000 characters
+         </div>
+       </div>
+
+            <br>
+
+          <div class="govuk-button-group">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+               <a class="govuk-link" href="./portal-start.html">Cancel</a>
+           </div>
+
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

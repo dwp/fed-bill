@@ -37,7 +37,9 @@ router.post('/'+ version +'/investigator/add-category', function(request, respon
 
 	var categoryType = request.session.data['categoryType']
 	if (categoryType == "Finance"){
-		response.redirect ("add-subject-financial")
+		// The financial journey is not maintained in v3, so send the investigator
+		// into the v2 investigator's financial flow instead.
+		response.redirect ("/v2/investigator/add-subject-financial")
 	}
     else if (categoryType == "Employment"){
         response.redirect("add-subject-employment")

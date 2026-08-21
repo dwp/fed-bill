@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <a href="./enter-ref.html" class="govuk-back-link">Back</a>
+
+
+
+
+     <form method="post">
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Respond to this request
+      </h1>
+    </legend>
+
+    {%if data['accessCode'] == "123456" %}
+    <p> This is a request for Hartwell to provide information on: </p>
+
+    <p>Name: John Smith</p>
+    {% else %}
+    <p> This is a request for Hartwell to provide information on: </p>
+
+    <p>Postcode: EH35 9QZ</p>
+    {%endif%}
+
+
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            How would you like to respond?
+          </h2>
+        </legend>
+        <div id="respondType-hint" class="govuk-hint">
+          Select all that apply
+        </div>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="respondType" name="respondType" type="checkbox" value="Upload files">
+            <label class="govuk-label govuk-checkboxes__label" for="respondType">
+              Upload files
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="respondType-2" name="respondType" type="checkbox" value="Free Text">
+            <label class="govuk-label govuk-checkboxes__label" for="respondType-2">
+              Write your response
+            </label>
+          </div>
+          <div class="govuk-checkboxes__divider">or</div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="respondType-3" name="respondType" type="checkbox" value="none" data-behaviour="exclusive">
+            <label class="govuk-label govuk-checkboxes__label" for="respondType-3">
+              I can not respond to this request
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!--<a class="govuk-link" href="./portal-start.html">If you believe this request has been sent to you by mistake, tell us why.</a>
+    <br>
+    <br>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    <a class="govuk-link"  href="./portal-start.html">If you believe this request has been sent to you by mistake, tell us why.</a>
+
+  </strong>
+</div>-->
+
+
+          <div class="govuk-button-group">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+               <a class="govuk-link" href="./portal-start.html">Cancel</a>
+           </div>
+
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <a href="how-to-respond.html" class="govuk-back-link">Back</a>
+
+
+    <h1 class="govuk-heading-l">
+      Write your response
+    </h1>
+    <p>Enter the information you would like to provide in response to this request.<p>
+      You must not send information that would be defined as Communication Data under section 261 of the Investigatory Powers Act 2016. To find out more about this law, search ‘Investigatory Powers Act 2016’ on  <a class="govuk-link" href="https://www.gov.uk">Welcome to GOV.UK</a> . </p>
+
+    <p>You do not have to send all the information we've asked for at once. You can send more than one response to a request.</p>
+     <form method="post">
+
+       <div class="govuk-form-group">
+         <h2 class="govuk-label-wrapper">
+           <label class="govuk-label govuk-label--m" for="writters-name">
+             Enter your name
+           </label>
+         </h2>
+         <div id="with-hint-hint" class="govuk-hint">
+           Provide your name. We may need to contact you if we need clarification about your response on behalf of your organisation.
+         </div>
+         <input class="govuk-input govuk-!-width-two-thirds" id="writters-name" name="writtersName" type="text" aria-describedby="event-name-hint">
+       </div>
+
+       <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
+         <h2 class="govuk-label-wrapper">
+           <label class="govuk-label govuk-label--m" for="written-response">
+             What would you like to send in response to the request?
+           </label>
+         </h2>
+         <div id="with-hint-hint" class="govuk-hint">
+
+         </div>
+         <textarea class="govuk-textarea govuk-js-character-count" id="written-response" name="writtenResponse" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
+         <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+           You can enter up to 5000 characters
+         </div>
+       </div>
+
+            <br>
+
+          <div class="govuk-button-group">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+               <a class="govuk-link" href="./portal-start.html">Cancel</a>
+           </div>
+
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
