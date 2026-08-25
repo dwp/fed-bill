@@ -8,7 +8,11 @@
 <form method="post">
 
 <div class="govuk-width-container">
-  <a href="#" class="govuk-back-link">Back</a>
+  {% if data['addEmail'] == "Yes" %}
+  <a href="add-email.html" class="govuk-back-link">Back</a>
+  {% else %}
+  <a href="ask-for-email.html" class="govuk-back-link">Back</a>
+  {% endif %}
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters-from-desktop">
@@ -18,12 +22,16 @@
             <dt class="govuk-summary-list__key">
               How would you like to respond
             </dt>
-           <dd class="govuk-summary-list__value">
-              <ul>{{data['respondType']}}</ul>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                {% for respond in data['respondType'] %}
+                <li>{{ respond }}</li>
+                {% endfor %}
+              </ul>
             </dd>
 
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              <a class="govuk-link" href="how-to-respond.html">Change<span class="govuk-visually-hidden"> how you would like to respond</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -31,21 +39,23 @@
               Uploaded files
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data.file-upload-1}}
+              {% for file in data['uploadedFiles'] %}
+              {{ file.name }}<br>
+              {%endfor%}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              <a class="govuk-link" href="upload-files.html">Change<span class="govuk-visually-hidden"> uploaded files</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Response provided by
+              Response submitted by
             </dt>
             <dd class="govuk-summary-list__value">
              {{data['writtersName']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+              <a class="govuk-link" href="free-text-response.html">Change<span class="govuk-visually-hidden"> who submitted the response</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -56,7 +66,7 @@
               {{data['writtenResponse']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+              <a class="govuk-link" href="free-text-response.html">Change<span class="govuk-visually-hidden"> written response</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -67,7 +77,7 @@
               {{data['addEmail']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+              <a class="govuk-link" href="ask-for-email.html">Change<span class="govuk-visually-hidden"> email receipt</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -78,7 +88,7 @@
               {{data['email']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+              <a class="govuk-link" href="add-email.html">Change<span class="govuk-visually-hidden"> email address</span></a>
             </dd>
           </div>
         </dl>

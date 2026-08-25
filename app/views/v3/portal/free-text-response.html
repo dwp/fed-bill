@@ -8,7 +8,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% if data['respondType'] and 'Upload files' in data['respondType'] %}
+    <a href="upload-files.html" class="govuk-back-link">Back</a>
+    {% else %}
     <a href="how-to-respond.html" class="govuk-back-link">Back</a>
+    {% endif %}
 
 
     <h1 class="govuk-heading-l">
