@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+    <h1 class="govuk-heading-l">
+      CFEM's Request for information Prototypes
+    </h1>
+
+     <p class="govuk-body">
+        Investigator V3 - Request for information - Happy Path user flow 
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="v3/investigator/rfi-dashboard-new">Step 1 - RFI dashboard</a></li>
+          <li><a href="v3/investigator/rfi-review-response">Step 2 - Request review response</a></li>
+          <li><a href="v3/investigator/approve-close">Step 3 - Request approve and close</a></li>
+          <li><a href="v3/investigator/rfi-review-response">Step 4 - Request approved and closed</a></li>
+        </ul>
+        <a href="v1/investigator/rfi-dashboard-new" class="govuk-link">Request for information - Happy Path</a>.
+     </p>
+
+  </div>
+</div>
+
+{% endblock %}

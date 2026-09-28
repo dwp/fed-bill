@@ -1,4 +1,4 @@
-{% extends "layouts/main-cfems.html" %}
+{% extends "layouts/rfi-main-cfems.html" %}
 
 {% set pageName="Investigation I-17054" %}
 
@@ -51,23 +51,25 @@
     <div class="govuk-grid-column-full">
 
     <table class="govuk-table">
-    <caption class="govuk-table__caption govuk-table__caption--m margin-top-small">RFI Progress</caption>
+    <caption class="govuk-table__caption govuk-table__caption--m margin-top-small">Requests for information</caption>
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
-        <th scope="col" class="govuk-table__header app-custom-class">View requests</th>
-        <th scope="col" class="govuk-table__header app-custom-class">Request sent</th>
-        <th scope="col" class="govuk-table__header app-custom-class">Response due</th>
-        <th scope="col" class="govuk-table__header app-custom-class">Request status</th> 
-        <th scope="col" class="govuk-table__header app-custom-class">Request actions</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Reference</th>
+        <th scope="col" class="govuk-table__header app-custom-class">View</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Sent</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Due</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Status</th> 
+        <th scope="col" class="govuk-table__header app-custom-class">Actions</th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
       <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell">RFI8573</td>
         <td scope="row" class="govuk-table__cell"><a href="#">View Santander request</a></td>
-        <td class="govuk-table__cell">24 Aug 2026</td>
-        <td class="govuk-table__cell"><span class="contextual-date-border">7 Sept 2026 - <span class="contextual-date">Overdue</span></span></td>
+        <td class="govuk-table__cell">11 Sept 2026</td>
+        <td class="govuk-table__cell"><span class="contextual-date-border">24 Sept 2026 - <span class="contextual-date">Overdue</span></span></td>
         <td class="govuk-table__cell">
-          <span class="govuk-tag govuk-tag--yellow">
+          <span class="govuk-tag govuk-tag--grey" style="background-color:#fabb9c;">
             No response received
           </span>
         </td>
@@ -75,27 +77,40 @@
           <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Send reminder</a></p>
       </td>
       </tr>
+
       <tr class="govuk-table__row">
-        <td scope="row" class="govuk-table__cell"><a href="#">View Santander request</a></td>
-        <td class="govuk-table__cell">23 Aug 2026</td>
-        <td class="govuk-table__cell">6 Sept 2026</td>
+        <td scope="row" class="govuk-table__cell">RFI2226</td>
+        <td scope="row" class="govuk-table__cell"><a href="#">View Elie Holiday Park request</a></td>
+        <td class="govuk-table__cell">14 Sept 2026</td>
+        <td class="govuk-table__cell">28 Sept 2026</td>
         <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">
-          In Progress</span></td>
+          Response received</span></td>
         <td class="govuk-table__cell">
-          <p class="govuk-body"><a href="rfi-request-case" class="govuk-link govuk-link--no-visited-state">View request response</a></p>
+          <p class="govuk-body"><a href="rfi-review-response" class="govuk-link govuk-link--no-visited-state">View request response</a></p>
         </td>
       </tr>
+
       <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell">RFI532</td>
         <td scope="row" class="govuk-table__cell"><a href="#">View Bank of Scotland request</a></td>
-        <td class="govuk-table__cell">17 Aug 2026</td>
-        <td class="govuk-table__cell">28 Aug 2026</td>
-        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">
-          Closed</span></td>
+        <td class="govuk-table__cell">11 Sept 2026</td>
+        <td class="govuk-table__cell"><span>8th Oct 2026</span></td>
+        <td class="govuk-table__cell">
+          <span class="govuk-tag govuk-tag--grey" style="background-color:#fabb9c;display: block;margin-bottom: 10px;">
+            No response received
+          </span>
+          <span class="govuk-tag govuk-tag--yellow">
+          Reminder 1 sent</span>
+        </td>
         <td class="govuk-table__cell">
           <p class="govuk-body">No action required</p>
         </td>
       </tr>
+
+      
+      
       <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell">RFI1933</td>
         <td scope="row" class="govuk-table__cell"><a href="#">View Bank of Scotland request</a></td>
         <td class="govuk-table__cell">17 Aug 2026</td>
         <td class="govuk-table__cell">28 Aug 2026</td>

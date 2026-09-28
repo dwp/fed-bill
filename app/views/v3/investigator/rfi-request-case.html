@@ -1,116 +1,58 @@
-{% extends "layouts/main-cfems.html" %}
+{% extends "layouts/rfi-main-cfems.html" %}
 
 {% set pageName="Investigation I-17054" %}
 
+
 {% block content %}
+
 
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
    
-  {% include '/includes/name-and-nino-rfi-case.html' %}
-    
-  {% include '/includes/cfem-investigator-layout-request.html' %}
+   {% include '/includes/name-and-nino-rfi-case.html' %}
 
- <!-- Request overview start -->
-    <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="background-color: rgb(242, 243, 245);padding-left:15px;padding-right:15px;">
-      <div class="govuk-grid-column-full">
-        <div class="govuk-grid-row ">
-          <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-m padding-top-medium">Approve and close</h2>
-            <h3 class="govuk-heading-s">Account holder details 1</h3>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>Sort Code: 001122</li>
-              <li>Account number: 12345678</li>
-              <li>Card number: 12345678901010</li>
-              <li>Building society roll number</li>
-            </ul>
-
-            <p class="govuk-body">Information we are asking for:</p>
-            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-              <li>
-                Bank statements for given account from 01/01/2025 to 01/01/2026
-              </li>
-              <li>
-                Account opening information, including any forms of ID provided
-              </li>
-              <li>
-                Bank statements for all associated accoiunts held where the person is the named party from 01/1/2001 to 31/11/2018, including account opening information, including any forms of ID provided
-              </li>
-              <li>
-                Account holder name, address and date of birth 
-              </li>
-              <li>
-                Address history from 18/5/2007 to 12/10/2012
-              </li>
-            </ul>
-            <!-- Accordion section start
-            <div class="govuk-accordion margin-top-medium" data-module="govuk-accordion" id="accordion-default">
-              <div class="govuk-accordion__section">
-                <div class="govuk-accordion__section-header">
-                  <h3 class="govuk-accordion__section-heading">
-                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                      <span class="govuk-heading-s">Account holder details 2</span>
-                    </span>
-                  </h3>
-                </div>
-                <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-                  <p class="govuk-body">This is the content for Writing well for the web.</p>
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li>Sort Code: 001122</li>
-                    <li>Account number: 12345678</li>
-                    <li>Card number: 12345678901010</li>
-                    <li>Building society roll number</li>
-                  </ul>
-
-                  <p class="govuk-body">Information we are asking for:</p>
-                  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                    <li>
-                      Bank statements for given account from 01/01/2025 to 01/01/2026
-                    </li>
-                    <li>
-                      Account opening information, including any forms of ID provided
-                    </li>
-                    <li>
-                      Bank statements for all associated accoiunts held where the person is the named party from 01/1/2001 to 31/11/2018, including account opening information, including any forms of ID provided
-                    </li>
-                    <li>
-                      Account holder name, address and date of birth 
-                    </li>
-                    <li>
-                      Address history from 18/5/2007 to 12/10/2012
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            Accordion section end -->
-
-            <!-- provider response links start -->
-            <h3 class="govuk-heading-s padding-top-medium">Provider response</h3>
-            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-            <!-- provider response links end -->
-
-            <div class="govuk-button-group">
-              <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="" value="#">
-                Approve and close
-              </button>
-            </div>
-          </div>
-
-          <!--<div class="govuk-grid-column-one-third">
-            <h3 class="govuk-heading-s padding-top-medium">Provider response</h3>
-            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          </div>-->
-          
-        </div>
+    <div class="govuk-notification-banner" style="border-top: 0;border-bottom: 0;border-right: 0;border-left: 5px solid #28A197;background-color: #E9F5F4;padding: 0px 10px;">        
+      <div>
+        <div  class="govuk-notification-banner__content" style="background-color: #E9F5F4;">Request 128307 was approved and closed.</div>
       </div>
     </div>
-  <!-- Request overview end -->
 
+    {% include '/includes/cfem-investigator-layout-new.html' %}
+
+    <!-- Activity in progress start -->
+     <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="background-color: rgb(242, 243, 245);">
+      <div class="govuk-grid-column-full">
+      <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m margin-top-small">Activity in progress</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header app-custom-class">Activity</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Assigned to</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Due</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">There are no activities in progress</td>
+          <td class="govuk-table__cell">No data to display</td>
+          <td class="govuk-table__cell">No data to display</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+    </div>
+    <!-- Activity in progress end -->
+
+{% include '/includes/case-table-closed.html' %}
 </div>
 
+
+
+
+    
   </div>
 </div>
 

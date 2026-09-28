@@ -1,0 +1,69 @@
+{% extends "layouts/rfi-main-cfems.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full ">
+
+     {% include '/includes/name-and-nino-rfi-case.html' %}
+    
+    {% include '/includes/cfem-investigator-layout.html' %}
+
+     <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+ 
+
+   <form method="post" action="rfi-request-case">
+
+            <div class="govuk-form-group govuk-!-width-one-half">
+            <label class="govuk-label" for="sort">
+           
+                      
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="event-name">
+      Approve and close this request
+    </label>
+  </h1>
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <h1 class="govuk-fieldset__heading">
+          Confirm the providers response meets the request criteria
+        </h1>
+      </legend>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="confirmation" name="confirmation" type="checkbox" value="farm">
+          <label class="govuk-label govuk-checkboxes__label" for="confirmation">
+            I confirm the provider's response meets the request criteria
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+</div>
+
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init=""">
+          Approve and close
+        </button>
+        <a class="govuk-link" href="rfi-review-response">Cancel</a>
+      </div>
+    
+    </form>
+
+</div>
+</div>
+
+</div>
+
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -46,8 +46,18 @@
     color: white;
     line-height: 24px;
 }
+.govuk-tag {
+    font-size:16px;
+}
 // Request case screen //
 .govuk-accordion__controls {
     display: none;
+}
+.dems-container {
+    background-image: url("/assets/images/dems-screen-shot.png");
+    width:1433px;
+    height: 771px;
+
+    //Users/graham.howe/Documents/CFEM/fed-bill/app/assets/images/dems-screen-shot.png
 }
 //.govuk-width-container { min-width: 1280px  }
