@@ -4,6 +4,50 @@
 // 
 
 // Add extra styles here
+.govuk-grid-row-no-margin {
+    margin-left:0;
+    margin-right:0;
+}
+.margin-top-small {
+    margin-top:25px;
+}
 
+.margin-top-medium {
+    margin-top:40px;
+}
+.padding-top-medium {
+    padding-top:40px;
+}
+.margin-bottom-medium {
+    margin-bottom:40px;
+}
+.contextual-date {
+    font-weight: bold;
+    display: block;
+}
+.contextual-date-border {
+    border-left: 8px solid #ca3535;
+    display: block;
+    padding-left: 11px;
+}
 
+// Activity in progress styles 
+.investigators-avatar {
+    height: 25px;
+    width: 25px;
+    background-color: #ba23f6;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 8px;
+    color: white;
+    line-height: 24px;
+}
+// Request case screen //
+.govuk-accordion__controls {
+    display: none;
+}
 //.govuk-width-container { min-width: 1280px  }

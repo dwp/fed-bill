@@ -1,0 +1,163 @@
+{% extends "layouts/main-cfems.html" %}
+
+{% set pageName="Investigation I-17054" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+   
+   {% include '/includes/name-and-nino.html' %}
+    
+    {% include '/includes/cfem-investigator-layout-new.html' %}
+
+    <!-- Activity in progress start -->
+     <div class="govuk-grid-row govuk-grid-row-no-margin" style="background-color: rgb(242, 243, 245);">
+      <div class="govuk-grid-column-full">
+      <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m margin-top-small">Activity in progress</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header app-custom-class">Activity</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Assigned to</th>
+          <th scope="col" class="govuk-table__header app-custom-class">Due</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell"><a href="#">Track surveillance progress</a></td>
+          <td class="govuk-table__cell"><span class="investigators-avatar">JG</span>Janet Green</td>
+          <td class="govuk-table__cell">7 Sept 2026</td>
+        </tr>
+      </tbody>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell"><a href="#">Completed surveillance</a></td>
+          <td class="govuk-table__cell"><span class="investigators-avatar">JG</span>Janet Green</td>
+          <td class="govuk-table__cell">6 Sept 2026, 12:19 PM</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+    </div>
+    <!-- Activity in progress end -->
+
+    <!-- RFI dashboard start -->
+
+    <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="margin-top:40px; border: 1px solid #b1b4b6">
+    <div class="govuk-grid-column-full">
+
+    <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--m margin-top-small">RFI Progress</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header app-custom-class">View requests</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Request sent</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Response due</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Request status</th> 
+        <th scope="col" class="govuk-table__header app-custom-class">Request actions</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><a href="#">View Santander request</a></td>
+        <td class="govuk-table__cell">24 Aug 2026</td>
+        <td class="govuk-table__cell"><span class="contextual-date-border">7 Sept 2026 - <span class="contextual-date">Overdue</span></span></td>
+        <td class="govuk-table__cell">
+          <span class="govuk-tag govuk-tag--yellow">
+            No response received
+          </span>
+        </td>
+        <td class="govuk-table__cell">
+          <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Send reminder</a></p>
+      </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><a href="#">View Santander request</a></td>
+        <td class="govuk-table__cell">23 Aug 2026</td>
+        <td class="govuk-table__cell">6 Sept 2026</td>
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">
+          In Progress</span></td>
+        <td class="govuk-table__cell">
+          <p class="govuk-body"><a href="rfi-request-case" class="govuk-link govuk-link--no-visited-state">View request response</a></p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><a href="#">View Bank of Scotland request</a></td>
+        <td class="govuk-table__cell">17 Aug 2026</td>
+        <td class="govuk-table__cell">28 Aug 2026</td>
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">
+          Closed</span></td>
+        <td class="govuk-table__cell">
+          <p class="govuk-body">No action required</p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td scope="row" class="govuk-table__cell"><a href="#">View Bank of Scotland request</a></td>
+        <td class="govuk-table__cell">17 Aug 2026</td>
+        <td class="govuk-table__cell">28 Aug 2026</td>
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">
+          Closed</span></td>
+        <td class="govuk-table__cell">
+          <p class="govuk-body">No action required</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+  </div>
+<!-- RFI dashboard end -->
+ <!-- What would you like to do start -->
+    <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="background-color: rgb(242, 243, 245);">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m padding-top-medium">What would you like to do</h2>
+        <div class="govuk-grid-row ">
+          <div class="govuk-grid-column-one-third">
+            <ul class="govuk-list">
+              <li><a class="govuk-link" href="">Add or remove vulnerability flag</a></li>
+              <li><a class="govuk-link" href="">Record a request for evidence</a></li>
+              <li><a class="govuk-link" href="">Add a case note</a></li>
+              <li><a class="govuk-link" href="">Add or remove a flag</a></li>
+              <li><a class="govuk-link" href="">Add a case note</a></li>
+              <li><a class="govuk-link" href="">Record contact</a></li>
+              <li><a class="govuk-link" href="">Manage people</a></li>
+              <li><a class="govuk-link" href="">Set an activity</a></li>
+            </ul>
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+            <ul class="govuk-list">
+              <li><a class="govuk-link" href="">Ask for some advice</a></li>
+              <li><a class="govuk-link" href="/v3/investigator/add-providor">Send a request for information</a></li>
+              <li><a class="govuk-link" href="">Ask a team leader to do something</a></li>
+              <li><a class="govuk-link" href="">Ask for the benefit to be suspended</a></li>
+              <li><a class="govuk-link" href="">Refer for financial investigation</a></li>
+            </ul>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <ul class="govuk-list">
+              <li><a class="govuk-link" href="">Plan an interview</a></li>
+              <li><a class="govuk-link" href="">Request or record a decision</a></li>
+              <li><a class="govuk-link" href="">Record outcome</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- What would you like to do end -->
+
+</div>
+
+<br>
+
+{% include '/includes/case-table.html' %}
+
+    
+  </div>
+</div>
+
+{% endblock %}
