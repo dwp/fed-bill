@@ -11,15 +11,10 @@
   <div class="govuk-grid-column-full">
 
    
-   {% include '/includes/name-and-nino-rfi-case.html' %}
+   {% include '/includes/name-and-nino-rfi-santander.html' %}
 
-    <div class="govuk-notification-banner" style="border-top: 0;border-bottom: 0;border-right: 0;border-left: 5px solid #28A197;background-color: #E9F5F4;padding: 0px 10px;">        
-      <div>
-        <div  class="govuk-notification-banner__content" style="background-color: #E9F5F4;">Request 128307 was approved and closed.</div>
-      </div>
-    </div>
 
-    {% include '/includes/cfem-investigator-layout-closed.html' %}
+    {% include '/includes/cfem-investigator-layout-new.html' %}
 
     <!-- Activity in progress start -->
      <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="background-color: rgb(242, 243, 245);">
@@ -45,6 +40,23 @@
     </div>
     </div>
     <!-- Activity in progress end -->
+     <!-- What would you like to do start -->
+    <div class="govuk-grid-row govuk-grid-row-no-margin margin-bottom-medium" style="background-color: rgb(242, 243, 245);">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m padding-top-medium">What would you like to do</h2>
+        <div class="govuk-grid-row ">
+          <div class="govuk-grid-column-one-third">
+            <ul class="govuk-list">
+              <li><a class="govuk-link" href="#">Change request due date</a></li>
+              <li><a class="govuk-link" href="">Cancel request</a></li>
+              <li><a class="govuk-link" href="">View request letter</a></li>
+              <li><a class="govuk-link" href="">Download request</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- What would you like to do end -->
 
 {% include '/includes/case-table-closed.html' %}
 </div>
