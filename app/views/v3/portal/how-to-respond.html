@@ -8,7 +8,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <a href="enter-access-code.html" class="govuk-back-link">Back</a>
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 
 
 
@@ -23,7 +23,7 @@
       </h1>
     </legend>
 
-    {%if data['accessCode'] == "123456" %}
+    <!--{%if data['accessCode'] == "123456" %}
     <p> This is a request for Hartwell to provide information on: </p>
 
     <p>Name: John Smith</p>
@@ -31,11 +31,12 @@
     <p> This is a request for Hartwell to provide information on: </p>
 
     <p>Postcode: EH35 9QZ</p>
-    {%endif%}
+    {%endif%}-->
+
+    <p> This is a request for Hartwell to provide information. </p>
 
 
-
-    <div class="govuk-form-group">
+    <!--<div class="govuk-form-group">
       <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           <h2 class="govuk-fieldset__heading">
@@ -67,6 +68,37 @@
           </div>
         </div>
       </fieldset>
+    </div>-->
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            How would you like to respond?
+          </h1>
+        </legend>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="respondType" name="respondType" type="radio" value="Upload files">
+            <label class="govuk-label govuk-radios__label" for="respondType">
+              Upload files and write a response
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="respondType-2" name="respondType" type="radio" value="Write your response">
+            <label class="govuk-label govuk-radios__label" for="respondType-2">
+              Write your response
+            </label>
+          </div>
+          <div class="govuk-radios__divider">or</div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="respondType-3" name="respondType" type="radio" value="I can not respond to this request" data-behaviour="exclusive">
+            <label class="govuk-label govuk-radios__label" for="respondType-3">
+              I cannot respond to this request
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
 
     <!--<a class="govuk-link" href="./portal-start.html">If you believe this request has been sent to you by mistake, tell us why.</a>
@@ -86,7 +118,7 @@
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
               </button>
-               <a class="govuk-link" href="./portal-start.html">Cancel</a>
+               <a class="govuk-link" href="./cancel.html">Cancel</a>
            </div>
 
 

@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+
+
+
+     <form method="post">
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Are you sure you want to cancel?
+      </h1>
+    </legend>
+
+
+    <p>You will lose everything you have submitted so far.</p>
+
+
+
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="respondType" name="respondType" type="radio" value="Upload files">
+            <label class="govuk-label govuk-radios__label" for="respondType">
+              Yes, I want to cancel
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="respondType-2" name="respondType" type="radio" value="Write your response">
+            <label class="govuk-label govuk-radios__label" for="respondType-2">
+             No
+            </label>
+          </div>
+
+      </fieldset>
+    </div>
+
+
+
+          <div class="govuk-button-group">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+
+           </div>
+
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

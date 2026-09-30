@@ -8,21 +8,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <a href="how-to-respond.html" class="govuk-back-link">Back</a>
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
 
     <h1 class="govuk-heading-l">
       Upload your response
     </h1>
-<p>You can upload files to respond to this request. This could be an official document, or another file in the format of your choice. For example, a Word document showing the information we asked for.<p>
-    You must not send information that would be defined as Communication Data under section 261 of the Investigatory Powers Act 2016. To find out more about this law, search ‘Investigatory Powers Act 2016’ on  <a class="govuk-link" href="https://www.gov.uk">Welcome to GOV.UK</a> . <p>
-    You do not have to send all the information we've asked for at once. You can send more than one response to a request.
+    <p>You can upload files and write a response to respond to this request. This could be an official document, or another file in the format of your choice. For example, a Word document showing the information we asked for.<p>
+    You must not send information that would be defined as Communication Data under section 261 of the <a class="govuk-link" href="https://www.gov.uk">Investigatory Powers Act 2016</a>.<p>
+
   </p>
+
 
      <form method="post" action="upload-files" id="upload-files-form">
 
     <div class="govuk-form-group">
   <div class="govuk-form-group">
-    <h1 class="govuk-label-wrapper">
+  <h1 class="govuk-label-wrapper">
       <label class="govuk-label govuk-label--m" for="file-upload-1">
         Upload files
       </label>
@@ -30,7 +31,16 @@
 
 
 
+
+
+
 <div id="file-upload-1-hint" class="govuk-hint">
+  We accept the following file types:
+
+  <ul class="govuk-list govuk-list--bullet govuk-hint">
+    <li>documents: PDF, DOCX, CSV, XLS, XLSX </li>
+    <li> images: JPG, JPEG, PNG, BMP, TIFF </li>
+  </ul>
       30MB is the maximum file size for each file.
     </div>
 
@@ -38,7 +48,7 @@
     <div class="govuk-drop-zone" data-module="govuk-file-upload">
       <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" multiple aria-describedby="file-upload-1-hint">
     </div>
-    <br>
+
 
     <ul class="govuk-list" id="selected-files-list"></ul>
 
@@ -72,7 +82,6 @@
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header app-custom-class">File name</th>
       <th scope="col" class="govuk-table__header app-custom-class">Size</th>
-      <th scope="col" class="govuk-table__header app-custom-class">Status</th>
       <th scope="col" class="govuk-table__header app-custom-class">Action</th>
     </tr>
   </thead>
@@ -82,10 +91,6 @@
       <th scope="row" class="govuk-table__header">
           <a class="govuk-link" href="#">{{ file.name }}</a></th>
       <td class="govuk-table__cell">{{ file.size }}</td>
-      <td class="govuk-table__cell">
-          <strong class="govuk-tag govuk-tag--green">
-          Uploaded
-          </strong></td>
       <td class="govuk-table__cell"><a class="govuk-link" href="remove-file?id={{ loop.index0 }}">Delete</a></td>
     </tr>
     {% endfor %}
@@ -94,8 +99,24 @@
 {% endif %}
 
 <br>
+    <form method="post" action="send-response">
 
-     <form method="post" action="send-response">
+    <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
+      <h2 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--m" for="upload-response">
+         Write your response (optional)
+        </label>
+      </h2>
+      <div id="with-hint-hint" class="govuk-hint">
+        Include all relevant information you want to provide in response to this request
+      </div>
+      <textarea class="govuk-textarea govuk-js-character-count" id="upload-response" name="uploadResponse" rows="8" aria-describedby="with-hint-info with-hint-hint"></textarea>
+      <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+        You can enter up to 5000 characters
+      </div>
+    </div>
+
+
 
       <!-- {% if data['respondType'] and 'Free Text' in data['respondType'] %}
        <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="5000">
@@ -118,7 +139,7 @@
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
               </button>
-               <a class="govuk-link" href="./portal-start.html">Cancel</a>
+               <a class="govuk-link" href="./cancel.html">Cancel</a>
            </div>
 
 

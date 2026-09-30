@@ -21,7 +21,14 @@ router.post('/'+ version +'/portal/enter-ref', function(request, response) {
 router.post('/'+ version +'/portal/enter-access-code', function(request, response) {
 
 
-		response.redirect("how-to-respond")
+		response.redirect("enter-name")
+
+})
+
+router.post('/'+ version +'/portal/enter-name', function(request, response) {
+
+
+  response.redirect("how-to-respond")
 
 })
 
@@ -37,10 +44,10 @@ router.post('/'+ version +'/portal/how-to-respond', function(request, response) 
 	if (selectedTypes.indexOf("Upload files") !== -1){
 		response.redirect("upload-files")
 	}
-	else if (selectedTypes.indexOf("Free Text") !== -1){
+	else if (selectedTypes.indexOf("Write your response") !== -1){
 		response.redirect("free-text-response")
 	}
-	else if (selectedTypes.indexOf("none") !== -1){
+	else if (selectedTypes.indexOf("I can not respond to this request") !== -1){
 		// "I can not respond to this request" - there is no dedicated page for this yet,
 		// so send the investigator back to the start of the portal journey.
 		response.redirect("can-not-respond")
@@ -94,7 +101,7 @@ router.get('/'+ version +'/portal/remove-file', function(request, response) {
 router.post('/'+ version +'/portal/free-text-response', function(request, response) {
 
 
-		response.redirect("ask-for-email")
+		response.redirect("add-email")
 
 })
 
@@ -102,14 +109,14 @@ router.post('/'+ version +'/portal/free-text-response', function(request, respon
 // (if the investigator also chose to send free text) and moves on to confirmation.
 router.post('/'+ version +'/portal/send-response', function(request, response) {
 
-  response.redirect("free-text-response")
+  response.redirect("add-email")
 
 })
 
 router.post('/'+ version +'/portal/upload-files', function(request, response) {
 
 
-  response.redirect("free-text-response")
+  response.redirect("add-email")
 
 })
 
@@ -122,7 +129,7 @@ router.post('/'+ version +'/portal/add-email', function(request, response) {
 router.post('/'+ version +'/portal/can-not-respond', function(request, response) {
 
 
-  response.redirect("confirmation-no-response")
+  response.redirect("add-email")
 
 })
 
